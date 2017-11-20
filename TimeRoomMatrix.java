@@ -10,7 +10,7 @@ import javax.swing.JButton;
 
 public class TimeRoomMatrix {
 
-	//testing push out of folder
+	//adding docs to this file
 	private JFrame frame;
 
 	/**
