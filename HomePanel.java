@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class HomePanel extends JPanel {
 
@@ -22,13 +23,18 @@ public class HomePanel extends JPanel {
 		JPanel welcomePanel = new JPanel();
 		welcomePanel.setPreferredSize(new Dimension(20, 50));
 		JLabel welcomeLabel = new JLabel("Scheduletron 3000");
+		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		add(welcomeLabel, BorderLayout.NORTH);
+		welcomePanel.add(welcomeLabel);
+		add(welcomePanel, BorderLayout.NORTH);
 		
 		//Description
+		JPanel descriptionPanel = new JPanel();
 		JTextArea description = new JTextArea();
-		description.setText("Welcome to the school scheduling program.\nTo proceed, press one of the buttons below.");
-		add(description, BorderLayout.CENTER);
+		description.setText("Welcome to the school scheduling program.\n" +
+				"To proceed, press one of the buttons below.");
+		descriptionPanel.add(description);
+		add(descriptionPanel, BorderLayout.CENTER);
 		
 		//Buttons
 		JPanel buttonPanel = new JPanel();
