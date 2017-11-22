@@ -11,6 +11,8 @@ public class Calender extends JPanel {
 	DefaultTableModel model;
 	Calendar cal = new GregorianCalendar();
 	JLabel label;
+	JPanel mainPanel;
+	JPanel panel;
 	//Calender Constructor
 	public Calender(){
 	    
@@ -36,11 +38,13 @@ public class Calender extends JPanel {
 	    	}
 	    });
 	    //Creates JPanel,sets layout and adds the label and buttons to the panel
-	    JPanel panel = new JPanel();
+	    mainPanel = new JPanel();
+	    panel = new JPanel();
 	    panel.setLayout(new BorderLayout());
 	    panel.add(prevMonth,BorderLayout.WEST);
 	    panel.add(nextMonth,BorderLayout.EAST);
 	    panel.add(label,BorderLayout.CENTER);
+		
 	    
 	    //Generate Table for Calender
 	    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
@@ -49,22 +53,25 @@ public class Calender extends JPanel {
 	    JScrollPane pane = new JScrollPane(table);
 
 		panel.add(pane, BorderLayout.CENTER);
-	    add(panel);
 	    
 
 	    
+		panel.add(pane, BorderLayout.CENTER);	  
+		mainPanel.add(panel);
+	    add(mainPanel);
 	    //Event Listener that displays a list of the available rooms as a drop down when hovered over.
 	    table.addMouseListener(new java.awt.event.MouseAdapter() {
 	        @Override
-	        public void mouseEntered(java.awt.event.MouseEvent evt) {
+	        public void mouseClicked(java.awt.event.MouseEvent evt) {
 	            int row = table.rowAtPoint(evt.getPoint());
 	            int col = table.columnAtPoint(evt.getPoint());
 	            if (row >= 0 && col >= 0) {
 	                displayAvailableRooms(row,col);
+					panel.setVisible(false);
+					TimeRoomGridPane trgPane = new TimeRoomGridPane(mainPanel);
 	            }
 	        }
-	    });
-	    
+	    });	    
 	    this.checkMonth();
 	}
 	//Method to display drop down bar of stored information in rows and cols
@@ -93,7 +100,7 @@ public class Calender extends JPanel {
 	    	model.setValueAt(day, i/7 , i%7 );    
 	    	i = i + 1;
 	    }
-	 }
+	}
 	
 	//Main Method
 	public static void main(String[] args) {
