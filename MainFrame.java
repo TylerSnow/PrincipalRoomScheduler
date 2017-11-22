@@ -12,6 +12,7 @@ public class MainFrame extends JFrame {
 	private JPanel mainPanel;
 	private HomePanel home;
 	private TimeRoomGridPane applicant;
+	private Calender calender;
 	
 
 	/**
@@ -51,8 +52,20 @@ public class MainFrame extends JFrame {
 			home.setVisible(false);
 			mainPanel.add(home);
 			System.out.println("Doing it");
+			calender = new Calender();
+			mainPanel.add(calender);
+			add(mainPanel);
+		}
+	}
+	
+	private class GridListener extends AbstractAction {
+		public GridListener() {
+			
+		}
+		public void actionPerformed(ActionEvent e) {
+			home.setVisible(false);
 			applicant = new TimeRoomGridPane(mainPanel);
-			mainPanel.add(applicant);
+			System.out.println("Doing it");
 			add(mainPanel);
 		}
 	}

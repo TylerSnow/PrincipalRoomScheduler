@@ -49,7 +49,7 @@ public class Calender extends JPanel {
 	    JScrollPane pane = new JScrollPane(table);
 
 		panel.add(pane, BorderLayout.CENTER);
-	    
+	    add(panel);
 	    
 
 	    
