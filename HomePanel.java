@@ -37,6 +37,7 @@ public class HomePanel extends JPanel {
 		//Description
 		JPanel descriptionPanel = new JPanel();
 		JTextArea description = new JTextArea();
+		description.setEditable(false);
 		description.setText("Welcome to the school scheduling program.\n" +
 				"To proceed, press one of the buttons below.");
 		descriptionPanel.add(description);
