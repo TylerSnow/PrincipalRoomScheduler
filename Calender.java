@@ -7,14 +7,20 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 public class Calender extends JPanel {
+	
 	//instatiates Calender, Table, Jlabel data types
 	DefaultTableModel model;
 	Calendar cal = new GregorianCalendar();
 	JLabel label;
 	JPanel mainPanel;
 	JPanel panel;
+	public JTable table;
+	private MainFrame2 frame;
+	
 	//Calender Constructor
-	public Calender(){
+	public Calender(MainFrame2 frame){
+		
+		this.frame = frame;
 	    
 	    label = new JLabel();
 	    
@@ -49,7 +55,7 @@ public class Calender extends JPanel {
 	    //Generate Table for Calender
 	    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 	    model = new DefaultTableModel(null,columns);
-	    JTable table = new JTable(model);
+	    table = new JTable(model);
 	    JScrollPane pane = new JScrollPane(table);
 
 		panel.add(pane, BorderLayout.CENTER);
@@ -66,9 +72,8 @@ public class Calender extends JPanel {
 	            int row = table.rowAtPoint(evt.getPoint());
 	            int col = table.columnAtPoint(evt.getPoint());
 	            if (row >= 0 && col >= 0) {
-	                displayAvailableRooms(row,col);
-					panel.setVisible(false);
-					TimeRoomGridPane trgPane = new TimeRoomGridPane(mainPanel);
+	                frame.showPanel(MainFrame2.GRID_PANEL);
+					//TimeRoomGridPane trgPane = new TimeRoomGridPane(mainPanel);
 	            }
 	        }
 	    });	    
@@ -107,8 +112,8 @@ public class Calender extends JPanel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Calender schedule = new Calender();
-					schedule.setVisible(true);
+					//Calender schedule = new Calender(cards);
+					//schedule.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
