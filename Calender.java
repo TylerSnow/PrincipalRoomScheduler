@@ -1,4 +1,4 @@
-package projectGUI;
+//package projectGUI;
 
 import java.util.*;
 import java.awt.*;
@@ -11,6 +11,8 @@ public class Calender extends JPanel {
 	DefaultTableModel model;
 	Calendar cal = new GregorianCalendar();
 	JLabel label;
+	JPanel mainPanel;
+	JPanel panel;
 	//Calender Constructor
 	public Calender(){
 	    
@@ -36,7 +38,8 @@ public class Calender extends JPanel {
 	    	}
 	    });
 	    //Creates JPanel,sets layout and adds the label and buttons to the panel
-	    JPanel panel = new JPanel();
+	    mainPanel = new JPanel();
+	    panel = new JPanel();
 	    panel.setLayout(new BorderLayout());
 	    panel.add(prevMonth,BorderLayout.WEST);
 	    panel.add(nextMonth,BorderLayout.EAST);
@@ -48,8 +51,14 @@ public class Calender extends JPanel {
 	    model = new DefaultTableModel(null,columns);
 	    JTable table = new JTable(model);
 	    JScrollPane pane = new JScrollPane(table);
-		panel.add(pane, BorderLayout.CENTER);	    	   
-	    this.add(panel);
+
+		panel.add(pane, BorderLayout.CENTER);
+	    
+
+	    
+		panel.add(pane, BorderLayout.CENTER);	  
+		mainPanel.add(panel);
+	    add(mainPanel);
 	    //Event Listener that displays a list of the available rooms as a drop down when hovered over.
 	    table.addMouseListener(new java.awt.event.MouseAdapter() {
 	        @Override
@@ -58,8 +67,8 @@ public class Calender extends JPanel {
 	            int col = table.columnAtPoint(evt.getPoint());
 	            if (row >= 0 && col >= 0) {
 	                displayAvailableRooms(row,col);
-					panel.setVisible(false)
-					TimeRoomGridPane trgPane = new TimeRoomGridPane(this);
+					panel.setVisible(false);
+					TimeRoomGridPane trgPane = new TimeRoomGridPane(mainPanel);
 	            }
 	        }
 	    });	    
