@@ -1,9 +1,5 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
 public class MainFrame2 extends JFrame {
@@ -33,8 +29,8 @@ public class MainFrame2 extends JFrame {
 		calPanel = new Calender(this);
 		mainPanel.add(calPanel, CALENDER_PANEL);
 		
-		gridPanel = new TimeRoomGridPanel();
-		mainPanel.add(gridPanel, GRID_PANEL);
+		//gridPanel = new TimeRoomGridPanel();
+		//mainPanel.add(gridPanel, GRID_PANEL);
 
 		cards.show(mainPanel, "Home Page");
 		add(mainPanel);
