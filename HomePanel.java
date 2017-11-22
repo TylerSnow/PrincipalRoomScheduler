@@ -10,9 +10,15 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import javax.swing.Action;
 
 public class HomePanel extends JPanel {
 
+	public JButton applicantButton;
+	public JButton principalButton;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -43,10 +49,10 @@ public class HomePanel extends JPanel {
 		buttonPanel.setLayout(new GridLayout(0, 2));
 		buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
-		JButton principalButton = new JButton("Enter as Principal");
+		principalButton = new JButton("Enter as Principal");
 		int margin = 10;
 		principalButton.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
-		JButton applicantButton = new JButton("Enter as Applicant");
+		applicantButton = new JButton("Enter as Applicant");
 		applicantButton.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
 		
 		buttonPanel.add(principalButton);
@@ -54,5 +60,4 @@ public class HomePanel extends JPanel {
 		
 
 	}
-
 }

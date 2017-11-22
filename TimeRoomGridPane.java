@@ -11,15 +11,15 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 public class TimeRoomGridPane extends JScrollPane{
-	private JPanel panel;
+	//private JPanel panel;
 	private JScrollPane pane;
 	private String[] rooms = {"101", "102", "103", "104", "105", "106"};
 	
 	/**
 	 * Create the application.
 	 */
-	public TimeRoomGridPane() {
-		panel = new JPanel();
+	public TimeRoomGridPane(JPanel panel) {
+		//panel = new JPanel();
 		panel.setLayout(new GridLayout(rooms.length+1, 25));
 		pane = new JScrollPane(panel);
 		Dimension preferredSize = new Dimension(600,600);
