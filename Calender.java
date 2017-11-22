@@ -72,8 +72,8 @@ public class Calender extends JPanel {
 	            int row = table.rowAtPoint(evt.getPoint());
 	            int col = table.columnAtPoint(evt.getPoint());
 	            if (row >= 0 && col >= 0) {
-	                frame.showPanel(MainFrame2.GRID_PANEL);
-					//TimeRoomGridPane trgPane = new TimeRoomGridPane(mainPanel);
+              frame.showPanel(MainFrame2.GRID_PANEL);
+					    //TimeRoomGridPane trgPane = new TimeRoomGridPane(mainPanel);
 	            }
 	        }
 	    });	    
