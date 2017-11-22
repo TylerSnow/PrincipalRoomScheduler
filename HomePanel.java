@@ -1,29 +1,22 @@
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.AbstractAction;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.Action;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class HomePanel extends JPanel {
 
-	public JButton applicantButton;
-	public JButton principalButton;
+	private JButton applicantButton;
+	private JButton principalButton;
+	private MainFrame2 frame;
 	
 	/**
 	 * Create the panel.
 	 */
-	public HomePanel() {
-		setLayout(new BorderLayout(0, 0));
+	public HomePanel(MainFrame2 frame) {
+		
+		this.frame = frame;
+		setLayout(new BorderLayout(0, 0));	
 		
 		//Welcome
 		JPanel welcomePanel = new JPanel();
@@ -34,6 +27,7 @@ public class HomePanel extends JPanel {
 		welcomePanel.add(welcomeLabel);
 		add(welcomePanel, BorderLayout.NORTH);
 		
+		
 		//Description
 		JPanel descriptionPanel = new JPanel();
 		JTextArea description = new JTextArea();
@@ -43,6 +37,7 @@ public class HomePanel extends JPanel {
 		descriptionPanel.add(description);
 		add(descriptionPanel, BorderLayout.CENTER);
 		
+		
 		//Buttons
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setPreferredSize(new Dimension(20, 50));
@@ -50,15 +45,27 @@ public class HomePanel extends JPanel {
 		buttonPanel.setLayout(new GridLayout(0, 2));
 		buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
-		principalButton = new JButton("Enter as Principal");
 		int margin = 10;
+		principalButton = new JButton("Enter as Principal");
 		principalButton.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+		
 		applicantButton = new JButton("Enter as Applicant");
 		applicantButton.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+		applicantButton.addActionListener(new ApplicantListener());
 		
 		buttonPanel.add(principalButton);
 		buttonPanel.add(applicantButton);
 		
+		
 
+	}
+	
+	private class ApplicantListener extends AbstractAction {
+		public ApplicantListener() {
+			
+		}
+		public void actionPerformed(ActionEvent e) {
+			frame.showPanel(MainFrame2.CALENDER_PANEL);
+		}
 	}
 }
