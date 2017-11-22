@@ -6,23 +6,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class Calender extends JFrame {
+public class Calender extends JPanel {
 	//instatiates Calender, Table, Jlabel data types
 	DefaultTableModel model;
 	Calendar cal = new GregorianCalendar();
 	JLabel label;
 	//Calender Constructor
 	public Calender(){
-		//Create Schedule JFrame
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setTitle("Schedule");
-	    this.setSize(800,500);
-	    getContentPane().setLayout(new BorderLayout());
-	    
-	    
-	    
-	    this.setVisible(true);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    label = new JLabel();
 	    
@@ -58,8 +48,8 @@ public class Calender extends JFrame {
 	    JTable table = new JTable(model);
 	    JScrollPane pane = new JScrollPane(table);
 
-	    getContentPane().add(panel,BorderLayout.NORTH);
-	    getContentPane().add(pane,BorderLayout.CENTER);
+		panel.add(pane, BorderLayout.CENTER);
+	    
 	    
 
 	    
