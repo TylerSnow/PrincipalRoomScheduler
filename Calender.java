@@ -41,30 +41,28 @@ public class Calender extends JPanel {
 	    panel.add(prevMonth,BorderLayout.WEST);
 	    panel.add(nextMonth,BorderLayout.EAST);
 	    panel.add(label,BorderLayout.CENTER);
+		
 	    
 	    //Generate Table for Calender
 	    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 	    model = new DefaultTableModel(null,columns);
 	    JTable table = new JTable(model);
 	    JScrollPane pane = new JScrollPane(table);
-
-		panel.add(pane, BorderLayout.CENTER);
-	    
-	    
-
-	    
+		panel.add(pane, BorderLayout.CENTER);	    	   
+	    this.add(panel);
 	    //Event Listener that displays a list of the available rooms as a drop down when hovered over.
 	    table.addMouseListener(new java.awt.event.MouseAdapter() {
 	        @Override
-	        public void mouseEntered(java.awt.event.MouseEvent evt) {
+	        public void mouseClicked(java.awt.event.MouseEvent evt) {
 	            int row = table.rowAtPoint(evt.getPoint());
 	            int col = table.columnAtPoint(evt.getPoint());
 	            if (row >= 0 && col >= 0) {
 	                displayAvailableRooms(row,col);
+					panel.setVisible(false)
+					TimeRoomGridPane trgPane = new TimeRoomGridPane(this);
 	            }
 	        }
-	    });
-	    
+	    });	    
 	    this.checkMonth();
 	}
 	//Method to display drop down bar of stored information in rows and cols
@@ -93,7 +91,7 @@ public class Calender extends JPanel {
 	    	model.setValueAt(day, i/7 , i%7 );    
 	    	i = i + 1;
 	    }
-	 }
+	}
 	
 	//Main Method
 	public static void main(String[] args) {
