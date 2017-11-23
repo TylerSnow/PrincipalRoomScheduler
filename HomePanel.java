@@ -65,7 +65,7 @@ public class HomePanel extends JPanel {
 			
 		}
 		public void actionPerformed(ActionEvent e) {
-			frame.showPanel(MainFrame2.CALENDER_PANEL);
+			frame.showPanel(MainFrame2.CALENDER_PANEL, MainFrame2.HOME_PANEL);
 		}
 	}
 }
