@@ -17,14 +17,13 @@ public class Calender extends JPanel {
 	JPanel labelPanel;
 	public JTable table;
 	private MainFrame2 frame;
+	private int currFirstDay;
 	
 	//Calender Constructor
 	public Calender(MainFrame2 frame){
 		
 		this.frame = frame;
-	    
-	    label = new JLabel();
-	    
+		
 	    //Buttons to change current view month
 	    JButton prevMonth = new JButton("<");
 	    prevMonth.addMouseListener(new MouseAdapter() {
@@ -35,7 +34,6 @@ public class Calender extends JPanel {
 	    	}
 	    });
 	    
-	    
 	    JButton nextMonth = new JButton(">");
 	    nextMonth.addMouseListener(new MouseAdapter() {
 	    	@Override
@@ -43,9 +41,7 @@ public class Calender extends JPanel {
 	    		cal.add(Calendar.MONTH, +1);
 	            checkMonth();
 	    	}
-	    });
-	    //Creates JPanel,sets layout and adds the label and buttons to the panel
-		
+	    });		
 	    
 	    //Generate Table for Calender
 	    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
@@ -59,12 +55,17 @@ public class Calender extends JPanel {
 	        public void mouseClicked(java.awt.event.MouseEvent evt) {
 	            int row = table.rowAtPoint(evt.getPoint());
 	            int col = table.columnAtPoint(evt.getPoint());
-	            if (row >= 0 && col >= 0) {
+	            System.out.println(table.getModel().getValueAt(row, col));
+	            if (row >= 0 && col >= 0 && (table.getModel().getValueAt(row, col) != null)) {
 	            	frame.showPanel(MainFrame2.GRID_PANEL);
 	            }
 	        }
 	    });	    
+	    
+	    label = new JLabel();
 	    this.checkMonth();
+	    
+	    //Creates JPanel,sets layout and adds the label and buttons to the panel
 	    mainPanel = new JPanel();
 	    panel = new JPanel();
 	    labelPanel = new JPanel();
@@ -77,6 +78,7 @@ public class Calender extends JPanel {
 		mainPanel.add(panel);
 	    add(mainPanel);
 	}
+	
 	//Method to display drop down bar of stored information in rows and cols
 	public void displayAvailableRooms(int row, int col) {
 		System.out.println(row+""+col);
@@ -89,9 +91,9 @@ public class Calender extends JPanel {
 	    String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.CANADA);
 	    int year = cal.get(Calendar.YEAR);
 	    label.setText(month + " " + year);
-	    System.out.println(month + " " + year);
 	 
-	    int firstDay = cal.get(Calendar.DAY_OF_WEEK);
+	    currFirstDay = cal.get(Calendar.DAY_OF_WEEK);
+	    System.out.println(currFirstDay);
 	    int numberOfDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 	    int weeks = cal.getActualMaximum(Calendar.WEEK_OF_MONTH);
 	    //Clears the scheduler
@@ -99,7 +101,7 @@ public class Calender extends JPanel {
 	    //Generates required amount of new rows for the current month 
 	    model.setRowCount(weeks);
 	 
-	    int i = firstDay-1;
+	    int i = currFirstDay-1;
 	    for(int day=1;day<=numberOfDays;day++){
 	    	model.setValueAt(day, i/7 , i%7 );    
 	    	i = i + 1;
