@@ -57,6 +57,7 @@ public class TimeRoomGridPanel extends JPanel{
 			for (int i = 1 ; i < 17 ; i++) {
 				grid[j][i] = new JButton(rooms[j-1]+" "+ (i+7)+":00");
 				grid[j][i].addActionListener(new MyActionListener());
+				grid[j][i].setBackground(Color.GREEN);
 			}
 				/*if (rooms[j-1].isBooked() == false) {
 					grid[i][j].setBackground(Color.GREEN);
