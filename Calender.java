@@ -82,7 +82,7 @@ public class Calender extends JPanel {
 	    labelPanel.add(prevMonth,BorderLayout.WEST);
 		labelPanel.add(label,BorderLayout.CENTER);
 	    labelPanel.add(nextMonth,BorderLayout.EAST);
-	    panel.add(pane, BorderLayout.CENTER);	
+	    panel.add(pane, BorderLayout.CENTER);
 	    
 	    panel.add(labelPanel,BorderLayout.NORTH);
 		mainPanel.add(panel);
