@@ -16,7 +16,7 @@ public class Calender extends JPanel {
 	JPanel panel;
 	JPanel labelPanel;
 	public JTable table;
-	private MainFrame2 frame;
+	private final MainFrame2 frame;
 	private int currFirstDay;
 	
 	//Calender Constructor
