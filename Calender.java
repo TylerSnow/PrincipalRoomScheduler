@@ -14,6 +14,7 @@ public class Calender extends JPanel {
 	JLabel label;
 	JPanel mainPanel;
 	JPanel panel;
+	JPanel labelPanel;
 	public JTable table;
 	private MainFrame2 frame;
 	
@@ -44,12 +45,6 @@ public class Calender extends JPanel {
 	    	}
 	    });
 	    //Creates JPanel,sets layout and adds the label and buttons to the panel
-	    mainPanel = new JPanel();
-	    panel = new JPanel();
-	    panel.setLayout(new BorderLayout());
-	    panel.add(prevMonth,BorderLayout.WEST);
-	    panel.add(nextMonth,BorderLayout.EAST);
-	    panel.add(label,BorderLayout.CENTER);
 		
 	    
 	    //Generate Table for Calender
@@ -57,14 +52,7 @@ public class Calender extends JPanel {
 	    model = new DefaultTableModel(null,columns);
 	    table = new JTable(model);
 	    JScrollPane pane = new JScrollPane(table);
-
-		panel.add(pane, BorderLayout.CENTER);
 	    
-
-	    
-		panel.add(pane, BorderLayout.CENTER);	  
-		mainPanel.add(panel);
-	    add(mainPanel);
 	    //Event Listener that displays a list of the available rooms as a drop down when hovered over.
 	    table.addMouseListener(new java.awt.event.MouseAdapter() {
 	        @Override
@@ -77,6 +65,17 @@ public class Calender extends JPanel {
 	        }
 	    });	    
 	    this.checkMonth();
+	    mainPanel = new JPanel();
+	    panel = new JPanel();
+	    labelPanel = new JPanel();
+	    panel.setLayout(new BorderLayout());
+	    panel.add(prevMonth,BorderLayout.WEST);
+	    panel.add(nextMonth,BorderLayout.EAST);
+	    panel.add(pane, BorderLayout.CENTER);	
+	    labelPanel.add(label);
+	    panel.add(labelPanel,BorderLayout.NORTH);
+		mainPanel.add(panel);
+	    add(mainPanel);
 	}
 	//Method to display drop down bar of stored information in rows and cols
 	public void displayAvailableRooms(int row, int col) {
@@ -90,6 +89,7 @@ public class Calender extends JPanel {
 	    String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.CANADA);
 	    int year = cal.get(Calendar.YEAR);
 	    label.setText(month + " " + year);
+	    System.out.println(month + " " + year);
 	 
 	    int firstDay = cal.get(Calendar.DAY_OF_WEEK);
 	    int numberOfDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
