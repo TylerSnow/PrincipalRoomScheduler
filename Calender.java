@@ -45,7 +45,16 @@ public class Calender extends JPanel {
 	    
 	    //Generate Table for Calender
 	    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-	    model = new DefaultTableModel(null,columns);
+	    //model = new DefaultTableModel(null,columns);
+	    model = new DefaultTableModel(null, columns) {
+
+	        @Override
+	        public boolean isCellEditable(int row, int column) {
+	           //all cells false
+	           return false;
+	        }
+	    };
+
 	    table = new JTable(model);
 	    JScrollPane pane = new JScrollPane(table);
 	    
@@ -55,7 +64,7 @@ public class Calender extends JPanel {
 	        public void mouseClicked(java.awt.event.MouseEvent evt) {
 	            int row = table.rowAtPoint(evt.getPoint());
 	            int col = table.columnAtPoint(evt.getPoint());
-	            System.out.println(table.getModel().getValueAt(row, col));
+	            //System.out.println(table.getModel().getValueAt(row, col));
 	            if (row >= 0 && col >= 0 && (table.getModel().getValueAt(row, col) != null)) {
 	            	frame.showPanel(MainFrame2.GRID_PANEL);
 	            }
