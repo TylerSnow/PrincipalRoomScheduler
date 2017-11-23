@@ -1,5 +1,8 @@
 import java.awt.EventQueue;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -55,7 +58,7 @@ public class TimeRoomGridPanel extends JPanel{
 		
 		for (int j = 1 ; j <= rooms.length ; j++) {
 			for (int i = 1 ; i < 17 ; i++) {
-				grid[j][i] = new JButton(rooms[j-1]+" "+ (i+7)+":00");
+				grid[j][i] = new JButton(/*rooms[j-1]+" "+ (i+7)+":00"*/);
 				grid[j][i].addActionListener(new MyActionListener());
 				grid[j][i].setBackground(Color.GREEN);
 			}
@@ -63,19 +66,39 @@ public class TimeRoomGridPanel extends JPanel{
 					grid[i][j].setBackground(Color.GREEN);
 				} else if (rooms[j-1].isBooked() == true) {
 					grid[i][j].setBackground(Color.RED);
+					grid[i][j].setEnabled(false)
 				}*/	
 		}
+		
+		//Border highlight = new LineBorder(Color.YELLOW, 2);
+		grid[4][6].setBackground(Color.RED);
+		grid[4][6].setEnabled(false);
+		//grid[4][6].setBorder(thickBorder);
+		grid[4][7].setBackground(Color.RED);
+		grid[4][7].setEnabled(false);
+		grid[4][8].setBackground(Color.RED);
+		grid[4][8].setEnabled(false);
+		grid[6][6].setBackground(Color.RED);
+		grid[6][6].setEnabled(false);
+		grid[1][1].setBackground(Color.RED);
+		grid[1][1].setEnabled(false);
+		grid[1][2].setBackground(Color.RED);
+		grid[1][2].setEnabled(false);
+		grid[1][3].setBackground(Color.RED);
+		grid[1][3].setEnabled(false);
+		grid[5][14].setBackground(Color.RED);
+		grid[5][14].setEnabled(false);
 		return grid;
 	}
 	
 	private class MyActionListener implements ActionListener{
 		@Override
         public void actionPerformed(ActionEvent e) {
-            for (int r = 0 ; r < rooms.length ; r++) {
+            /*for (int r = 0 ; r < rooms.length ; r++) {
             	if (e.paramString().contains(rooms[r])) {
             		System.out.print(rooms[r]);
             	}
-            }
+            }*/
         }
     }
 	
