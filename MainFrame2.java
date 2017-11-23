@@ -28,9 +28,6 @@ public class MainFrame2 extends JFrame {
 		
 		calPanel = new Calender(this);
 		mainPanel.add(calPanel, CALENDER_PANEL);
-		
-		//gridPanel = new TimeRoomGridPanel();
-		//mainPanel.add(gridPanel, GRID_PANEL);
 
 		cards.show(mainPanel, "Home Page");
 		add(mainPanel);
@@ -38,6 +35,11 @@ public class MainFrame2 extends JFrame {
 	}
 	
 	public void showPanel(String panel) {
+		if (panel.equals(GRID_PANEL)) {
+			//call makeGrid here, pass to trgp constructor?
+			gridPanel = new TimeRoomGridPanel();
+			mainPanel.add(gridPanel, GRID_PANEL);
+		}
 		cards.show(mainPanel, panel);
 	}
 	
