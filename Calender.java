@@ -66,7 +66,7 @@ public class Calender extends JPanel {
 	            int col = table.columnAtPoint(evt.getPoint());
 	            //System.out.println(table.getModel().getValueAt(row, col));
 	            if (row >= 0 && col >= 0 && (table.getModel().getValueAt(row, col) != null)) {
-	            	frame.showPanel(MainFrame2.GRID_PANEL);
+	            	frame.showPanel(MainFrame2.GRID_PANEL, MainFrame2.CALENDER_PANEL);
 	            }
 	        }
 	    });	    
