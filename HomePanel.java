@@ -8,7 +8,7 @@ public class HomePanel extends JPanel {
 
 	private JButton applicantButton;
 	private JButton principalButton;
-	private MainFrame2 frame;
+	private final MainFrame2 frame;
 	
 	/**
 	 * Create the panel.
@@ -20,7 +20,7 @@ public class HomePanel extends JPanel {
 		
 		//Welcome
 		JPanel welcomePanel = new JPanel();
-		welcomePanel.setPreferredSize(new Dimension(20, 50));
+		//welcomePanel.setPreferredSize(new Dimension(20, 50));
 		JLabel welcomeLabel = new JLabel("Scheduletron 3000");
 		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
