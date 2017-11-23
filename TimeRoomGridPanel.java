@@ -13,12 +13,13 @@ import javax.swing.JButton;
 public class TimeRoomGridPanel extends JPanel{
 	private JScrollPane pane;
 	private String[] rooms = {"101", "102", "103", "104", "105", "106"};
+	private final MainFrame2 frame;
 	
 	/**
 	 * Create the application.
 	 */
-	public TimeRoomGridPanel() {
-		//panel = new JPanel();
+	public TimeRoomGridPanel(MainFrame2 f) {
+		frame = f;
 		setLayout(new GridLayout(rooms.length+1, 25));
 		pane = new JScrollPane(this);
 		Dimension preferredSize = new Dimension(600,600);
@@ -34,8 +35,9 @@ public class TimeRoomGridPanel extends JPanel{
 	public JButton[][] createGrid(String[] rooms) {
 		Font f = new Font("serif", Font.PLAIN, 18);
 		JButton[][] grid = new JButton[rooms.length+1][17];
-		grid[0][0] = new JButton("Times");
+		grid[0][0] = new JButton("Back");
 		grid[0][0].setBackground(Color.WHITE);
+		grid[0][0].addActionListener(new BackButtonListener());
 		
 		//This loop creates the column of Rooms
 		for (int k = 1 ; k <= rooms.length ; k++) {
@@ -73,6 +75,13 @@ public class TimeRoomGridPanel extends JPanel{
             		System.out.print(rooms[r]);
             	}
             }
+        }
+    }
+	
+	private class BackButtonListener implements ActionListener{
+		@Override
+        public void actionPerformed(ActionEvent e) {
+            frame.back();
         }
     }
 }

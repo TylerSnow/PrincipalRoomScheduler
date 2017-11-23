@@ -41,14 +41,16 @@ public class MainFrame2 extends JFrame {
 	public void showPanel(String panel, String prev) {
 		if (panel.equals(GRID_PANEL)) {
 			//call makeGrid here, pass to trgp constructor?
-			gridPanel = new TimeRoomGridPanel();
+			gridPanel = new TimeRoomGridPanel(this);
 			mainPanel.add(gridPanel, GRID_PANEL);
+			prevPanel = prev;
 		}
 		cards.show(mainPanel, panel);
 	}
 	
 	public void back() {
 		cards.show(mainPanel, prevPanel);
+		//System.out.println(prevPanel);
 	}
 	
 	public static void main(String[] args) {
