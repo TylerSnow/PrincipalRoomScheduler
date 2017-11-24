@@ -48,6 +48,7 @@ public class MainFrame2 extends JFrame {
 		cards.show(mainPanel, panel);
 	}
 	
+	//just use cards.previous()
 	public void back(String newPrev) {
 		cards.show(mainPanel, prevPanel);
 		prevPanel = newPrev;
