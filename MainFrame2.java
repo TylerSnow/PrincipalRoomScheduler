@@ -21,7 +21,7 @@ public class MainFrame2 extends JFrame {
 	public MainFrame2() {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 300);
+		setBounds(100, 100, 600, 400);
 		mainPanel = new JPanel(cards);
 		
 		homePanel = new HomePanel(this);
@@ -48,8 +48,9 @@ public class MainFrame2 extends JFrame {
 		cards.show(mainPanel, panel);
 	}
 	
-	public void back() {
+	public void back(String newPrev) {
 		cards.show(mainPanel, prevPanel);
+		prevPanel = newPrev;
 		//System.out.println(prevPanel);
 	}
 	

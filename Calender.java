@@ -18,11 +18,23 @@ public class Calender extends JPanel {
 	public JTable table;
 	private final MainFrame2 frame;
 	private int currFirstDay;
+	private JButton backButton;
 	
 	//Calender Constructor
 	public Calender(MainFrame2 frame){
 		
 		this.frame = frame;
+		
+		backButton = new JButton("Back");
+		backButton.setBackground(Color.WHITE);
+		backButton.addActionListener(new BackButtonListener(frame, frame.HOME_PANEL));
+		
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		setLayout(gridBagLayout);
 		
 	    //Buttons to change current view month
 	    JButton prevMonth = new JButton("<");
@@ -82,11 +94,27 @@ public class Calender extends JPanel {
 	    labelPanel.add(prevMonth,BorderLayout.WEST);
 		labelPanel.add(label,BorderLayout.CENTER);
 	    labelPanel.add(nextMonth,BorderLayout.EAST);
+	    //panel.add(backButtonPanel, BorderLayout.WEST);
 	    panel.add(pane, BorderLayout.CENTER);
 	    
 	    panel.add(labelPanel,BorderLayout.NORTH);
 		mainPanel.add(panel);
-	    add(mainPanel);
+		
+		GridBagConstraints gbc_back = new GridBagConstraints();
+		gbc_back.insets = new Insets(0, 0, 5, 5);
+		gbc_back.gridx = 0;
+		gbc_back.gridy = 0;
+		add(backButton, gbc_back);
+		
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridheight = 6;
+		gbc_panel.gridwidth = 6;
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 0;
+		add(mainPanel, gbc_panel);
+		
+	   // add(mainPanel);
 	}
 	
 	//Method to display drop down bar of stored information in rows and cols
