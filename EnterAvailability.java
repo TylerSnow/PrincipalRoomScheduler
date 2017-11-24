@@ -22,9 +22,16 @@ public class EnterAvailability extends JPanel {
 	private static JComboBox toCombo;
 	private static JComboBox fromCombo;
 	
+	//3 arrays is temporary fix... I hope
 	private static String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
 			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
-			"20:00", "21:00", "22:00", "23:00", };
+			"20:00", "21:00", "22:00", "23:00"};
+	private static String[] fromTimes = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
+			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+			"20:00", "21:00", "22:00"};
+	private static String[] toTimes = {"01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
+			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+			"20:00", "21:00", "22:00", "23:00"};
 
 	/**
 	 * Create the panel.
@@ -101,7 +108,7 @@ public class EnterAvailability extends JPanel {
 		
 		//ButtonGroup checkboxGroup = new ButtonGroup();
 				
-		JComboBox fromCombo = new JComboBox(times);
+		JComboBox fromCombo = new JComboBox(fromTimes);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -117,7 +124,7 @@ public class EnterAvailability extends JPanel {
 		gbc_lblTo.gridy = 6;
 		add(lblTo, gbc_lblTo);
 		
-		JComboBox toCombo = new JComboBox(times);
+		JComboBox toCombo = new JComboBox(toTimes);
 		toCombo.setSelectedItem("01:00");
 		fromCombo.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
@@ -137,8 +144,8 @@ public class EnterAvailability extends JPanel {
 		    	if (toCombo.getSelectedItem() != null) {
 		    		String fromChoice = fromCombo.getSelectedItem().toString();
 		    		String toChoice = toCombo.getSelectedItem().toString();
-		    		int newFrom = (Arrays.asList(times).indexOf(fromChoice));
-		    		int currTo = (Arrays.asList(times).indexOf(toChoice));
+		    		int newFrom = (Arrays.asList(fromTimes).indexOf(fromChoice));
+		    		int currTo = (Arrays.asList(toTimes).indexOf(toChoice));
 		    		if (newFrom >= currTo) {
 		    			System.out.println("Caught1");
 		    			String newTo = times[newFrom + 1];
@@ -153,11 +160,11 @@ public class EnterAvailability extends JPanel {
 		    	if (fromCombo.getSelectedItem() != null) {
 		    		String fromChoice = fromCombo.getSelectedItem().toString();
 		    		String toChoice = toCombo.getSelectedItem().toString();
-		    		int newTo = (Arrays.asList(times).indexOf(toChoice));
-		    		int currFrom = (Arrays.asList(times).indexOf(fromChoice));
+		    		int newTo = (Arrays.asList(toTimes).indexOf(toChoice));
+		    		int currFrom = (Arrays.asList(fromTimes).indexOf(fromChoice));
 		    		if (newTo <= currFrom) {
 		    			System.out.println("Caught2");
-		    			String newFrom = times[newTo + 1];
+		    			String newFrom = times[newTo];
 		    			fromCombo.setSelectedItem(newFrom);
 		    		}
 		    	}
