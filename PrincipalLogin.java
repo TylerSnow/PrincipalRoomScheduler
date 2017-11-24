@@ -26,17 +26,6 @@ public class PrincipalLogin extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JButton btnNewButton = new JButton("Back");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 0;
-		add(btnNewButton, gbc_btnNewButton);
-		
 		JLabel lblWelcome = new JLabel("Principal Login");
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
@@ -80,6 +69,18 @@ public class PrincipalLogin extends JPanel {
 		gbc_passwordField.gridx = 3;
 		gbc_passwordField.gridy = 5;
 		add(passwordField, gbc_passwordField);
+		
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridy = 6;
+		add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnEnter = new JButton("Enter");
 		btnEnter.setHorizontalAlignment(SwingConstants.RIGHT);

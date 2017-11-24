@@ -17,29 +17,14 @@ public class RoomAndSemester extends JPanel {
 	public RoomAndSemester() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JButton btnBack = new JButton("Back");
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 0;
-		gbc_btnBack.gridy = 0;
-		add(btnBack, gbc_btnBack);
 		
 		String[] semesters = {"Fall", "Winter", "Spring"};
 		
 		String[] rooms = {"Gymnasium", "Chemistry Lab", "Physics Lab", "Auditorium", "Cafeteria"};
-		
-		JButton forFormatting = new JButton("Back");
-		forFormatting.setVisible(false);
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton_1.gridx = 6;
-		gbc_btnNewButton_1.gridy = 0;
-		add(forFormatting, gbc_btnNewButton_1);
 		
 		JLabel lblRoomAvailabilityInformation = new JLabel("Room Availability Information");
 		lblRoomAvailabilityInformation.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -86,10 +71,18 @@ public class RoomAndSemester extends JPanel {
 		gbc_comboBox_1.gridy = 5;
 		add(comboBox_1, gbc_comboBox_1);
 		
+		JButton btnBack = new JButton("Back");
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.anchor = GridBagConstraints.EAST;
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 2;
+		gbc_btnBack.gridy = 6;
+		add(btnBack, gbc_btnBack);
+		
 		JButton btnNewButton = new JButton("Confirm");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 3;
 		gbc_btnNewButton.gridy = 6;
 		add(btnNewButton, gbc_btnNewButton);
@@ -98,11 +91,13 @@ public class RoomAndSemester extends JPanel {
 	
 	public static void main(String [] args) {
 		JFrame frame = new JFrame();
+		JPanel mainPanel = new JPanel();
 		frame.setBounds(100, 100, 600, 400);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RoomAndSemester r = new RoomAndSemester();
-		frame.getContentPane().add(r);
+		mainPanel.add(r);
+		frame.getContentPane().add(mainPanel);
 		frame.repaint();
 		frame.revalidate();
 	}
