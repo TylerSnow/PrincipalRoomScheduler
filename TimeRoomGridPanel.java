@@ -40,7 +40,7 @@ public class TimeRoomGridPanel extends JPanel{
 		JButton[][] grid = new JButton[rooms.length+1][17];
 		grid[0][0] = new JButton("Back");
 		grid[0][0].setBackground(Color.WHITE);
-		grid[0][0].addActionListener(new BackButtonListener());
+		grid[0][0].addActionListener(new BackButtonListener(frame, frame.CALENDER_PANEL));
 		
 		//This loop creates the column of Rooms
 		for (int k = 1 ; k <= rooms.length ; k++) {
@@ -102,10 +102,11 @@ public class TimeRoomGridPanel extends JPanel{
         }
     }
 	
-	private class BackButtonListener implements ActionListener{
+	/*private class BackButtonListener implements ActionListener{
 		@Override
         public void actionPerformed(ActionEvent e) {
             frame.back();
         }
     }
+    */
 }
