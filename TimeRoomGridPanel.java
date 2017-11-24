@@ -8,16 +8,17 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.Font;
-import javax.swing.JButton;
 
 public class TimeRoomGridPanel extends JPanel{
 	private JScrollPane pane;
 	private String[] rooms = {"101", "102", "103", "104", "105", "106"};
 	private final MainFrame2 frame;
-	
+	GridButton[][] grid;
 	/**
 	 * Create the application.
 	 */
@@ -27,7 +28,7 @@ public class TimeRoomGridPanel extends JPanel{
 		pane = new JScrollPane(this);
 		Dimension preferredSize = new Dimension(600,600);
 		pane.setPreferredSize(preferredSize);
-		JButton[][] grid = createGrid(rooms);
+		grid = createGrid(rooms);
 		for (int b = 0 ; b < rooms.length + 1 ; b++) {
 			for (int a = 0 ; a < 17 ; a++) {
 				add(grid[b][a]);
@@ -35,31 +36,36 @@ public class TimeRoomGridPanel extends JPanel{
 		}
 	}
 	
-	public JButton[][] createGrid(String[] rooms) {
+	public GridButton[][] createGrid(String[] rooms) {
 		Font f = new Font("serif", Font.PLAIN, 18);
-		JButton[][] grid = new JButton[rooms.length+1][17];
-		grid[0][0] = new JButton("Back");
+		GridButton[][] grid = new GridButton[rooms.length+1][17];
+		grid[0][0] = new GridButton(0,0,"Back");
 		grid[0][0].setBackground(Color.WHITE);
 		grid[0][0].addActionListener(new BackButtonListener(frame, frame.CALENDER_PANEL));
 		
 		//This loop creates the column of Rooms
 		for (int k = 1 ; k <= rooms.length ; k++) {
-			grid[k][0] = new JButton(rooms[k-1]);
+			grid[k][0] = new GridButton(k,0,rooms[k-1]);
 			grid[k][0].setBackground(Color.LIGHT_GRAY);
+			grid[k][0].setActionCommand(String.valueOf(k));
+			grid[k][0].addActionListener(new rowHighlight());
 			grid[k][0].setFont(f);
 		}
 		//This one is the row of times
 		for (int y = 1 ; y < 17 ; y++) {
 			String timeSlot = y+7 + ":00";
-			grid[0][y] = new JButton(timeSlot);
+			grid[0][y] = new GridButton(0,y,timeSlot);
 			grid[0][y].setBackground(Color.LIGHT_GRAY);
+			grid[0][y].setActionCommand(String.valueOf(y));
+			grid[0][y].addActionListener(new colHighlight());
 			grid[0][y].setFont(f);
 		}
 		
 		for (int j = 1 ; j <= rooms.length ; j++) {
 			for (int i = 1 ; i < 17 ; i++) {
-				grid[j][i] = new JButton(/*rooms[j-1]+" "+ (i+7)+":00"*/);
-				grid[j][i].addActionListener(new MyActionListener());
+				grid[j][i] = new GridButton(j,i/*rooms[j-1]+" "+ (i+7)+":00"*/);
+				grid[j][i].setActionCommand(String.valueOf(grid[j][i].getXcoord() + " " + String.valueOf(grid[j][i].getYcoord())));
+				grid[j][i].addActionListener(new GridListener());
 				grid[j][i].setBackground(Color.GREEN);
 			}
 				/*if (rooms[j-1].isBooked() == false) {
@@ -91,14 +97,52 @@ public class TimeRoomGridPanel extends JPanel{
 		return grid;
 	}
 	
-	private class MyActionListener implements ActionListener{
+	private class rowHighlight implements ActionListener{
+		boolean isHighlighted = false;
+        public void actionPerformed(ActionEvent e) {
+			Border thickBorder = new LineBorder(Color.YELLOW, 2);
+			Border removeBorder = new LineBorder(Color.GRAY, 1);
+            System.out.println(e.getActionCommand());
+            int row = Integer.parseInt(e.getActionCommand());
+            if (isHighlighted == false) {
+            	isHighlighted = true;
+            	for (int rowH = 1 ; rowH < 17 ; rowH++) {
+            		grid[row][rowH].setBorder(thickBorder);
+            	}
+            } else {
+            	isHighlighted = false;
+            	for (int rowH = 1 ; rowH < 17 ; rowH++) {
+            		grid[row][rowH].setBorder(removeBorder);
+            	}
+            }
+        }
+	}
+	
+	private class colHighlight implements ActionListener{
+		boolean isHighlighted = false;
+        public void actionPerformed(ActionEvent e) {
+			Border thickBorder = new LineBorder(Color.YELLOW, 2);
+			Border removeBorder = new LineBorder(Color.GRAY, 1);
+            System.out.println(e.getActionCommand());
+            int col = Integer.parseInt(e.getActionCommand());
+            if (isHighlighted == false) {
+            	isHighlighted = true;
+            	for (int colH = 1 ; colH < rooms.length+1 ; colH++) {
+            		grid[colH][col].setBorder(thickBorder);
+            	}
+            } else {
+            	isHighlighted = false;
+            	for (int colH = 1 ; colH < rooms.length+1 ; colH++) {
+            		grid[colH][col].setBorder(removeBorder);
+            	}
+            }
+        }
+	}
+	
+	private class GridListener implements ActionListener{
 		@Override
         public void actionPerformed(ActionEvent e) {
-            /*for (int r = 0 ; r < rooms.length ; r++) {
-            	if (e.paramString().contains(rooms[r])) {
-            		System.out.print(rooms[r]);
-            	}
-            }*/
+            System.out.println(e.getActionCommand());
         }
     }
 	
