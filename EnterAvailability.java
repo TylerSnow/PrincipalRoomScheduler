@@ -102,7 +102,6 @@ public class EnterAvailability extends JPanel {
 		//ButtonGroup checkboxGroup = new ButtonGroup();
 				
 		JComboBox fromCombo = new JComboBox(times);
-		
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -119,6 +118,7 @@ public class EnterAvailability extends JPanel {
 		add(lblTo, gbc_lblTo);
 		
 		JComboBox toCombo = new JComboBox(times);
+		toCombo.setSelectedItem("01:00");
 		fromCombo.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        updateFromCombo(toCombo.getSelectedItem().toString());
@@ -134,14 +134,31 @@ public class EnterAvailability extends JPanel {
 		
 		fromCombo.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
-		    	if (toCombo != null && toCombo.getSelectedItem() != null) {
+		    	if (toCombo.getSelectedItem() != null) {
 		    		String fromChoice = fromCombo.getSelectedItem().toString();
 		    		String toChoice = toCombo.getSelectedItem().toString();
 		    		int newFrom = (Arrays.asList(times).indexOf(fromChoice));
 		    		int currTo = (Arrays.asList(times).indexOf(toChoice));
 		    		if (newFrom >= currTo) {
-		    			System.out.println("Caught");
+		    			System.out.println("Caught1");
 		    			String newTo = times[newFrom + 1];
+		    			toCombo.setSelectedItem(newTo);
+		    		}
+		    	}
+		    }
+		});
+		
+		toCombo.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		    	if (fromCombo.getSelectedItem() != null) {
+		    		String fromChoice = fromCombo.getSelectedItem().toString();
+		    		String toChoice = toCombo.getSelectedItem().toString();
+		    		int newTo = (Arrays.asList(times).indexOf(toChoice));
+		    		int currFrom = (Arrays.asList(times).indexOf(fromChoice));
+		    		if (newTo <= currFrom) {
+		    			System.out.println("Caught2");
+		    			String newFrom = times[newTo + 1];
+		    			fromCombo.setSelectedItem(newFrom);
 		    		}
 		    	}
 		    }
