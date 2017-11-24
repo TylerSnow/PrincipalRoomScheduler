@@ -5,6 +5,10 @@ import javax.swing.JFrame;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+
 import javax.swing.JLabel;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -15,6 +19,12 @@ import java.awt.Font;
 public class EnterAvailability extends JPanel {
 	private JTextField roomField;
 	private JTextField semesterField;
+	private static JComboBox toCombo;
+	private static JComboBox fromCombo;
+	
+	private static String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
+			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+			"20:00", "21:00", "22:00", "23:00", };
 
 	/**
 	 * Create the panel.
@@ -90,12 +100,9 @@ public class EnterAvailability extends JPanel {
 		add(lblFrom, gbc_lblFrom);
 		
 		//ButtonGroup checkboxGroup = new ButtonGroup();
-		
-		String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
-				"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
-				"20:00", "21:00", "22:00", "23:00", };
 				
 		JComboBox fromCombo = new JComboBox(times);
+		
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -112,12 +119,33 @@ public class EnterAvailability extends JPanel {
 		add(lblTo, gbc_lblTo);
 		
 		JComboBox toCombo = new JComboBox(times);
+		fromCombo.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        updateFromCombo(toCombo.getSelectedItem().toString());
+		    }
+		});
+		
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox_1.gridx = 2;
 		gbc_comboBox_1.gridy = 6;
 		add(toCombo, gbc_comboBox_1);
+		
+		fromCombo.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		    	if (toCombo != null && toCombo.getSelectedItem() != null) {
+		    		String fromChoice = fromCombo.getSelectedItem().toString();
+		    		String toChoice = toCombo.getSelectedItem().toString();
+		    		int newFrom = (Arrays.asList(times).indexOf(fromChoice));
+		    		int currTo = (Arrays.asList(times).indexOf(toChoice));
+		    		if (newFrom >= currTo) {
+		    			System.out.println("Caught");
+		    			String newTo = times[newFrom + 1];
+		    		}
+		    	}
+		    }
+		});
 		
 		JLabel lblOnDays = new JLabel("On Days:");
 		GridBagConstraints gbc_lblOnDays = new GridBagConstraints();
@@ -206,6 +234,14 @@ public class EnterAvailability extends JPanel {
 		gbc_btnConfirm.gridy = 10;
 		add(btnConfirm, gbc_btnConfirm);
 
+	}
+	
+	public static void updateToCombo() {
+		
+	}
+	
+	public static void updateFromCombo(String toChoice) {
+		
 	}
 	
 	public static void main(String[] args) {
