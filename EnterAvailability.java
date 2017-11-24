@@ -22,22 +22,15 @@ public class EnterAvailability extends JPanel {
 	public EnterAvailability() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JButton btnBack = new JButton("Back");
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 0;
-		gbc_btnBack.gridy = 0;
-		add(btnBack, gbc_btnBack);
 		
 		JLabel lblNewLabel = new JLabel("Availability Information");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 3;
+		gbc_lblNewLabel.gridwidth = 2;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 2;
 		gbc_lblNewLabel.gridy = 1;
@@ -197,9 +190,18 @@ public class EnterAvailability extends JPanel {
 		//checkboxGroup.add(chckbxSaturday);
 		add(chckbxSaturday, gbc_chckbxSaturday);
 		
+		JButton btnBack = new JButton("Back");
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.anchor = GridBagConstraints.WEST;
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 1;
+		gbc_btnBack.gridy = 10;
+		add(btnBack, gbc_btnBack);
+		
 		JButton btnConfirm = new JButton("Confirm");
 		GridBagConstraints gbc_btnConfirm = new GridBagConstraints();
-		gbc_btnConfirm.insets = new Insets(0, 0, 0, 5);
+		gbc_btnConfirm.anchor = GridBagConstraints.EAST;
+		gbc_btnConfirm.insets = new Insets(0, 0, 5, 5);
 		gbc_btnConfirm.gridx = 4;
 		gbc_btnConfirm.gridy = 10;
 		add(btnConfirm, gbc_btnConfirm);
@@ -208,11 +210,13 @@ public class EnterAvailability extends JPanel {
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
+		JPanel mainPanel = new JPanel();
 		frame.setBounds(100, 100, 600, 400);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		EnterAvailability r = new EnterAvailability();
-		frame.getContentPane().add(r);
+		mainPanel.add(r);
+		frame.getContentPane().add(mainPanel);
 		frame.repaint();
 		frame.revalidate();
 	}
