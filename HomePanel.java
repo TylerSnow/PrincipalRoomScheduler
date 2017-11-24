@@ -41,22 +41,20 @@ public class HomePanel extends JPanel {
 		//Buttons
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setPreferredSize(new Dimension(20, 50));
-		add(buttonPanel, BorderLayout.SOUTH);
 		buttonPanel.setLayout(new GridLayout(0, 2));
 		buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
 		int margin = 10;
 		principalButton = new JButton("Enter as Principal");
-		principalButton.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+		principalButton.setBorder(new EmptyBorder(margin, margin, margin, margin));
 		
 		applicantButton = new JButton("Enter as Applicant");
-		applicantButton.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+		applicantButton.setBorder(new EmptyBorder(margin, margin, margin, margin));
 		applicantButton.addActionListener(new ApplicantListener());
 		
 		buttonPanel.add(principalButton);
 		buttonPanel.add(applicantButton);
-		
-		
+		add(buttonPanel, BorderLayout.SOUTH);		
 
 	}
 	
