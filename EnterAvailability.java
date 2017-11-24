@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JLabel;
@@ -20,9 +22,9 @@ public class EnterAvailability extends JPanel {
 	public EnterAvailability() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JButton btnBack = new JButton("Back");
@@ -94,10 +96,11 @@ public class EnterAvailability extends JPanel {
 		gbc_lblFrom.gridy = 5;
 		add(lblFrom, gbc_lblFrom);
 		
-		ButtonGroup checkboxGroup = new ButtonGroup();
+		//ButtonGroup checkboxGroup = new ButtonGroup();
 		
 		String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
-				"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",};
+				"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+				"20:00", "21:00", "22:00", "23:00", };
 				
 		JComboBox fromCombo = new JComboBox(times);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -137,7 +140,7 @@ public class EnterAvailability extends JPanel {
 		gbc_chckbxSunday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxSunday.gridx = 1;
 		gbc_chckbxSunday.gridy = 8;
-		checkboxGroup.add(chckbxSunday);
+		//checkboxGroup.add(chckbxSunday);
 		add(chckbxSunday, gbc_chckbxSunday);
 		
 		JCheckBox chckbxMonday = new JCheckBox("Monday");
@@ -146,7 +149,7 @@ public class EnterAvailability extends JPanel {
 		gbc_chckbxMonday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxMonday.gridx = 2;
 		gbc_chckbxMonday.gridy = 8;
-		checkboxGroup.add(chckbxMonday);
+		//checkboxGroup.add(chckbxMonday);
 		add(chckbxMonday, gbc_chckbxMonday);
 		
 		JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
@@ -155,7 +158,7 @@ public class EnterAvailability extends JPanel {
 		gbc_chckbxTuesday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxTuesday.gridx = 3;
 		gbc_chckbxTuesday.gridy = 8;
-		checkboxGroup.add(chckbxTuesday);
+		//checkboxGroup.add(chckbxTuesday);
 		add(chckbxTuesday, gbc_chckbxTuesday);
 		
 		JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
@@ -164,36 +167,54 @@ public class EnterAvailability extends JPanel {
 		gbc_chckbxWednesday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxWednesday.gridx = 4;
 		gbc_chckbxWednesday.gridy = 8;
-		checkboxGroup.add(chckbxWednesday);
+		//checkboxGroup.add(chckbxWednesday);
 		add(chckbxWednesday, gbc_chckbxWednesday);
 		
 		JCheckBox chckbxThursday = new JCheckBox("Thursday");
 		GridBagConstraints gbc_chckbxThursday = new GridBagConstraints();
 		gbc_chckbxThursday.anchor = GridBagConstraints.WEST;
-		gbc_chckbxThursday.insets = new Insets(0, 0, 0, 5);
+		gbc_chckbxThursday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxThursday.gridx = 1;
 		gbc_chckbxThursday.gridy = 9;
-		checkboxGroup.add(chckbxThursday);
+		//checkboxGroup.add(chckbxThursday);
 		add(chckbxThursday, gbc_chckbxThursday);
 		
 		JCheckBox chckbxFriday = new JCheckBox("Friday");
 		GridBagConstraints gbc_chckbxFriday = new GridBagConstraints();
 		gbc_chckbxFriday.anchor = GridBagConstraints.WEST;
-		gbc_chckbxFriday.insets = new Insets(0, 0, 0, 5);
+		gbc_chckbxFriday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxFriday.gridx = 2;
 		gbc_chckbxFriday.gridy = 9;
-		checkboxGroup.add(chckbxFriday);
+		//checkboxGroup.add(chckbxFriday);
 		add(chckbxFriday, gbc_chckbxFriday);
 		
 		JCheckBox chckbxSaturday = new JCheckBox("Saturday");
 		GridBagConstraints gbc_chckbxSaturday = new GridBagConstraints();
 		gbc_chckbxSaturday.anchor = GridBagConstraints.WEST;
-		gbc_chckbxSaturday.insets = new Insets(0, 0, 0, 5);
+		gbc_chckbxSaturday.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxSaturday.gridx = 3;
 		gbc_chckbxSaturday.gridy = 9;
-		checkboxGroup.add(chckbxSaturday);
+		//checkboxGroup.add(chckbxSaturday);
 		add(chckbxSaturday, gbc_chckbxSaturday);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		GridBagConstraints gbc_btnConfirm = new GridBagConstraints();
+		gbc_btnConfirm.insets = new Insets(0, 0, 0, 5);
+		gbc_btnConfirm.gridx = 4;
+		gbc_btnConfirm.gridy = 10;
+		add(btnConfirm, gbc_btnConfirm);
 
+	}
+	
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+		frame.setBounds(100, 100, 600, 400);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		EnterAvailability r = new EnterAvailability();
+		frame.getContentPane().add(r);
+		frame.repaint();
+		frame.revalidate();
 	}
 
 }
