@@ -7,6 +7,9 @@ import java.awt.Insets;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.SwingConstants;
 
 import java.awt.Font;
@@ -94,7 +97,16 @@ public class PrincipalLogin extends JPanel {
 		gbc_btnEnter.gridy = 7;
 		mainPanel.add(btnEnter, gbc_btnEnter);
 		
+		EnterListener enterListener = new EnterListener(btnEnter);
+		textField.addKeyListener(enterListener);
+		passwordField.addKeyListener(enterListener);
+		
 		add(mainPanel);
+	}
+	
+	public void reset() {
+		textField.setText("");
+		passwordField.setText("");
 	}
 
 }
