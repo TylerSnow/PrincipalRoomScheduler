@@ -10,23 +10,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
+
+import java.awt.BorderLayout;
 import java.awt.Font;
 
 public class RoomAndSemester extends JPanel {
 
-	
 	private final MainFrame2 frame;
+	private JPanel mainPanel;
+	
 	/**
 	 * Create the panel.
 	 */
 	public RoomAndSemester(MainFrame2 f) {
 		frame = f;
+		mainPanel = new JPanel();
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		mainPanel.setLayout(gridBagLayout);
 		
 		String[] semesters = {"Fall", "Winter", "Spring"};
 		
@@ -38,14 +43,14 @@ public class RoomAndSemester extends JPanel {
 		gbc_lblRoomAvailabilityInformation.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRoomAvailabilityInformation.gridx = 3;
 		gbc_lblRoomAvailabilityInformation.gridy = 1;
-		add(lblRoomAvailabilityInformation, gbc_lblRoomAvailabilityInformation);
+		mainPanel.add(lblRoomAvailabilityInformation, gbc_lblRoomAvailabilityInformation);
 		
 		JLabel lblSelectARoom = new JLabel("Select a Room and Semester");
 		GridBagConstraints gbc_lblSelectARoom = new GridBagConstraints();
 		gbc_lblSelectARoom.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSelectARoom.gridx = 3;
 		gbc_lblSelectARoom.gridy = 2;
-		add(lblSelectARoom, gbc_lblSelectARoom);
+		mainPanel.add(lblSelectARoom, gbc_lblSelectARoom);
 		
 		JLabel lblSemester = new JLabel("Semester:");
 		GridBagConstraints gbc_lblSemester = new GridBagConstraints();
@@ -53,7 +58,7 @@ public class RoomAndSemester extends JPanel {
 		gbc_lblSemester.anchor = GridBagConstraints.EAST;
 		gbc_lblSemester.gridx = 2;
 		gbc_lblSemester.gridy = 4;
-		add(lblSemester, gbc_lblSemester);
+		mainPanel.add(lblSemester, gbc_lblSemester);
 		
 		JComboBox semesterCombo = new JComboBox(semesters);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -61,7 +66,7 @@ public class RoomAndSemester extends JPanel {
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 3;
 		gbc_comboBox.gridy = 4;
-		add(semesterCombo, gbc_comboBox);
+		mainPanel.add(semesterCombo, gbc_comboBox);
 		
 		JLabel lblRoom = new JLabel("Room:");
 		GridBagConstraints gbc_lblRoom = new GridBagConstraints();
@@ -69,7 +74,7 @@ public class RoomAndSemester extends JPanel {
 		gbc_lblRoom.anchor = GridBagConstraints.EAST;
 		gbc_lblRoom.gridx = 2;
 		gbc_lblRoom.gridy = 5;
-		add(lblRoom, gbc_lblRoom);
+		mainPanel.add(lblRoom, gbc_lblRoom);
 		
 		JComboBox roomCombo = new JComboBox(rooms);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
@@ -77,7 +82,7 @@ public class RoomAndSemester extends JPanel {
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox_1.gridx = 3;
 		gbc_comboBox_1.gridy = 5;
-		add(roomCombo, gbc_comboBox_1);
+		mainPanel.add(roomCombo, gbc_comboBox_1);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new BackButtonListener(frame));
@@ -86,7 +91,7 @@ public class RoomAndSemester extends JPanel {
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBack.gridx = 2;
 		gbc_btnBack.gridy = 6;
-		add(btnBack, gbc_btnBack);
+		mainPanel.add(btnBack, gbc_btnBack);
 		
 		JButton confirmButton = new JButton("Confirm");
 		confirmButton.addActionListener(new ActionListener() {
@@ -102,7 +107,10 @@ public class RoomAndSemester extends JPanel {
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 3;
 		gbc_btnNewButton.gridy = 6;
-		add(confirmButton, gbc_btnNewButton);
+		mainPanel.add(confirmButton, gbc_btnNewButton);
+		
+		setLayout(new BorderLayout());
+		add(mainPanel, BorderLayout.CENTER);
 
 	}
 	
