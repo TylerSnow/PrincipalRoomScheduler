@@ -262,7 +262,11 @@ public class EnterAvailability extends JPanel {
 		mainPanel.add(chckbxSaturday, gbc_chckbxSaturday);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new BackButtonListener(frame));
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.availBack();
+			}
+		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.anchor = GridBagConstraints.WEST;
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
@@ -295,8 +299,7 @@ public class EnterAvailability extends JPanel {
 		gbc_btnConfirm.gridy = 10;
 		mainPanel.add(btnConfirm, gbc_btnConfirm);
 
-		setLayout(new BorderLayout());
-		add(mainPanel, BorderLayout.CENTER);
+		add(mainPanel);
 	}
 	
 	public static void updateToCombo() {

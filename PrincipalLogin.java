@@ -96,8 +96,7 @@ public class PrincipalLogin extends JPanel {
 		gbc_btnEnter.gridy = 6;
 		mainPanel.add(btnEnter, gbc_btnEnter);
 		
-		setLayout(new BorderLayout());
-		add(mainPanel, BorderLayout.CENTER);
+		add(mainPanel);
 	}
 
 }

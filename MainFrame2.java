@@ -70,6 +70,10 @@ public class MainFrame2 extends JFrame {
 		cards.show(princCardPanel, PRINCIPAL_CONFIRM_PANEL);
 	}
 	
+	public void availBack() {
+		cards.show(princCardPanel, PRINCIPAL_ROOM_PANEL);
+	}
+	
 	public static void main(String[] args) {
 		MainFrame2 frame = new MainFrame2();
 	}

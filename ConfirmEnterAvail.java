@@ -8,16 +8,20 @@ import java.awt.Insets;
 
 public class ConfirmEnterAvail extends JPanel {
 
+	private JPanel mainPanel;
+	
 	/**
 	 * Create the panel.
 	 */
 	public ConfirmEnterAvail() {
+		mainPanel = new JPanel();
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+		mainPanel.setLayout(gridBagLayout);
 		
 		JLabel lblAvailabilityInformationEntered = new JLabel("Availability Information Entered");
 		lblAvailabilityInformationEntered.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -26,22 +30,23 @@ public class ConfirmEnterAvail extends JPanel {
 		gbc_lblAvailabilityInformationEntered.gridwidth = 3;
 		gbc_lblAvailabilityInformationEntered.gridx = 4;
 		gbc_lblAvailabilityInformationEntered.gridy = 2;
-		add(lblAvailabilityInformationEntered, gbc_lblAvailabilityInformationEntered);
+		mainPanel.add(lblAvailabilityInformationEntered, gbc_lblAvailabilityInformationEntered);
 		
 		JButton btnLogout = new JButton("Logout");
 		GridBagConstraints gbc_btnLogout = new GridBagConstraints();
 		gbc_btnLogout.insets = new Insets(0, 0, 0, 5);
 		gbc_btnLogout.gridx = 4;
 		gbc_btnLogout.gridy = 6;
-		add(btnLogout, gbc_btnLogout);
+		mainPanel.add(btnLogout, gbc_btnLogout);
 		
 		JButton btnEnterNewInfo = new JButton("Enter New Info");
 		GridBagConstraints gbc_btnEnterNewInfo = new GridBagConstraints();
 		gbc_btnEnterNewInfo.insets = new Insets(0, 0, 0, 5);
 		gbc_btnEnterNewInfo.gridx = 6;
 		gbc_btnEnterNewInfo.gridy = 6;
-		add(btnEnterNewInfo, gbc_btnEnterNewInfo);
+		mainPanel.add(btnEnterNewInfo, gbc_btnEnterNewInfo);
 
+		add(mainPanel);
 	}
 
 }
