@@ -47,6 +47,7 @@ public class HomePanel extends JPanel {
 		int margin = 10;
 		principalButton = new JButton("Enter as Principal");
 		principalButton.setBorder(new EmptyBorder(margin, margin, margin, margin));
+		principalButton.addActionListener(new NextButtonListener(frame));
 		
 		applicantButton = new JButton("Enter as Applicant");
 		applicantButton.setBorder(new EmptyBorder(margin, margin, margin, margin));
@@ -63,7 +64,7 @@ public class HomePanel extends JPanel {
 			
 		}
 		public void actionPerformed(ActionEvent e) {
-			frame.showPanel(MainFrame2.CALENDER_PANEL, MainFrame2.HOME_PANEL);
+			//frame.showPanel(MainFrame2.CALENDER_PANEL, MainFrame2.HOME_PANEL);
 		}
 	}
 }

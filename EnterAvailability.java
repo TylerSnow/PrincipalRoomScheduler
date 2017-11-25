@@ -19,8 +19,7 @@ import java.awt.Font;
 public class EnterAvailability extends JPanel {
 	private JTextField roomField;
 	private JTextField semesterField;
-	private static JComboBox toCombo;
-	private static JComboBox fromCombo;
+	private MainFrame2 frame;
 	
 	//3 arrays is temporary fix... I hope
 	private static String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
@@ -36,7 +35,8 @@ public class EnterAvailability extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public EnterAvailability() {
+	public EnterAvailability(MainFrame2 f, String semester, String room) {
+		frame = f;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -62,6 +62,7 @@ public class EnterAvailability extends JPanel {
 		add(lblRoom, gbc_lblRoom);
 		
 		roomField = new JTextField();
+		roomField.setText(room);
 		roomField.setEditable(false);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 2;
@@ -81,6 +82,7 @@ public class EnterAvailability extends JPanel {
 		add(lblSemester, gbc_lblSemester);
 		
 		semesterField = new JTextField();
+		semesterField.setText(semester);
 		semesterField.setEditable(false);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -243,6 +245,7 @@ public class EnterAvailability extends JPanel {
 		add(chckbxSaturday, gbc_chckbxSaturday);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new BackButtonListener(frame));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.anchor = GridBagConstraints.WEST;
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
@@ -268,6 +271,7 @@ public class EnterAvailability extends JPanel {
 		
 	}
 	
+	/*
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		JPanel mainPanel = new JPanel();
@@ -279,6 +283,6 @@ public class EnterAvailability extends JPanel {
 		frame.getContentPane().add(mainPanel);
 		frame.repaint();
 		frame.revalidate();
-	}
+	}*/
 
 }

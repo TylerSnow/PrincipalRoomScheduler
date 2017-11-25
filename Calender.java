@@ -27,7 +27,7 @@ public class Calender extends JPanel {
 		
 		backButton = new JButton("Back");
 		backButton.setBackground(Color.WHITE);
-		backButton.addActionListener(new BackButtonListener(frame, frame.HOME_PANEL));
+		//backButton.addActionListener(new BackButtonListener(frame, frame.HOME_PANEL));
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
@@ -78,7 +78,7 @@ public class Calender extends JPanel {
 	            int col = table.columnAtPoint(evt.getPoint());
 	            //System.out.println(table.getModel().getValueAt(row, col));
 	            if (row >= 0 && col >= 0 && (table.getModel().getValueAt(row, col) != null)) {
-	            	frame.showPanel(MainFrame2.GRID_PANEL, MainFrame2.CALENDER_PANEL);
+	            	//frame.showPanel(MainFrame2.GRID_PANEL, MainFrame2.CALENDER_PANEL);
 	            }
 	        }
 	    });	    

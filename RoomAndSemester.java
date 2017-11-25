@@ -6,15 +6,21 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 
 public class RoomAndSemester extends JPanel {
 
+	
+	private final MainFrame2 frame;
 	/**
 	 * Create the panel.
 	 */
-	public RoomAndSemester() {
+	public RoomAndSemester(MainFrame2 f) {
+		frame = f;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -48,13 +54,14 @@ public class RoomAndSemester extends JPanel {
 		gbc_lblSemester.gridx = 2;
 		gbc_lblSemester.gridy = 4;
 		add(lblSemester, gbc_lblSemester);
-		JComboBox comboBox = new JComboBox(semesters);
+		
+		JComboBox semesterCombo = new JComboBox(semesters);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 3;
 		gbc_comboBox.gridy = 4;
-		add(comboBox, gbc_comboBox);
+		add(semesterCombo, gbc_comboBox);
 		
 		JLabel lblRoom = new JLabel("Room:");
 		GridBagConstraints gbc_lblRoom = new GridBagConstraints();
@@ -63,15 +70,17 @@ public class RoomAndSemester extends JPanel {
 		gbc_lblRoom.gridx = 2;
 		gbc_lblRoom.gridy = 5;
 		add(lblRoom, gbc_lblRoom);
-		JComboBox comboBox_1 = new JComboBox(rooms);
+		
+		JComboBox roomCombo = new JComboBox(rooms);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox_1.gridx = 3;
 		gbc_comboBox_1.gridy = 5;
-		add(comboBox_1, gbc_comboBox_1);
+		add(roomCombo, gbc_comboBox_1);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new BackButtonListener(frame));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.anchor = GridBagConstraints.EAST;
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
@@ -79,16 +88,25 @@ public class RoomAndSemester extends JPanel {
 		gbc_btnBack.gridy = 6;
 		add(btnBack, gbc_btnBack);
 		
-		JButton btnNewButton = new JButton("Confirm");
+		JButton confirmButton = new JButton("Confirm");
+		confirmButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (roomCombo.getSelectedItem() != null && semesterCombo.getSelectedItem() != null) {
+					frame.showAvailabilityPanel(semesterCombo.getSelectedItem().toString(),
+												roomCombo.getSelectedItem().toString());
+				}
+			}
+		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 3;
 		gbc_btnNewButton.gridy = 6;
-		add(btnNewButton, gbc_btnNewButton);
+		add(confirmButton, gbc_btnNewButton);
 
 	}
 	
+	/*
 	public static void main(String [] args) {
 		JFrame frame = new JFrame();
 		JPanel mainPanel = new JPanel();
@@ -100,6 +118,6 @@ public class RoomAndSemester extends JPanel {
 		frame.getContentPane().add(mainPanel);
 		frame.repaint();
 		frame.revalidate();
-	}
+	}*/
 
 }
