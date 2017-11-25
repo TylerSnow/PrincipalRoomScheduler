@@ -112,19 +112,5 @@ public class RoomAndSemester extends JPanel {
 		add(mainPanel);
 
 	}
-	
-	/*
-	public static void main(String [] args) {
-		JFrame frame = new JFrame();
-		JPanel mainPanel = new JPanel();
-		frame.setBounds(100, 100, 600, 400);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		RoomAndSemester r = new RoomAndSemester();
-		mainPanel.add(r);
-		frame.getContentPane().add(mainPanel);
-		frame.repaint();
-		frame.revalidate();
-	}*/
 
 }

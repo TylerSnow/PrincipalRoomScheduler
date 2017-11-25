@@ -20,9 +20,6 @@ public class MainFrame2 extends JFrame {
 	public static String PRINCIPAL_ROOM_PANEL = "Principal Room Panel";
 	public static String PRINCIPAL_AVAIL_PANEL = "Principal Avail Panel";
 	public static String PRINCIPAL_CONFIRM_PANEL = "Principal Confirm Panel";
-
-
-	private String prevPanel;
 	
 	/**
 	 * Create the frame.

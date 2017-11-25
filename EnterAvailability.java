@@ -136,11 +136,6 @@ public class EnterAvailability extends JPanel {
 		
 		JComboBox toCombo = new JComboBox(toTimes);
 		toCombo.setSelectedItem("01:00");
-		fromCombo.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        updateFromCombo(toCombo.getSelectedItem().toString());
-		    }
-		});
 		
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
@@ -301,27 +296,5 @@ public class EnterAvailability extends JPanel {
 
 		add(mainPanel);
 	}
-	
-	public static void updateToCombo() {
-		
-	}
-	
-	public static void updateFromCombo(String toChoice) {
-		
-	}
-	
-	/*
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		JPanel mainPanel = new JPanel();
-		frame.setBounds(100, 100, 600, 400);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		EnterAvailability r = new EnterAvailability();
-		mainPanel.add(r);
-		frame.getContentPane().add(mainPanel);
-		frame.repaint();
-		frame.revalidate();
-	}*/
 
 }
