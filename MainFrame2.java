@@ -61,6 +61,7 @@ public class MainFrame2 extends JFrame {
 	
 	public void home() {
 		cards.show(princCardPanel, HOME_PANEL);
+		loginPanel.reset();
 	}
 	
 	public void princAgain() {
