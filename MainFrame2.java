@@ -1,18 +1,24 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 
 public class MainFrame2 extends JFrame {
 	
 	private JPanel mainPanel;
+	private JPanel princCardPanel;
 	private HomePanel homePanel;
-	private Calender calPanel;
-	private TimeRoomGridPanel gridPanel;
+	private PrincipalLogin loginPanel;
+	private RoomAndSemester princRoomPanel;
+	private EnterAvailability princAvailPanel;
 	private CardLayout cards = new CardLayout();
 	
 	public static String HOME_PANEL = "Home Panel";
-	public static String CALENDER_PANEL = "Calender Panel";
-	public static String GRID_PANEL = "Grid Panel";
+	public static String LOGIN_PANEL = "Login Panel";
+	public static String PRINCIPAL_ROOM_PANEL = "Principal Room Panel";
+	public static String PRINCIPAL_AVAIL_PANEL = "Principal Avail Panel";
+
 	private String prevPanel;
 	
 	/**
@@ -22,37 +28,41 @@ public class MainFrame2 extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
-		mainPanel = new JPanel(cards);
+		
+		mainPanel = new JPanel(new BorderLayout());
+		princCardPanel = new JPanel(cards);
 		
 		homePanel = new HomePanel(this);
-		mainPanel.add(homePanel, HOME_PANEL);
+		princCardPanel.add(homePanel, HOME_PANEL);
 		
 		prevPanel = HOME_PANEL;
 		
-		calPanel = new Calender(this);
-		mainPanel.add(calPanel, CALENDER_PANEL);
+		loginPanel = new PrincipalLogin(this);
+		princCardPanel.add(loginPanel, LOGIN_PANEL);
+		
+		princRoomPanel = new RoomAndSemester(this);
+		princCardPanel.add(princRoomPanel, PRINCIPAL_ROOM_PANEL);
 
-		cards.show(mainPanel, "Home Page");
+		cards.show(princCardPanel, "Home Page");
+		mainPanel.add(princCardPanel, BorderLayout.CENTER);
 		add(mainPanel);
 		repaint();
 		revalidate();
 	}
 	
-	public void showPanel(String panel, String prev) {
-		if (panel.equals(GRID_PANEL)) {
-			//call makeGrid here, pass to trgp constructor?
-			gridPanel = new TimeRoomGridPanel(this);
-			mainPanel.add(gridPanel, GRID_PANEL);
-			prevPanel = prev;
-		}
-		cards.show(mainPanel, panel);
+	public void next() {
+		cards.next(princCardPanel);
 	}
 	
 	//just use cards.previous()
-	public void back(String newPrev) {
-		cards.show(mainPanel, prevPanel);
-		prevPanel = newPrev;
-		//System.out.println(prevPanel);
+	public void back() {
+		cards.previous(princCardPanel);
+	}
+	
+	public void showAvailabilityPanel(String semester, String room) {
+		princAvailPanel = new EnterAvailability(this, semester, room);
+		princCardPanel.add(princAvailPanel, PRINCIPAL_AVAIL_PANEL);
+		cards.show(princCardPanel, PRINCIPAL_AVAIL_PANEL);
 	}
 	
 	public static void main(String[] args) {

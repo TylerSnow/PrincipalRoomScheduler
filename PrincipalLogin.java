@@ -14,11 +14,13 @@ import java.awt.Font;
 public class PrincipalLogin extends JPanel {
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private final MainFrame2 frame;
 
 	/**
 	 * Create the panel.
 	 */
-	public PrincipalLogin() {
+	public PrincipalLogin(MainFrame2 f) {
+		frame = f;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -70,19 +72,17 @@ public class PrincipalLogin extends JPanel {
 		gbc_passwordField.gridy = 5;
 		add(passwordField, gbc_passwordField);
 		
-		JButton btnNewButton = new JButton("Back");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		JButton backButton = new JButton("Back");
+		backButton.addActionListener(new BackButtonListener(frame));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 3;
 		gbc_btnNewButton.gridy = 6;
-		add(btnNewButton, gbc_btnNewButton);
+		add(backButton, gbc_btnNewButton);
 		
 		JButton btnEnter = new JButton("Enter");
+		btnEnter.addActionListener(new NextButtonListener(frame));
 		btnEnter.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_btnEnter = new GridBagConstraints();
 		gbc_btnEnter.anchor = GridBagConstraints.EAST;

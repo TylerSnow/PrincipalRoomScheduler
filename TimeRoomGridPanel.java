@@ -41,7 +41,7 @@ public class TimeRoomGridPanel extends JPanel{
 		GridButton[][] grid = new GridButton[rooms.length+1][17];
 		grid[0][0] = new GridButton(0,0,"Back");
 		grid[0][0].setBackground(Color.WHITE);
-		grid[0][0].addActionListener(new BackButtonListener(frame, frame.CALENDER_PANEL));
+		//grid[0][0].addActionListener(new BackButtonListener(frame, frame.CALENDER_PANEL));
 		
 		//This loop creates the column of Rooms
 		for (int k = 1 ; k <= rooms.length ; k++) {
