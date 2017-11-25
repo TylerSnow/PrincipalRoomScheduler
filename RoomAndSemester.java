@@ -109,8 +109,7 @@ public class RoomAndSemester extends JPanel {
 		gbc_btnNewButton.gridy = 6;
 		mainPanel.add(confirmButton, gbc_btnNewButton);
 		
-		setLayout(new BorderLayout());
-		add(mainPanel, BorderLayout.CENTER);
+		add(mainPanel);
 
 	}
 	
