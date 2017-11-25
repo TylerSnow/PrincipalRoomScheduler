@@ -5,9 +5,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class HomePanel extends JPanel {
-
-	private JButton applicantButton;
-	private JButton principalButton;
 	private final MainFrame2 frame;
 	
 	/**
@@ -37,34 +34,35 @@ public class HomePanel extends JPanel {
 		descriptionPanel.add(description);
 		add(descriptionPanel, BorderLayout.CENTER);
 		
-		
-		//Buttons
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setPreferredSize(new Dimension(20, 50));
-		buttonPanel.setLayout(new GridLayout(0, 2));
-		buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		
 		int margin = 10;
-		principalButton = new JButton("Enter as Principal");
-		principalButton.setBorder(new EmptyBorder(margin, margin, margin, margin));
-		principalButton.addActionListener(new NextButtonListener(frame));
+		JPanel holder = new JPanel();
+		JPanel buttonPanel = new JPanel();
 		
-		applicantButton = new JButton("Enter as Applicant");
-		applicantButton.setBorder(new EmptyBorder(margin, margin, margin, margin));
-		applicantButton.addActionListener(new ApplicantListener());
+		GridBagLayout gbl_buttonPanel = new GridBagLayout();
+		gbl_buttonPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gbl_buttonPanel.rowHeights = new int[]{0};
+		gbl_buttonPanel.columnWeights = new double[]{Double.MIN_VALUE, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_buttonPanel.rowWeights = new double[]{Double.MIN_VALUE};
+		buttonPanel.setLayout(gbl_buttonPanel);
 		
-		buttonPanel.add(principalButton);
-		buttonPanel.add(applicantButton);
-		add(buttonPanel, BorderLayout.SOUTH);		
+		JButton princButton = new JButton("Enter As Principal");
+		princButton.addActionListener(new NextButtonListener(frame));
+		GridBagConstraints gbc_btnEnterAsPrincipal = new GridBagConstraints();
+		gbc_btnEnterAsPrincipal.gridheight = 2;
+		gbc_btnEnterAsPrincipal.insets = new Insets(0, 0, 0, 5);
+		gbc_btnEnterAsPrincipal.gridx = 1;
+		gbc_btnEnterAsPrincipal.gridy = 0;
+		buttonPanel.add(princButton, gbc_btnEnterAsPrincipal);
+		
+		JButton btnNewButton = new JButton("Enter as Applicant");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridy = 1;
+		buttonPanel.add(btnNewButton, gbc_btnNewButton);
+		holder.add(buttonPanel);
+		add(holder, BorderLayout.SOUTH);
 
-	}
-	
-	private class ApplicantListener extends AbstractAction {
-		public ApplicantListener() {
-			
-		}
-		public void actionPerformed(ActionEvent e) {
-			//frame.showPanel(MainFrame2.CALENDER_PANEL, MainFrame2.HOME_PANEL);
-		}
+
 	}
 }
