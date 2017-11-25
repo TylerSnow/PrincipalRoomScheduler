@@ -55,6 +55,18 @@ public class MainFrame2 extends JFrame {
 		cards.previous(princCardPanel);
 	}
 	
+	public void availBack() {
+		cards.show(princCardPanel, PRINCIPAL_ROOM_PANEL);
+	}
+	
+	public void home() {
+		cards.show(princCardPanel, HOME_PANEL);
+	}
+	
+	public void princAgain() {
+		cards.show(princCardPanel, PRINCIPAL_ROOM_PANEL);
+	}
+	
 	public void showAvailabilityPanel(String semester, String room) {
 		princAvailPanel = new EnterAvailability(this, semester, room);
 		princCardPanel.add(princAvailPanel, PRINCIPAL_AVAIL_PANEL);
@@ -62,13 +74,19 @@ public class MainFrame2 extends JFrame {
 	}
 	
 	public void enterAvailability(String semester, String room, String start, String end, ArrayList<String> days) {
-		princConfirmPanel = new ConfirmEnterAvail();
+		System.out.print("Reservation made for:\n"
+				+ "Room: " + room + "\n"
+				+ "Semester: " + semester + "\n"
+				+ "From: " + start + "\n"
+				+ "To: " + end + "\n"
+				+ "On days: ");
+		for (String day : days) {
+			System.out.print(day + ", ");
+		}
+		
+		princConfirmPanel = new ConfirmEnterAvail(this);
 		princCardPanel.add(princConfirmPanel, PRINCIPAL_CONFIRM_PANEL);
 		cards.show(princCardPanel, PRINCIPAL_CONFIRM_PANEL);
-	}
-	
-	public void availBack() {
-		cards.show(princCardPanel, PRINCIPAL_ROOM_PANEL);
 	}
 	
 	public static void main(String[] args) {

@@ -5,15 +5,19 @@ import java.awt.GridBagConstraints;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ConfirmEnterAvail extends JPanel {
 
+	private final MainFrame2 frame;
 	private JPanel mainPanel;
 	
 	/**
 	 * Create the panel.
 	 */
-	public ConfirmEnterAvail() {
+	public ConfirmEnterAvail(MainFrame2 f) {
+		frame = f;
 		mainPanel = new JPanel();
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -39,12 +43,24 @@ public class ConfirmEnterAvail extends JPanel {
 		gbc_btnLogout.gridy = 6;
 		mainPanel.add(btnLogout, gbc_btnLogout);
 		
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.home();
+			}
+		});
+		
 		JButton btnEnterNewInfo = new JButton("Enter New Info");
 		GridBagConstraints gbc_btnEnterNewInfo = new GridBagConstraints();
 		gbc_btnEnterNewInfo.insets = new Insets(0, 0, 0, 5);
 		gbc_btnEnterNewInfo.gridx = 6;
 		gbc_btnEnterNewInfo.gridy = 6;
 		mainPanel.add(btnEnterNewInfo, gbc_btnEnterNewInfo);
+		
+		btnEnterNewInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.princAgain();
+			}
+		});
 
 		add(mainPanel);
 	}
