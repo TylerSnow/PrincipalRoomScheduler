@@ -1,10 +1,13 @@
 package school;
 import java.util.List;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class School {
 	private List<Room> roomList;
 	private String id;
-	private List<Request> pendingRequests;
+	private static List<Request> pendingRequests;
 	private List<Account> authorizedAccounts;
 	private List<Group> groupList;
 	
@@ -24,7 +27,7 @@ public class School {
 		return roomList;
 	}
 	
-	public List<Request> getPendingRequests(){
+	public static List<Request> getPendingRequests(){
 		return pendingRequests;
 	}
 	
@@ -39,4 +42,13 @@ public class School {
 	public void addRoom(Room newRoom) {
 		roomList.add(newRoom);
 	}
+	
+	/*
+	public static void createSampleRequests() {
+		Group g = new Group("bys");
+		pendingRequests.add(new Request(new Applicant("hey", g), new Room("Gymnasium", 2),
+				new Booking(LocalTime.parse("02:00"), LocalTime.parse("02:00"), Semester.FALL, DayOfWeek.MONDAY, g), 
+				1, "balls", LocalDate.now()));
+	}
+	*/
 }

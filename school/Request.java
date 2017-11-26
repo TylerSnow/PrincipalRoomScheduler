@@ -3,14 +3,16 @@ import java.time.LocalDate;
 
 public class Request {
 	private Applicant applicant;
-	private Booking[] requestedRooms;
+	private Room room;
+	private Booking booking;
 	private int priority;
 	private String message;
 	private LocalDate dateRequested;
 	
-	public Request(Applicant nApplicant, Booking[] nRequestedRooms, int nPriority, String nMessage, LocalDate nDateRequested) {
+	public Request(Applicant nApplicant, Room r, Booking b, int nPriority, String nMessage, LocalDate nDateRequested) {
 		applicant = nApplicant;
-		requestedRooms = nRequestedRooms;
+		room = r;
+		booking = b;
 		priority = nPriority;
 		message = nMessage;
 		dateRequested = nDateRequested;
@@ -20,8 +22,12 @@ public class Request {
 		return applicant;
 	}
 	
-	public Booking[] getRequestedRooms() {
-		return requestedRooms;
+	public Room getRoom() {
+		return room;
+	}
+	
+	public Booking getBooking() {
+		return booking;
 	}
 	
 	public int getPriority() {

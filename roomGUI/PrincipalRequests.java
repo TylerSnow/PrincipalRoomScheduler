@@ -7,12 +7,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
 
 import school.School;
+import school.Request;
 
 import java.awt.Color;
 import javax.swing.JList;
@@ -51,7 +53,13 @@ public class PrincipalRequests extends JPanel {
 		add(lblPendingRequests, gbc_lblPendingRequests);
 		
 		String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-		//List<Request> allPending = s.getPendingRequests():
+		/*
+		School.createSampleRequests();
+		List<Request> allPending = School.getPendingRequests();
+		Object[][] data = {
+				{allPending.get(0).getMessage()}
+		};
+		*/
 		
 		table = new JTable();
 		table.setRowSelectionAllowed(false);
