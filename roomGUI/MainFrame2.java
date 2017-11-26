@@ -9,18 +9,18 @@ import java.util.ArrayList;
 public class MainFrame2 extends JFrame {
 	
 	private JPanel princCardPanel;
+	private JPanel princAvailCardPanel;
+	private JPanel princRequestCardPanel;
 	private HomePanel homePanel;
 	private PrincipalLogin loginPanel;
+	private PrincipalMenu principalMenu;
 	private RoomAndSemester princRoomPanel;
 	private EnterAvailability princAvailPanel;
+	private PrincipalRequests princReqPanel;
 	private ConfirmEnterAvail princConfirmPanel;
-	private CardLayout cards = new CardLayout();
-	
-	public static String HOME_PANEL = "Home Panel";
-	public static String LOGIN_PANEL = "Login Panel";
-	public static String PRINCIPAL_ROOM_PANEL = "Principal Room Panel";
-	public static String PRINCIPAL_AVAIL_PANEL = "Principal Avail Panel";
-	public static String PRINCIPAL_CONFIRM_PANEL = "Principal Confirm Panel";
+	private CardLayout princCards = new CardLayout();
+	private CardLayout princAvailCards = new CardLayout();
+	private CardLayout princRequestCards = new CardLayout();
 	
 	/**
 	 * Create the frame.
@@ -30,49 +30,69 @@ public class MainFrame2 extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		
-		princCardPanel = new JPanel(cards);
+		princCardPanel = new JPanel(princCards);
+		princAvailCardPanel = new JPanel(princAvailCards);
+		princRequestCardPanel = new JPanel(princRequestCards);
 		
 		homePanel = new HomePanel(this);
-		princCardPanel.add(homePanel, HOME_PANEL);
+		princCardPanel.add(homePanel, "Home Panel");
 		
 		loginPanel = new PrincipalLogin(this);
-		princCardPanel.add(loginPanel, LOGIN_PANEL);
+		princCardPanel.add(loginPanel, "Login Panel");
 		
-		princRoomPanel = new RoomAndSemester(this);
-		princCardPanel.add(princRoomPanel, PRINCIPAL_ROOM_PANEL);
+		principalMenu = new PrincipalMenu(this);
+		princCardPanel.add(principalMenu, "Principal Menu");
 
-		cards.show(princCardPanel, "Home Page");
+		princCards.show(princCardPanel, "Home Page");
 		add(princCardPanel);
 		repaint();
 		revalidate();
 	}
 	
 	public void next() {
-		cards.next(princCardPanel);
+		princCards.next(princCardPanel);
 	}
 	
 	//just use cards.previous()
 	public void back() {
-		cards.previous(princCardPanel);
+		princCards.previous(princCardPanel);
+	}
+	
+	public void goPrincAvail() {
+		princRoomPanel = new RoomAndSemester(this, true);
+		princCardPanel.add(princRoomPanel, "Principal Room Panel");
+		princCards.show(princCardPanel, "Principal Room Panel");
+	}
+	
+	public void goPrincRequests() {
+		princRoomPanel = new RoomAndSemester(this, false);
+		princCardPanel.add(princRoomPanel, "Principal Room Panel");
+		princCards.show(princCardPanel, "Principal Room Panel");
 	}
 	
 	public void availBack() {
-		cards.show(princCardPanel, PRINCIPAL_ROOM_PANEL);
+		princCards.show(princCardPanel, "Principal Room Panel");
 	}
 	
 	public void home() {
-		cards.show(princCardPanel, HOME_PANEL);
+		princCards.show(princCardPanel, "Home Panel");
 		loginPanel.reset();
 	}
 	
 	public void princAgain() {
-		cards.show(princCardPanel, PRINCIPAL_ROOM_PANEL);
+		princCards.show(princCardPanel, "Principal Room Panel");
 	}
 	
 	public void showAvailabilityPanel(String semester, String room) {
 		princAvailPanel = new EnterAvailability(this, semester, room);
-		princCardPanel.add(princAvailPanel, PRINCIPAL_AVAIL_PANEL);
-		cards.show(princCardPanel, PRINCIPAL_AVAIL_PANEL);
+		princCardPanel.add(princAvailPanel, "Principal Availability Panel");
+		princCards.show(princCardPanel, "Principal Availability Panel");
+	}
+	
+	public void showRequestPanel(String semester, String room) {
+		princReqPanel = new PrincipalRequests(this, semester, room);
+		princCardPanel.add(princReqPanel, "Principal Request Panel");
+		princCards.show(princCardPanel, "Principal Request Panel");
 	}
 	
 	public void enterAvailability(String semester, String room, String start, String end, ArrayList<String> days) {
@@ -88,8 +108,8 @@ public class MainFrame2 extends JFrame {
 		System.out.println("");
 		
 		princConfirmPanel = new ConfirmEnterAvail(this);
-		princCardPanel.add(princConfirmPanel, PRINCIPAL_CONFIRM_PANEL);
-		cards.show(princCardPanel, PRINCIPAL_CONFIRM_PANEL);
+		princCardPanel.add(princConfirmPanel, "Principal Confirm Panel");
+		princCards.show(princCardPanel, "Principal Confirm Panel");
 	}
 	
 	public static void main(String[] args) {
