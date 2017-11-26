@@ -23,7 +23,7 @@ public class RoomAndSemester extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RoomAndSemester(MainFrame2 f) {
+	public RoomAndSemester(MainFrame2 f, boolean availPath) {
 		frame = f;
 		mainPanel = new JPanel();
 		
@@ -97,9 +97,17 @@ public class RoomAndSemester extends JPanel {
 		JButton confirmButton = new JButton("Confirm");
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (roomCombo.getSelectedItem() != null && semesterCombo.getSelectedItem() != null) {
-					frame.showAvailabilityPanel(semesterCombo.getSelectedItem().toString(),
+				if (availPath) {
+					if (roomCombo.getSelectedItem() != null && semesterCombo.getSelectedItem() != null) {
+						frame.showAvailabilityPanel(semesterCombo.getSelectedItem().toString(),
 												roomCombo.getSelectedItem().toString());
+					}
+				}
+				else {
+					if (roomCombo.getSelectedItem() != null && semesterCombo.getSelectedItem() != null) {
+						frame.showRequestPanel(semesterCombo.getSelectedItem().toString(),
+												roomCombo.getSelectedItem().toString());
+					}
 				}
 			}
 		});
