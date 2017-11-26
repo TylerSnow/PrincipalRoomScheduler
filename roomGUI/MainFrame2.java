@@ -83,6 +83,10 @@ public class MainFrame2 extends JFrame {
 		princCards.show(princCardPanel, "Principal Room Panel");
 	}
 	
+	public void princMenu() {
+		princCards.show(princCardPanel, "Principal Menu");
+	}
+	
 	public void showAvailabilityPanel(String semester, String room) {
 		princAvailPanel = new EnterAvailability(this, semester, room);
 		princCardPanel.add(princAvailPanel, "Principal Availability Panel");
