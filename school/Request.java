@@ -1,3 +1,4 @@
+package school;
 import java.time.LocalDate;
 
 public class Request {

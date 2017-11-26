@@ -1,3 +1,4 @@
+package school;
 
 public class Account {
 	private String user;
