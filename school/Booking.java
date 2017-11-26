@@ -1,23 +1,36 @@
 package school;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.DayOfWeek;
 
 public class Booking {
-	private LocalDateTime startTime;
-	private LocalDateTime endTime;
+	private LocalTime startTime;
+	private LocalTime endTime;
+	private DayOfWeek day;
+	private Semester semester;
 	private Group group;
 	
-	public Booking(LocalDateTime nStartTime, LocalDateTime nEndTime, Group nGroup) {
+	public Booking(LocalTime nStartTime, LocalTime nEndTime, Semester s, DayOfWeek d, Group nGroup) {
 		startTime = nStartTime;
 		endTime = nEndTime;
+		semester = s;
+		day = d;
 		group = nGroup;
 	}
 	
-	public LocalDateTime getStartTime() {
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 	
-	public LocalDateTime getEndTime() {
+	public LocalTime getEndTime() {
 		return endTime;
+	}
+	
+	public Semester getSemester() {
+		return semester;
+	}
+	
+	public DayOfWeek getDay() {
+		return day;
 	}
 	
 	public Group getGroup() {
