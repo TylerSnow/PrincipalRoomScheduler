@@ -1,3 +1,4 @@
+package school;
 import java.time.LocalDateTime;
 
 public class Booking {

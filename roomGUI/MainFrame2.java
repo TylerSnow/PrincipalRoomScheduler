@@ -1,3 +1,4 @@
+package roomGUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -84,6 +85,7 @@ public class MainFrame2 extends JFrame {
 		for (String day : days) {
 			System.out.print(day + ", ");
 		}
+		System.out.println("");
 		
 		princConfirmPanel = new ConfirmEnterAvail(this);
 		princCardPanel.add(princConfirmPanel, PRINCIPAL_CONFIRM_PANEL);

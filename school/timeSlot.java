@@ -1,3 +1,4 @@
+package school;
 public class timeSlot {
 	private boolean isAvailable = false;
 	private boolean isBooked = false;

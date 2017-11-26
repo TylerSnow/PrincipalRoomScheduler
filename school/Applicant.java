@@ -1,3 +1,4 @@
+package school;
 
 public class Applicant {
 	private String id;

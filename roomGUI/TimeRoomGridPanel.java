@@ -1,3 +1,4 @@
+package roomGUI;
 import java.awt.EventQueue;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
