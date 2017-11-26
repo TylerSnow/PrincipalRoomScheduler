@@ -21,6 +21,7 @@ import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class PrincipalRequests extends JPanel {
 
@@ -41,37 +42,24 @@ public class PrincipalRequests extends JPanel {
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		DefaultListModel listModel = new DefaultListModel();
-		
-		JLabel lblPendingRequests = new JLabel("Pending Requests");
-		lblPendingRequests.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblPendingRequests = new GridBagConstraints();
-		gbc_lblPendingRequests.gridwidth = 6;
-		gbc_lblPendingRequests.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPendingRequests.gridx = 3;
-		gbc_lblPendingRequests.gridy = 0;
-		add(lblPendingRequests, gbc_lblPendingRequests);
 		
 		String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-		/*
-		School.createSampleRequests();
-		List<Request> allPending = School.getPendingRequests();
-		Object[][] data = {
-				{allPending.get(0).getMessage()}
-		};
-		*/
 		
-		table = new JTable();
-		table.setRowSelectionAllowed(false);
-		table.setCellSelectionEnabled(true);
-		GridBagConstraints gbc_table = new GridBagConstraints();
-		gbc_table.gridheight = 4;
-		gbc_table.gridwidth = 10;
-		gbc_table.insets = new Insets(0, 0, 5, 5);
-		gbc_table.fill = GridBagConstraints.BOTH;
-		gbc_table.gridx = 1;
-		gbc_table.gridy = 2;
-		add(table, gbc_table);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridheight = 4;
+		gbc_scrollPane.gridwidth = 12;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 2;
+		add(scrollPane, gbc_scrollPane);
+		
+		//School.createSampleRequests();
+		//allPending = School.getPendingRequests();
+		//table = new JTable(data, weekDays);
+		scrollPane.setViewportView(table);
 		
 		JButton btnDeny = new JButton("Deny");
 		GridBagConstraints gbc_btnDeny = new GridBagConstraints();

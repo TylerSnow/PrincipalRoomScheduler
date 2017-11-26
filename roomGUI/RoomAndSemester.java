@@ -38,20 +38,14 @@ public class RoomAndSemester extends JPanel {
 		
 		String[] rooms = {"Gymnasium", "Chemistry Lab", "Physics Lab", "Auditorium", "Cafeteria"};
 		
-		JLabel lblRoomAvailabilityInformation = new JLabel("Room Availability Information");
+		JLabel lblRoomAvailabilityInformation = new JLabel("Select a Room and Semester");
 		lblRoomAvailabilityInformation.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblRoomAvailabilityInformation = new GridBagConstraints();
+		gbc_lblRoomAvailabilityInformation.gridwidth = 2;
 		gbc_lblRoomAvailabilityInformation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblRoomAvailabilityInformation.gridx = 3;
+		gbc_lblRoomAvailabilityInformation.gridx = 2;
 		gbc_lblRoomAvailabilityInformation.gridy = 1;
 		mainPanel.add(lblRoomAvailabilityInformation, gbc_lblRoomAvailabilityInformation);
-		
-		JLabel lblSelectARoom = new JLabel("Select a Room and Semester");
-		GridBagConstraints gbc_lblSelectARoom = new GridBagConstraints();
-		gbc_lblSelectARoom.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSelectARoom.gridx = 3;
-		gbc_lblSelectARoom.gridy = 2;
-		mainPanel.add(lblSelectARoom, gbc_lblSelectARoom);
 		
 		JLabel lblSemester = new JLabel("Semester:");
 		GridBagConstraints gbc_lblSemester = new GridBagConstraints();
