@@ -1,20 +1,22 @@
+import java.time.LocalDateTime;
+
 public class Booking {
-	private int weekday;
-	private int[] slotsBooked;
+	private LocalDateTime startTime;
+	private LocalDateTime endTime;
 	private Group group;
 	
-	public Booking(int nWeekday, int[] nSlotsBooked, Group nGroup) {
-		weekday = nWeekday;
-		slotsBooked = nSlotsBooked;
+	public Booking(LocalDateTime nStartTime, LocalDateTime nEndTime, Group nGroup) {
+		startTime = nStartTime;
+		endTime = nEndTime;
 		group = nGroup;
 	}
 	
-	public int getWeekday() {
-		return weekday;
+	public LocalDateTime getStartTime() {
+		return startTime;
 	}
 	
-	public int[] getSlotsBooked() {
-		return slotsBooked;
+	public LocalDateTime getEndTime() {
+		return endTime;
 	}
 	
 	public Group getGroup() {
