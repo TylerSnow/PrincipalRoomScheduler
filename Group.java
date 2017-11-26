@@ -3,9 +3,8 @@ public class Group {
 	private String name;
 	private int preferredLevel;
 	
-	public Group(String nName, int nPreferredLevel) {
+	public Group(String nName) {
 		name = nName;
-		preferredLevel = nPreferredLevel;
 	}
 	
 	public void setName(String newName) {
