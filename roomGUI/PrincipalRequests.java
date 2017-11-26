@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JScrollPane;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -31,18 +33,18 @@ public class PrincipalRequests extends JPanel {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		DefaultListModel listModel = new DefaultListModel();
 		
 		JLabel lblPendingRequests = new JLabel("Pending Requests");
 		lblPendingRequests.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblPendingRequests = new GridBagConstraints();
-		gbc_lblPendingRequests.gridwidth = 5;
+		gbc_lblPendingRequests.gridwidth = 6;
 		gbc_lblPendingRequests.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPendingRequests.gridx = 4;
+		gbc_lblPendingRequests.gridx = 3;
 		gbc_lblPendingRequests.gridy = 0;
 		add(lblPendingRequests, gbc_lblPendingRequests);
 		
@@ -56,20 +58,28 @@ public class PrincipalRequests extends JPanel {
 		gbc_list.gridy = 2;
 		add(list, gbc_list);
 		
-		JButton btnNewButton = new JButton("Back");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridwidth = 2;
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 3;
-		gbc_btnNewButton.gridy = 4;
-		add(btnNewButton, gbc_btnNewButton);
+		JButton btnDeny = new JButton("Deny");
+		GridBagConstraints gbc_btnDeny = new GridBagConstraints();
+		gbc_btnDeny.insets = new Insets(0, 0, 5, 5);
+		gbc_btnDeny.gridx = 3;
+		gbc_btnDeny.gridy = 4;
+		add(btnDeny, gbc_btnDeny);
 		
-		JButton btnNewButton_1 = new JButton("Confirm");
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_1.gridx = 8;
-		gbc_btnNewButton_1.gridy = 4;
-		add(btnNewButton_1, gbc_btnNewButton_1);
+		JButton btnApprove = new JButton("Approve");
+		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
+		gbc_btnApprove.insets = new Insets(0, 0, 5, 5);
+		gbc_btnApprove.gridx = 8;
+		gbc_btnApprove.gridy = 4;
+		add(btnApprove, gbc_btnApprove);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new BackButtonListener(frame));
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.gridwidth = 3;
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 5;
+		gbc_btnBack.gridy = 5;
+		add(btnBack, gbc_btnBack);
 
 	}
 
