@@ -44,10 +44,6 @@ public class Request {
 		return priority;
 	}*/
 	
-	/*public String getMessage() {
-		return message;
-	}*/
-	
 	/*public LocalDate getDateRequested() {
 		return dateRequested;
 	}*/

@@ -42,10 +42,9 @@ public class Booking {
 	}
 	
 	public int[] generateIntArray() {
-		int[] timeArray = new int[this.getEndTime().getHour()-this.getStartTime().getHour()+1];
+		int[] timeArray = new int[this.getEndTime().getHour()-this.getStartTime().getHour()];
 		for (int s = 0 ; s < timeArray.length ; s++) {
-			System.out.print("HI" + this.getStartTime().getHour());
-			timeArray[s] = s + this.getStartTime().getHour();	
+			timeArray[s] = s + this.getStartTime().getHour();
 		}
 		return timeArray;
 	}

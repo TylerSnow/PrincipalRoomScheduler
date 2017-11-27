@@ -9,8 +9,8 @@ public class timeSlot {
 	}
 	
 	public void bookSlot(Booking nBooking) {
-		isBooked = true;
-		booked = nBooking;
+		this.booked = nBooking;
+		this.isBooked = true;
 	}
 	
 	public Booking getBooking() {
