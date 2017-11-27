@@ -24,4 +24,8 @@ public class Account {
 	public void setUser(String newUser) {
 		user = newUser;
 	}
+	
+	public boolean matches(Account a) {
+		return (a.getUser().equals(user) && a.getPassword().equals(password));
+	}
 }

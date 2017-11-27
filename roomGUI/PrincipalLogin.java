@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
-import java.awt.List;
+import java.util.List;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -99,12 +99,16 @@ public class PrincipalLogin extends JPanel {
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (textField.getText() != null && passwordField.getText() != null) {
-					List allowed = School.getAuthorizedAccounts();
+					List<Account> allowed = School.getAuthorizedAccounts();
 					String givenU = textField.getText();
 					String givenP = String.valueOf(passwordField.getPassword());
-					for (int i = 0; i < allowed.getWidth(); i++) {
-						
+					Account givenAccount = new Account(givenU, givenP);
+					for (int i = 0; i < allowed.size(); i++) {
+						if (givenAccount.matches(allowed.get(i))) {
+							frame.next();
+						}
 					}
+					
 				}
 			}
 		});
