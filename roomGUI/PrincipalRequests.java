@@ -45,15 +45,24 @@ public class PrincipalRequests extends JPanel {
 		
 		String[] weekDays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		
+		JLabel lblPrincipalRequests = new JLabel("Pending Requests");
+		lblPrincipalRequests.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		GridBagConstraints gbc_lblPrincipalRequests = new GridBagConstraints();
+		gbc_lblPrincipalRequests.gridwidth = 4;
+		gbc_lblPrincipalRequests.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrincipalRequests.gridx = 4;
+		gbc_lblPrincipalRequests.gridy = 0;
+		add(lblPrincipalRequests, gbc_lblPrincipalRequests);
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridheight = 4;
+		gbc_scrollPane.gridheight = 6;
 		gbc_scrollPane.gridwidth = 12;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 2;
+		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 		
 		//School.createSampleRequests();

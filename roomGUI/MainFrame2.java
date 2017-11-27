@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class MainFrame2 extends JFrame {
 	
 	private JPanel princCardPanel;
-	private JPanel princAvailCardPanel;
-	private JPanel princRequestCardPanel;
+	//private JPanel princAvailCardPanel;
+	//private JPanel princRequestCardPanel;
 	private HomePanel homePanel;
 	private PrincipalLogin loginPanel;
 	private PrincipalMenu principalMenu;
@@ -31,8 +31,8 @@ public class MainFrame2 extends JFrame {
 		setBounds(100, 100, 600, 400);
 		
 		princCardPanel = new JPanel(princCards);
-		princAvailCardPanel = new JPanel(princAvailCards);
-		princRequestCardPanel = new JPanel(princRequestCards);
+		//princAvailCardPanel = new JPanel(princAvailCards);
+		//princRequestCardPanel = new JPanel(princRequestCards);
 		
 		homePanel = new HomePanel(this);
 		princCardPanel.add(homePanel, "Home Panel");
@@ -44,6 +44,8 @@ public class MainFrame2 extends JFrame {
 		princCardPanel.add(principalMenu, "Principal Menu");
 
 		princCards.show(princCardPanel, "Home Page");
+		//princCardPanel.add(new RequestPanel(this), "Test page");
+		//princCards.show(princCardPanel, "Test page");
 		add(princCardPanel);
 		repaint();
 		revalidate();
