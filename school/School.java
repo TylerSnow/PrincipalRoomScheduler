@@ -17,6 +17,7 @@ public class School {
 		pendingRequests = nPendingRequests;
 		authorizedAccounts = nAuthorizedAccounts;
 		groupList = nGroupList;
+		authorizedAccounts.add(makeAdmin());
 	}
 	
 	public String getId() {
@@ -41,6 +42,11 @@ public class School {
 	
 	public void addRoom(Room newRoom) {
 		roomList.add(newRoom);
+	}
+	
+	public Account makeAdmin() {
+		Account admin = new Account("admin", "admin");
+		return admin;
 	}
 	
 	/*
