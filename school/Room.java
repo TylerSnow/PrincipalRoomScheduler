@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
-	//availableTimes[0][0] is Sunday at 8am, availableTimes[0][1] is 9am, etc
-	//availableTimes[1][0] is Monday at 8am.
+	//availableTimes[0][0] is Monday at 00:00, availableTimes[0][1] is 01:00, etc
+	//availableTimes[1][0] is Tuesday at 00:00.
 	private timeSlot[][] availableTimes = new timeSlot[7][24];
 	private List<Booking> reservations;
 	private List<Booking> approvedRequests;
@@ -38,7 +38,7 @@ public class Room {
 	}
 	
 	public void addAvailability(DayOfWeek day, int[] time) {
-		int weekday = day.getValue();
+		int weekday = day.getValue()-1;
 		for(int t:time) {
 			availableTimes[weekday][t].makeAvailable();
 		}
@@ -56,7 +56,18 @@ public class Room {
 		for (int c = 0 ; c < 7 ; c++) {
 			System.out.println(c);
 			for (int u= 0 ; u < 24 ; u++) {
-				System.out.print(availableTimes[c][u].isAvailable() + " ");
+				boolean ava = availableTimes[c][u].isAvailable();
+				boolean bvb = availableTimes[c][u].isBooked();
+				//System.out.print(ava + "&" + bvb + " ");
+				if (ava == false) {
+					System.out.print("NotAvail ");
+				} else {
+					if (bvb == true) {
+						System.out.print(availableTimes[c][u].getBooking().getGroup().getName() + " ");
+					} else {
+						System.out.print("NotBooked ");
+					}
+				}
 			}
 			System.out.println("");
 		}
@@ -65,7 +76,7 @@ public class Room {
 	public void addBooking(Booking bookingByAGroup) {
 		approvedRequests.add(bookingByAGroup);
 		for(int t:bookingByAGroup.generateIntArray()) {
-			availableTimes[bookingByAGroup.getDay().getValue()-1][t].isBooked()/*.bookSlot(bookingByAGroup)*/;
+			availableTimes[bookingByAGroup.getDay().getValue()-1][t].bookSlot(bookingByAGroup);
 		}
 	}
 	
