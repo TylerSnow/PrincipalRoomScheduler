@@ -17,6 +17,10 @@ public class Booking {
 		group = nGroup;
 	}
 	
+	public DayOfWeek getWeekday() {
+		return day;
+	}
+	
 	public LocalTime getStartTime() {
 		return startTime;
 	}
@@ -35,5 +39,14 @@ public class Booking {
 	
 	public Group getGroup() {
 		return group;
+	}
+	
+	public int[] generateIntArray() {
+		int[] timeArray = new int[this.getEndTime().getHour()-this.getStartTime().getHour()+1];
+		for (int s = 0 ; s < timeArray.length ; s++) {
+			System.out.print("HI" + this.getStartTime().getHour());
+			timeArray[s] = s + this.getStartTime().getHour();	
+		}
+		return timeArray;
 	}
 }
