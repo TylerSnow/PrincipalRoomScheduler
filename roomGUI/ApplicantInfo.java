@@ -31,6 +31,7 @@ public class ApplicantInfo extends JPanel {
 	private JTextField txtGroup;
 	private String appName;
 	private String groupName;
+	private String message;
 	/**
 	 * Create the panel.
 	 */
@@ -142,15 +143,7 @@ public class ApplicantInfo extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Writes text area to text file.
-				PrintWriter out;
-				try {
-					out = new PrintWriter(new BufferedWriter(new FileWriter("applicantBookReason.txt")));
-					out.write( textArea.getText() );
-					out.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				message=textArea.getText();
 				//Creates a new applicant.
 				school.Group grp=new school.Group(groupName);
 				school.Applicant app=new school.Applicant(appName, grp);
