@@ -44,6 +44,8 @@ public class MainFrame2 extends JFrame {
 		princCardPanel.add(principalMenu, "Principal Menu");
 
 		princCards.show(princCardPanel, "Home Page");
+		//princCardPanel.add(new RequestPanel(this), "Test page");
+		//princCards.show(princCardPanel, "Test page");
 		add(princCardPanel);
 		repaint();
 		revalidate();
