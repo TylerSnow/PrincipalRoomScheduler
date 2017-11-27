@@ -26,6 +26,7 @@ public class PrincipalLogin extends JPanel {
 	private JPanel mainPanel;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	JLabel invalidLabel;
 	private final MainFrame2 frame;
 
 	/**
@@ -85,14 +86,26 @@ public class PrincipalLogin extends JPanel {
 		gbc_passwordField.gridx = 2;
 		gbc_passwordField.gridy = 6;
 		mainPanel.add(passwordField, gbc_passwordField);
-		
+				
 		JButton backButton = new JButton("Back");
-		backButton.addActionListener(new BackButtonListener(frame));
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.home();
+			}
+		});
+		
+		invalidLabel = new JLabel("Invalid Information");
+		invalidLabel.setVisible(false);
+		GridBagConstraints gbc_lblInvalidInformation = new GridBagConstraints();
+		gbc_lblInvalidInformation.insets = new Insets(0, 0, 5, 5);
+		gbc_lblInvalidInformation.gridx = 4;
+		gbc_lblInvalidInformation.gridy = 7;
+		mainPanel.add(invalidLabel, gbc_lblInvalidInformation);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton.gridx = 3;
-		gbc_btnNewButton.gridy = 7;
+		gbc_btnNewButton.gridy = 8;
 		mainPanel.add(backButton, gbc_btnNewButton);
 		
 		JButton btnEnter = new JButton("Enter");
@@ -108,16 +121,16 @@ public class PrincipalLogin extends JPanel {
 							frame.next();
 						}
 					}
-					
+					invalidLabel.setVisible(true);					
 				}
 			}
 		});
 		btnEnter.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_btnEnter = new GridBagConstraints();
 		gbc_btnEnter.anchor = GridBagConstraints.EAST;
-		gbc_btnEnter.insets = new Insets(0, 0, 5, 5);
+		gbc_btnEnter.insets = new Insets(0, 0, 0, 5);
 		gbc_btnEnter.gridx = 4;
-		gbc_btnEnter.gridy = 7;
+		gbc_btnEnter.gridy = 8;
 		mainPanel.add(btnEnter, gbc_btnEnter);
 		
 		EnterListener enterListener = new EnterListener(btnEnter);
@@ -130,6 +143,7 @@ public class PrincipalLogin extends JPanel {
 	public void reset() {
 		textField.setText("");
 		passwordField.setText("");
+		invalidLabel.setVisible(false);
 	}
 
 }
