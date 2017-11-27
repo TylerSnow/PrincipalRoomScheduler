@@ -2,9 +2,16 @@ package roomGUI;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import school.Room;
+import school.School;
+import school.Request;
+import school.Account;
+import school.Group;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame2 extends JFrame {
 	
@@ -26,6 +33,9 @@ public class MainFrame2 extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame2() {
+		School school = new School(new ArrayList<Room>(), "bish", new ArrayList<Request>(),
+				new ArrayList<Account>(), new ArrayList<Group>());
+		
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
