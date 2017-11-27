@@ -1,42 +1,27 @@
 package school;
-import java.util.List;
 
-public class School {
-	private List<Room> roomList;
-	private String id;
-	private List<Request> pendingRequests;
-	private List<Account> authorizedAccounts;
-	private List<Group> groupList;
+public class Account {
+	private String user;
+	private String password;
 	
-	public School(List<Room> nRoomList, String nId, List<Request> nPendingRequests, List<Account> nAuthorizedAccounts, List<Group> nGroupList) {
-		roomList = nRoomList;
-		id = nId;
-		pendingRequests = nPendingRequests;
-		authorizedAccounts = nAuthorizedAccounts;
-		groupList = nGroupList;
+	public Account(String nUser, String nPass) {
+		user = nUser;
+		password = nPass;
 	}
 	
-	public String getId() {
-		return id;
+	public String getUser() {
+		return user;
 	}
 	
-	public List<Room> getRoomList(){
-		return roomList;
+	public String getPassword() {
+		return password;
 	}
 	
-	public List<Request> getPendingRequests(){
-		return pendingRequests;
+	public void setPassword(String newPass) {
+		password = newPass;
 	}
 	
-	public List<Account> getAuthorizedAccounts(){
-		return authorizedAccounts;
-	}
-	
-	public List<Group> getGroupList(){
-		return groupList;
-	}
-	
-	public void addRoom(Room newRoom) {
-		roomList.add(newRoom);
+	public void setUser(String newUser) {
+		user = newUser;
 	}
 }
