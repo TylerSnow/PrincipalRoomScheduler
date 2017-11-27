@@ -5,16 +5,16 @@ public class Request {
 	private Applicant applicant;
 	private int numSlots;
 	private Room room;
-	private Booking booking;
+	private Booking[] bookings;
 	private int priority;
 	private String message;
 	private LocalDate dateRequested;
 	
-	public Request(Applicant nApplicant, int nNumSlots, Room r, Booking b, int nPriority, String nMessage, LocalDate nDateRequested) {
+	public Request(Applicant nApplicant, int nNumSlots, Room r, Booking[] b, int nPriority, String nMessage, LocalDate nDateRequested) {
 		applicant = nApplicant;
 		numSlots = nNumSlots;
 		room = r;
-		booking = b;
+		bookings = b;
 		priority = nPriority;
 		message = nMessage;
 		dateRequested = nDateRequested;
@@ -32,8 +32,8 @@ public class Request {
 		return room;
 	}
 	
-	public Booking getBooking() {
-		return booking;
+	public Booking[] getBookings() {
+		return bookings;
 	}
 	
 	public int getPriority() {
@@ -53,3 +53,4 @@ public class Request {
 		approvedBooking.getRoom().
 	}*/
 }
+
