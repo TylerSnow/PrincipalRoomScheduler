@@ -5,13 +5,20 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
+import java.awt.List;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.SwingConstants;
+
+import school.Account;
+import school.School;
 
 import java.awt.Font;
 
@@ -89,7 +96,18 @@ public class PrincipalLogin extends JPanel {
 		mainPanel.add(backButton, gbc_btnNewButton);
 		
 		JButton btnEnter = new JButton("Enter");
-		btnEnter.addActionListener(new NextButtonListener(frame));
+		btnEnter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (textField.getText() != null && passwordField.getText() != null) {
+					List allowed = School.getAuthorizedAccounts();
+					String givenU = textField.getText();
+					String givenP = String.valueOf(passwordField.getPassword());
+					for (int i = 0; i < allowed.getWidth(); i++) {
+						
+					}
+				}
+			}
+		});
 		btnEnter.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_btnEnter = new GridBagConstraints();
 		gbc_btnEnter.anchor = GridBagConstraints.EAST;
