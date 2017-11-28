@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JScrollPane;
 
 public class RequestPanelTSP extends JPanel {
 	private final MainFrame2 frame;
@@ -43,21 +44,30 @@ public class RequestPanelTSP extends JPanel {
 		String[] priorities= {"1","2","3","4","5"};
 		
 		GridBagLayout gbl_mainPanel = new GridBagLayout();
-		gbl_mainPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_mainPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_mainPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_mainPanel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0};
+		gbl_mainPanel.columnWidths = new int[]{0, 0, 0};
+		gbl_mainPanel.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_mainPanel.columnWeights = new double[]{1.0, 1.0, 0.0};
+		gbl_mainPanel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0};
 		mainPanel.setLayout(gbl_mainPanel);
 		
 		JLabel txtChooseATimeslot = new JLabel("Choose a start time.");
 		GridBagConstraints gbc_txtChooseATimeslot = new GridBagConstraints();
 		gbc_txtChooseATimeslot.insets = new Insets(0, 0, 5, 5);
 		gbc_txtChooseATimeslot.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtChooseATimeslot.gridx = 3;
+		gbc_txtChooseATimeslot.gridx = 1;
 		gbc_txtChooseATimeslot.gridy = 0;
 		mainPanel.add(txtChooseATimeslot, gbc_txtChooseATimeslot);
 		
+		JScrollPane sTimePane = new JScrollPane();
+		GridBagConstraints gbc_sTimePane = new GridBagConstraints();
+		gbc_sTimePane.fill = GridBagConstraints.BOTH;
+		gbc_sTimePane.insets = new Insets(0, 0, 5, 5);
+		gbc_sTimePane.gridx = 1;
+		gbc_sTimePane.gridy = 1;
+		mainPanel.add(sTimePane, gbc_sTimePane);
+		
 		JList timeList = new JList(timeSlots);
+		sTimePane.setViewportView(timeList);
 		timeList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				timeSlotStart=timeSlots[timeList.getSelectedIndex()];
@@ -68,90 +78,61 @@ public class RequestPanelTSP extends JPanel {
 		//Can possibly be modified to have multiple selections at once.
 		timeList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		GridBagConstraints gbc_timeList = new GridBagConstraints();
-		gbc_timeList.insets = new Insets(0, 0, 5, 5);
-		gbc_timeList.fill = GridBagConstraints.BOTH;
-		gbc_timeList.gridx = 3;
-		gbc_timeList.gridy = 1;
-		mainPanel.add(timeList, gbc_timeList);
-		
 		JLabel txtChooseEndTimeslot = new JLabel("Choose an end time.");
 		GridBagConstraints gbc_txtChooseEndTimeslot = new GridBagConstraints();
-		gbc_txtChooseEndTimeslot.insets = new Insets(0, 0, 5, 5);
+		gbc_txtChooseEndTimeslot.insets = new Insets(0, 0, 5, 0);
 		gbc_txtChooseEndTimeslot.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtChooseEndTimeslot.gridx = 3;
-		gbc_txtChooseEndTimeslot.gridy = 2;
-		mainPanel.add(txtChooseEndTimeslot, gbc_txtChooseATimeslot);
-
+		gbc_txtChooseEndTimeslot.gridx = 2;
+		gbc_txtChooseEndTimeslot.gridy = 0;
+		mainPanel.add(txtChooseEndTimeslot, gbc_txtChooseEndTimeslot);
 		
-		JList timeEndList = new JList(timeSlots);
-		timeEndList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				timeSlotEnd=timeSlots[timeEndList.getSelectedIndex()];
-			}
-		});
+		JScrollPane sEndTimePane = new JScrollPane();
+		GridBagConstraints gbc_sEndTimePane = new GridBagConstraints();
+		gbc_sEndTimePane.fill = GridBagConstraints.BOTH;
+		gbc_sEndTimePane.insets = new Insets(0, 0, 5, 0);
+		gbc_sEndTimePane.gridx = 2;
+		gbc_sEndTimePane.gridy = 1;
+		mainPanel.add(sEndTimePane, gbc_sEndTimePane);
+		
+				
+				JList timeEndList = new JList(timeSlots);
+				sEndTimePane.setViewportView(timeEndList);
+				timeEndList.addListSelectionListener(new ListSelectionListener() {
+					public void valueChanged(ListSelectionEvent e) {
+						timeSlotEnd=timeSlots[timeEndList.getSelectedIndex()];
+					}
+				});
 	
 		timeEndList.setVisibleRowCount(1);
 		//Can possibly be modified to have multiple selections at once.
 		timeEndList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		GridBagConstraints gbc_timeEndList = new GridBagConstraints();
-		gbc_timeEndList.insets = new Insets(0, 0, 5, 5);
-		gbc_timeEndList.fill = GridBagConstraints.BOTH;
-		gbc_timeEndList.gridx = 3;
-		gbc_timeEndList.gridy = 3;
-		mainPanel.add(timeEndList, gbc_timeEndList);
-		
-		txtChooseADay = new JTextField();
-		txtChooseADay.setEditable(false);
-		txtChooseADay.setText("Choose a Day.");
+		JLabel txtChooseADay = new JLabel("Choose a Day");
 		GridBagConstraints gbc_txtChooseADay = new GridBagConstraints();
 		gbc_txtChooseADay.insets = new Insets(0, 0, 5, 5);
 		gbc_txtChooseADay.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtChooseADay.gridx = 3;
-		gbc_txtChooseADay.gridy = 4;
+		gbc_txtChooseADay.gridx = 1;
+		gbc_txtChooseADay.gridy = 2;
 		mainPanel.add(txtChooseADay, gbc_txtChooseADay);
-		txtChooseADay.setColumns(10);
 		
-		JList dayList = new JList(days);
-		dayList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				day=days[dayList.getSelectedIndex()];
-			}
-		});
+		JScrollPane sDayPane = new JScrollPane();
+		GridBagConstraints gbc_sDayPane = new GridBagConstraints();
+		gbc_sDayPane.fill = GridBagConstraints.BOTH;
+		gbc_sDayPane.insets = new Insets(0, 0, 5, 5);
+		gbc_sDayPane.gridx = 1;
+		gbc_sDayPane.gridy = 3;
+		mainPanel.add(sDayPane, gbc_sDayPane);
+		
+				JList dayList = new JList(days);
+				sDayPane.setViewportView(dayList);
+				dayList.addListSelectionListener(new ListSelectionListener() {
+					public void valueChanged(ListSelectionEvent e) {
+						day=days[dayList.getSelectedIndex()];
+					}
+				});
 	
-		dayList.setVisibleRowCount(5);
+		dayList.setVisibleRowCount(1);
 		dayList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		GridBagConstraints gbc_dayList = new GridBagConstraints();
-		gbc_dayList.insets = new Insets(0, 0, 5, 5);
-		gbc_dayList.fill = GridBagConstraints.BOTH;
-		gbc_dayList.gridx = 3;
-		gbc_dayList.gridy = 5;
-		mainPanel.add(dayList, gbc_dayList);
-		
-		txtPriority = new JTextField();
-		txtPriority.setEditable(false);
-		txtPriority.setText("Select Priority.");
-		GridBagConstraints gbc_txtPriority = new GridBagConstraints();
-		gbc_txtPriority.insets = new Insets(0, 0, 5, 5);
-		gbc_txtPriority.gridx = 3;
-		gbc_txtPriority.gridy = 6;
-		mainPanel.add(txtPriority, gbc_txtPriority);
-		
-		JList priorityList = new JList(priorities);
-		priorityList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				priority=priorities[priorityList.getSelectedIndex()];
-			}
-		});
-		priorityList.setVisibleRowCount(5);
-		priorityList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		GridBagConstraints gbc_priorityList = new GridBagConstraints();
-		gbc_priorityList.insets = new Insets(0, 0, 5, 5);
-		gbc_priorityList.fill = GridBagConstraints.BOTH;
-		gbc_priorityList.gridx = 3;
-		gbc_priorityList.gridy = 7;
-		mainPanel.add(priorityList, gbc_priorityList);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addMouseListener(new MouseAdapter() {
@@ -162,9 +143,9 @@ public class RequestPanelTSP extends JPanel {
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.anchor = GridBagConstraints.EAST;
-		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 2;
-		gbc_btnBack.gridy = 8;
+		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBack.gridx = 0;
+		gbc_btnBack.gridy = 4;
 		mainPanel.add(btnBack, gbc_btnBack);
 		
 		JButton btnNextRequest = new JButton("Next Request");
@@ -177,9 +158,9 @@ public class RequestPanelTSP extends JPanel {
 		});
 		GridBagConstraints gbc_btnNextRequest = new GridBagConstraints();
 		gbc_btnNextRequest.anchor = GridBagConstraints.EAST;
-		gbc_btnNextRequest.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNextRequest.gridx = 3;
-		gbc_btnNextRequest.gridy = 8;
+		gbc_btnNextRequest.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNextRequest.gridx = 1;
+		gbc_btnNextRequest.gridy = 4;
 		mainPanel.add(btnNextRequest, gbc_btnNextRequest);
 		
 		JButton btnSubmit = new JButton("Submit");
@@ -195,9 +176,8 @@ public class RequestPanelTSP extends JPanel {
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
-		gbc_btnSubmit.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSubmit.gridx = 4;
-		gbc_btnSubmit.gridy = 8;
+		gbc_btnSubmit.gridx = 2;
+		gbc_btnSubmit.gridy = 4;
 		mainPanel.add(btnSubmit, gbc_btnSubmit);
 		
 	}
