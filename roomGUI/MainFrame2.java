@@ -17,9 +17,9 @@ import java.util.List;
 public class MainFrame2 extends JFrame {
 	
 	private JPanel princCardPanel;
+	private JPanel homePanel;
 	//private JPanel princAvailCardPanel;
 	//private JPanel princRequestCardPanel;
-	private HomePanel homePanel;
 	private PrincipalLogin loginPanel;
 	private PrincipalMenu principalMenu;
 	private RoomAndSemester princRoomPanel;
@@ -51,7 +51,6 @@ public class MainFrame2 extends JFrame {
 		//princRequestCardPanel = new JPanel(princRequestCards);
 		
 		homePanel = new HomePanel(this);
-		princCardPanel.add(homePanel, "Home Panel");
 		
 		loginPanel = new PrincipalLogin(this);
 		princCardPanel.add(loginPanel, "Login Panel");
@@ -67,15 +66,40 @@ public class MainFrame2 extends JFrame {
 		appCardPanel.add(reqPanel,"Request Panel Name");
 		appCardPanel.add(reqPanelTSP,"Request Panel Timeslot");
 
-		princCards.show(princCardPanel, "Home Page");
+		princCards.show(princCardPanel, "Login Panel");
 		//princCardPanel.add(new RequestPanel(this), "Test page");
 		//princCards.show(princCardPanel, "Test page");
 		add(appCardPanel);
 		add(princCardPanel);
+		add(homePanel);
 		repaint();
 		revalidate();
 	}
 	
+
+	//Displays Card Panels
+	public void displayPrinc(){
+		princCardPanel.setVisible(true);
+		repaint();
+		revalidate();
+	}
+	public void displayApp(){
+		appCardPanel.setVisible(true);
+	}
+	public void displayHome(){
+		homePanel.setVisible(false);
+	}
+
+	public void hidePrince(){
+		princCardPanel.setVisible(false);
+	}
+	public void hideApp(){
+		appCardPanel.setVisible(false);
+	}
+	public void hideHome(){
+		homePanel.setVisible(false);
+	}
+
 	public void next() {
 		princCards.next(princCardPanel);
 	}

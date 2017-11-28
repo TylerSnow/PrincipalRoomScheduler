@@ -1,7 +1,8 @@
 package roomGUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -47,7 +48,14 @@ public class HomePanel extends JPanel {
 		buttonPanel.setLayout(gbl_buttonPanel);
 		
 		JButton princButton = new JButton("Enter As Principal");
-		princButton.addActionListener(new NextButtonListener(frame));
+		princButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.hideHome();				
+				frame.displayPrinc();				
+			}
+		});
+
 		GridBagConstraints gbc_btnEnterAsPrincipal = new GridBagConstraints();
 		gbc_btnEnterAsPrincipal.gridheight = 2;
 		gbc_btnEnterAsPrincipal.insets = new Insets(0, 0, 0, 5);
