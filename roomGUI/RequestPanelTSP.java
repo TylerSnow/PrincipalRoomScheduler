@@ -28,6 +28,7 @@ public class RequestPanelTSP extends JPanel {
 	private JTextField txtChooseEndTimeslot;
 	private JTextField txtChooseADay;
 	private JTextField txtPriority;
+	private PriorityIncrementer priInc;
 	/**
 	 * Create the panel.
 	 */
@@ -35,6 +36,8 @@ public class RequestPanelTSP extends JPanel {
 		frame=f;
 		mainPanel = new JPanel();
 		add(mainPanel);
+		
+		priInc= new PriorityIncrementer();
 		
 		String[] timeSlots = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
 				"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
@@ -138,7 +141,7 @@ public class RequestPanelTSP extends JPanel {
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.reqShow();
+					frame.reqShow();
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
@@ -152,8 +155,14 @@ public class RequestPanelTSP extends JPanel {
 		btnNextRequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Go to RequestPanel.java to make another request
-				frame.reqShow();
+				if (priInc.getInc()>=0) {
+					priInc.removePri();
+					frame.reqShow();
+					
+				}
+				else {
+					System.out.println("Cannot make more requests.");
+				}
 			}
 		});
 		GridBagConstraints gbc_btnNextRequest = new GridBagConstraints();
