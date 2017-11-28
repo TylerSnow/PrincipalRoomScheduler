@@ -50,18 +50,37 @@ public class School {
 		return admin;
 	}
 	
+	public static void AddPendingRequest(Request r) {
+		School.pendingRequests.add(r);
+	}
+	
 	public static void createSampleRequests() {
 		Group MathClub = new Group("Math Club");
-		pendingRequests.add(new Request(new Applicant("Steve", MathClub), new Room("Gymnasium", 2),
-				new Booking(LocalTime.parse("02:00"), LocalTime.parse("02:00"), Semester.FALL, DayOfWeek.MONDAY, MathClub), 
-				1, "Math Competition", LocalDate.now()));
-		Group HockeyTeam = new Group("Hockey Team");
-		pendingRequests.add(new Request(new Applicant("Bob", HockeyTeam), new Room("ChemLab", 1),
-				new Booking(LocalTime.parse("03:00"), LocalTime.parse("03:00"), Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
-				2, "Practice", LocalDate.now()));
 		Group ChessClub = new Group("Chess Club");
-		pendingRequests.add(new Request(new Applicant("Jim", ChessClub), new Room("Library", 3),
-				new Booking(LocalTime.parse("04:00"), LocalTime.parse("04:00"), Semester.FALL, DayOfWeek.THURSDAY, ChessClub),
-				3, "Tournament", LocalDate.now()));
+		Group HockeyTeam = new Group("Hockey Team");
+		Booking[] mb1 = {
+				new Booking(LocalTime.parse("01:00"),LocalTime.parse("02:00"),Semester.FALL, DayOfWeek.MONDAY, MathClub),
+				new Booking(LocalTime.parse("02:00"),LocalTime.parse("03:00"),Semester.FALL, DayOfWeek.MONDAY, MathClub),
+				new Booking(LocalTime.parse("03:00"),LocalTime.parse("04:00"),Semester.FALL, DayOfWeek.MONDAY, MathClub),
+				new Booking(LocalTime.parse("04:00"),LocalTime.parse("05:00"),Semester.FALL, DayOfWeek.MONDAY, MathClub),
+				new Booking(LocalTime.parse("05:00"),LocalTime.parse("06:00"),Semester.FALL, DayOfWeek.MONDAY, MathClub),
+				};
+		Booking[] cb1 = {
+				new Booking(LocalTime.parse("01:00"),LocalTime.parse("02:00"),Semester.FALL, DayOfWeek.FRIDAY, ChessClub),
+				new Booking(LocalTime.parse("02:00"),LocalTime.parse("03:00"),Semester.FALL, DayOfWeek.FRIDAY, ChessClub),
+				new Booking(LocalTime.parse("03:00"),LocalTime.parse("04:00"),Semester.FALL, DayOfWeek.FRIDAY, ChessClub),
+				new Booking(LocalTime.parse("04:00"),LocalTime.parse("05:00"),Semester.FALL, DayOfWeek.FRIDAY, ChessClub),
+				new Booking(LocalTime.parse("05:00"),LocalTime.parse("06:00"),Semester.FALL, DayOfWeek.FRIDAY, ChessClub),
+				};
+		Booking[] hb1 = {
+				new Booking(LocalTime.parse("01:00"),LocalTime.parse("02:00"),Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
+				new Booking(LocalTime.parse("02:00"),LocalTime.parse("03:00"),Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
+				new Booking(LocalTime.parse("03:00"),LocalTime.parse("04:00"),Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
+				new Booking(LocalTime.parse("04:00"),LocalTime.parse("05:00"),Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
+				new Booking(LocalTime.parse("05:00"),LocalTime.parse("06:00"),Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
+				};
+		Request samReq1 = new Request(new Applicant("Jen", MathClub), 1, new Room("ChemLab", 1), mb1, "Math Club Tournament");
+		Request samReq2 = new Request(new Applicant("Bob", MathClub), 2, new Room("Library", 2), cb1, "Chess Meeting");
+		Request samReq3 = new Request(new Applicant("Steve", MathClub), 1, new Room("Gym", 3), hb1, "Hockey Practice");
 	}
 }

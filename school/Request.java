@@ -18,6 +18,7 @@ public class Request {
 		//priority = nPriority;
 		message = nMessage;
 		//dateRequested = nDateRequested;
+		School.AddPendingRequest(this);
 	}
 	
 	public Applicant getApplicant() {
