@@ -67,20 +67,13 @@ public class School {
 		for (String day : dayOfWeek) {
 			DayOfWeek d = null;
 			switch (day) {
-				case "Monday" : day = "Monday" ;
-					d = DayOfWeek.MONDAY;
-				case "Tuesday" : day = "Tuesday" ;
-					d = DayOfWeek.TUESDAY;
-				case "Wednesday" : day = "Wednesday" ;
-					d = DayOfWeek.WEDNESDAY;
-				case "Thursday" : day = "Thursday" ;
-					d = DayOfWeek.THURSDAY;
-				case "Friday" : day = "Friday" ; 
-					d = DayOfWeek.FRIDAY;
-				case "Saturday" : day = "Saturday" ;
-					d = DayOfWeek.SATURDAY;
-				case "Sunday" : day = "Sunday" ;
-					d = DayOfWeek.SUNDAY;
+				case "Monday" : d = DayOfWeek.MONDAY;
+				case "Tuesday" : d = DayOfWeek.TUESDAY;
+				case "Wednesday" : d = DayOfWeek.WEDNESDAY;
+				case "Thursday" : d = DayOfWeek.THURSDAY;
+				case "Friday" : d = DayOfWeek.FRIDAY;
+				case "Saturday" : d = DayOfWeek.SATURDAY;
+				case "Sunday" : d = DayOfWeek.SUNDAY;
 			}
 			for (Room r : School.getRoomList()) {
 				if (r.getName() == roomName) {
