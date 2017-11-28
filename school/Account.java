@@ -7,6 +7,7 @@ public class Account {
 	public Account(String nUser, String nPass) {
 		user = nUser;
 		password = nPass;
+		School.AddAuthorizedUser(this);
 	}
 	
 	public String getUser() {

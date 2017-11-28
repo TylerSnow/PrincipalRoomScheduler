@@ -50,6 +50,14 @@ public class School {
 		School.pendingRequests.add(r);
 	}
 	
+	public static void AddAuthorizedUser(Account a) {
+		School.authorizedAccounts.add(a);
+	}
+	
+	public static void AddGroup(Group g) {
+		School.groupList.add(g);
+	}
+	
 	public static void addRoomAvailability(String roomName, LocalTime startTime, LocalTime endTime, List<String> dayOfWeek, String s) {
 		Semester sem = Semester.toSem(s);
 		int[] timeArray = new int[endTime.getHour()-startTime.getHour()];
@@ -82,6 +90,7 @@ public class School {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	public static void createSampleRequests() {
 		Group MathClub = new Group("Math Club");
 		Group ChessClub = new Group("Chess Club");
