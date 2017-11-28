@@ -72,28 +72,20 @@ public class PrincipalRequests extends JPanel {
 		gbc_list.gridy = 3;
 		add(list, gbc_list);
 		
-		JButton btnDeny = new JButton("Deny");
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new BackButtonListener(frame));
 		GridBagConstraints gbc_btnDeny = new GridBagConstraints();
 		gbc_btnDeny.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDeny.gridx = 3;
 		gbc_btnDeny.gridy = 7;
-		add(btnDeny, gbc_btnDeny);
+		add(btnBack, gbc_btnDeny);
 		
-		JButton btnApprove = new JButton("Approve");
+		JButton btnView = new JButton("View");
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
 		gbc_btnApprove.insets = new Insets(0, 0, 5, 5);
 		gbc_btnApprove.gridx = 8;
 		gbc_btnApprove.gridy = 7;
-		add(btnApprove, gbc_btnApprove);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new BackButtonListener(frame));
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.gridwidth = 3;
-		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBack.gridx = 4;
-		gbc_btnBack.gridy = 8;
-		add(btnBack, gbc_btnBack);
+		add(btnView, gbc_btnApprove);
 
 	}
 
