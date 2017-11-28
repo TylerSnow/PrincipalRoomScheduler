@@ -29,6 +29,12 @@ public class MainFrame2 extends JFrame {
 	private CardLayout princCards = new CardLayout();
 	private CardLayout princAvailCards = new CardLayout();
 	private CardLayout princRequestCards = new CardLayout();
+
+	private JPanel appCardPanel;
+	private CardLayout appCards = new CardLayout();
+	private ApplicantInfo appPanel;	
+	private RequestPanel reqPanel;
+	private RequestPanelTSP reqPanelTSP;
 	
 	/**
 	 * Create the frame.
@@ -53,9 +59,18 @@ public class MainFrame2 extends JFrame {
 		principalMenu = new PrincipalMenu(this);
 		princCardPanel.add(principalMenu, "Principal Menu");
 
+		appCardPanel= new JPanel(appCards);
+		appPanel = new ApplicantInfo(this);
+		reqPanel=new RequestPanel(this);
+		reqPanelTSP=new RequestPanelTSP(this);
+		appCardPanel.add(appPanel,"Applicant Panel");
+		appCardPanel.add(reqPanel,"Request Panel Name");
+		appCardPanel.add(reqPanelTSP,"Request Panel Timeslot");
+
 		princCards.show(princCardPanel, "Home Page");
 		//princCardPanel.add(new RequestPanel(this), "Test page");
 		//princCards.show(princCardPanel, "Test page");
+		add(appCardPanel);
 		add(princCardPanel);
 		repaint();
 		revalidate();
@@ -97,6 +112,15 @@ public class MainFrame2 extends JFrame {
 	
 	public void princMenu() {
 		princCards.show(princCardPanel, "Principal Menu");
+	}
+	public void appShow(){
+		appCards.show(appCardPanel,"Applicant Panel");
+	}
+	public void reqShow(){
+		appCards.show(appCardPanel,"Request Panel Name");
+	}
+	public void reqTSPShow(){
+		appCards.show(appCardPanel,"Request Panel Timeslot");
 	}
 	
 	public void showAvailabilityPanel(String semester, String room) {
