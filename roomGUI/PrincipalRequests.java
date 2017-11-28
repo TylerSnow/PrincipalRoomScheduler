@@ -53,40 +53,46 @@ public class PrincipalRequests extends JPanel {
 		gbc_lblPrincipalRequests.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrincipalRequests.gridx = 4;
 		gbc_lblPrincipalRequests.gridy = 0;
-		add(lblPrincipalRequests, gbc_lblPrincipalRequests);
+		add(lblPrincipalRequests, gbc_lblPrincipalRequests);		
 		
 		ArrayList<Request> allPending = (ArrayList<Request>) School.getPendingRequests();
+		Object[] data = new String[allPending.size()];
+		for(int i = 0; i < data.length; i++) {
+			data[i] = allPending.get(i).toString();
+		}
 		
-		java.awt.List list = new java.awt.List();
+		JList list = new JList(data);
 		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.gridwidth = 6;
+		gbc_list.gridheight = 3;
+		gbc_list.gridwidth = 10;
 		gbc_list.insets = new Insets(0, 0, 5, 5);
-		gbc_list.gridx = 3;
+		gbc_list.fill = GridBagConstraints.BOTH;
+		gbc_list.gridx = 1;
 		gbc_list.gridy = 3;
 		add(list, gbc_list);
 		
-		JButton btnDeny = new JButton("Deny");
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new BackButtonListener(frame));
 		GridBagConstraints gbc_btnDeny = new GridBagConstraints();
 		gbc_btnDeny.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDeny.gridx = 3;
 		gbc_btnDeny.gridy = 7;
-		add(btnDeny, gbc_btnDeny);
+		add(btnBack, gbc_btnDeny);
 		
-		JButton btnApprove = new JButton("Approve");
+		JButton btnView = new JButton("View");
+		btnView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (list.getSelectedValue() != null) {
+					//frame.viewRequest(allPending.get(list.getSelectedIndex()));
+					
+				}
+			}
+		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
 		gbc_btnApprove.insets = new Insets(0, 0, 5, 5);
 		gbc_btnApprove.gridx = 8;
 		gbc_btnApprove.gridy = 7;
-		add(btnApprove, gbc_btnApprove);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new BackButtonListener(frame));
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.gridwidth = 3;
-		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBack.gridx = 4;
-		gbc_btnBack.gridy = 8;
-		add(btnBack, gbc_btnBack);
+		add(btnView, gbc_btnApprove);
 
 	}
 
