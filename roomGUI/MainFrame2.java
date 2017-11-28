@@ -18,6 +18,7 @@ public class MainFrame2 extends JFrame {
 	
 	private JPanel princCardPanel;
 	private JPanel homePanel;
+	private JPanel mainCardPanel;
 	//private JPanel princAvailCardPanel;
 	//private JPanel princRequestCardPanel;
 	private PrincipalLogin loginPanel;
@@ -29,7 +30,8 @@ public class MainFrame2 extends JFrame {
 	private CardLayout princCards = new CardLayout();
 	private CardLayout princAvailCards = new CardLayout();
 	private CardLayout princRequestCards = new CardLayout();
-
+	private CardLayout mainCards= new CardLayout();
+	
 	private JPanel appCardPanel;
 	private CardLayout appCards = new CardLayout();
 	private ApplicantInfo appPanel;	
@@ -50,6 +52,8 @@ public class MainFrame2 extends JFrame {
 		//princAvailCardPanel = new JPanel(princAvailCards);
 		//princRequestCardPanel = new JPanel(princRequestCards);
 		
+		
+		
 		homePanel = new HomePanel(this);
 		
 		loginPanel = new PrincipalLogin(this);
@@ -65,13 +69,20 @@ public class MainFrame2 extends JFrame {
 		appCardPanel.add(appPanel,"Applicant Panel");
 		appCardPanel.add(reqPanel,"Request Panel Name");
 		appCardPanel.add(reqPanelTSP,"Request Panel Timeslot");
-
+		
+		//Main Card layout that contains homepanel,appcardpanel,princcardpanel
+		mainCardPanel=new JPanel(mainCards);
+		mainCardPanel.add(homePanel,"HomePanel");
+		mainCardPanel.add(princCardPanel,"Principal Card");
+		mainCardPanel.add(appCardPanel,"Applicant Card");
+		
 		princCards.show(princCardPanel, "Login Panel");
 		//princCardPanel.add(new RequestPanel(this), "Test page");
 		//princCards.show(princCardPanel, "Test page");
-		add(appCardPanel);
-		add(princCardPanel);
-		add(homePanel);
+		//add(appCardPanel);
+		//add(princCardPanel);
+		//add(homePanel);
+		add(mainCardPanel);
 		repaint();
 		revalidate();
 	}
@@ -80,8 +91,6 @@ public class MainFrame2 extends JFrame {
 	//Displays Card Panels
 	public void displayPrinc(){
 		princCardPanel.setVisible(true);
-		repaint();
-		revalidate();
 	}
 	public void displayApp(){
 		appCardPanel.setVisible(true);
