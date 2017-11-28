@@ -77,7 +77,7 @@ public class RequestPanelTSP extends JPanel {
 			}
 		});
 	
-		timeList.setVisibleRowCount(1);
+		timeList.setVisibleRowCount(5);
 		//Can possibly be modified to have multiple selections at once.
 		timeList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -106,7 +106,7 @@ public class RequestPanelTSP extends JPanel {
 					}
 				});
 	
-		timeEndList.setVisibleRowCount(1);
+		timeEndList.setVisibleRowCount(5);
 		//Can possibly be modified to have multiple selections at once.
 		timeEndList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -134,7 +134,7 @@ public class RequestPanelTSP extends JPanel {
 					}
 				});
 	
-		dayList.setVisibleRowCount(1);
+		dayList.setVisibleRowCount(3);
 		dayList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JButton btnBack = new JButton("Back");
