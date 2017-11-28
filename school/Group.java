@@ -6,6 +6,7 @@ public class Group {
 	
 	public Group(String nName) {
 		name = nName;
+		School.AddGroup(this);
 	}
 	
 	public void setName(String newName) {

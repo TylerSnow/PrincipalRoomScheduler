@@ -50,6 +50,14 @@ public class School {
 		School.pendingRequests.add(r);
 	}
 	
+	public static void AddAuthorizedUser(Account a) {
+		School.authorizedAccounts.add(a);
+	}
+	
+	public static void AddGroup(Group g) {
+		School.groupList.add(g);
+	}
+	
 	public static void addRoomAvailability(String roomName, LocalTime startTime, LocalTime endTime, List<String> dayOfWeek, String s) {
 		Semester sem = Semester.toSem(s);
 		int[] timeArray = new int[endTime.getHour()-startTime.getHour()];
@@ -59,20 +67,13 @@ public class School {
 		for (String day : dayOfWeek) {
 			DayOfWeek d = null;
 			switch (day) {
-				case "Monday" : day = "Monday" ;
-					d = DayOfWeek.MONDAY;
-				case "Tuesday" : day = "Tuesday" ;
-					d = DayOfWeek.TUESDAY;
-				case "Wednesday" : day = "Wednesday" ;
-					d = DayOfWeek.WEDNESDAY;
-				case "Thursday" : day = "Thursday" ;
-					d = DayOfWeek.THURSDAY;
-				case "Friday" : day = "Friday" ; 
-					d = DayOfWeek.FRIDAY;
-				case "Saturday" : day = "Saturday" ;
-					d = DayOfWeek.SATURDAY;
-				case "Sunday" : day = "Sunday" ;
-					d = DayOfWeek.SUNDAY;
+				case "Monday" : d = DayOfWeek.MONDAY;
+				case "Tuesday" : d = DayOfWeek.TUESDAY;
+				case "Wednesday" : d = DayOfWeek.WEDNESDAY;
+				case "Thursday" : d = DayOfWeek.THURSDAY;
+				case "Friday" : d = DayOfWeek.FRIDAY;
+				case "Saturday" : d = DayOfWeek.SATURDAY;
+				case "Sunday" : d = DayOfWeek.SUNDAY;
 			}
 			for (Room r : School.getRoomList()) {
 				if (r.getName() == roomName) {
@@ -82,6 +83,7 @@ public class School {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	public static void createSampleRequests() {
 		Group MathClub = new Group("Math Club");
 		Group ChessClub = new Group("Chess Club");

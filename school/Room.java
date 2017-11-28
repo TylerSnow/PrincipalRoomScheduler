@@ -45,12 +45,9 @@ public class Room {
 	public timeSlot[][] getSemesterTimeslots(Semester s){
 		timeSlot[][] sem = null;
 		switch (s) {
-			case FALL : s = Semester.FALL;
-				sem = fallAvailTimes;
-			case WINTER : s = Semester.WINTER;
-				sem =  winterAvailTimes;
-			case SPRING : s = Semester.SPRING;
-				sem =  springAvailTimes;
+			case FALL : sem = fallAvailTimes;
+			case WINTER : sem =  winterAvailTimes;
+			case SPRING : sem =  springAvailTimes;
 		}
 		return sem;
 	}
