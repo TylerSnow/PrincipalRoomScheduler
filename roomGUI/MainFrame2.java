@@ -99,7 +99,7 @@ public class MainFrame2 extends JFrame {
 		homePanel.setVisible(false);
 	}
 
-	public void hidePrince(){
+	public void hidePrinc(){
 		princCardPanel.setVisible(false);
 	}
 	public void hideApp(){

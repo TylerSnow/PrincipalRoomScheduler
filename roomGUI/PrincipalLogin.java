@@ -90,7 +90,8 @@ public class PrincipalLogin extends JPanel {
 		JButton backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.home();
+				frame.displayHome();
+				frame.hidePrinc();
 			}
 		});
 		
