@@ -37,7 +37,7 @@ public class School {
 		return groupList;
 	}
 	
-	public void addRoom(Room newRoom) {
+	public static void addRoom(Room newRoom) {
 		roomList.add(newRoom);
 	}
 	

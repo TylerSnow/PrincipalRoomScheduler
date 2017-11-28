@@ -29,10 +29,11 @@ public class Request {
 		message = nMessage;
 	}
 	
-	public void generateRequest(String appName, String appGroup, String sem, String numSlots, String startTime, String endTime, String day, String priority, String message) {
+	public static void generateRequest(String appName, String appGroup, String room, String sem, String numSlots, String startTime, String endTime, String day, String priority, String message) {
 		Booking[] tempBooking = null;
-		int slots = 0;
-		Applicant app = null;
+		int slots  = Integer.parseInt(numSlots);
+		Room rRoom = null;
+		Applicant app = new Applicant(appName, new Group(appGroup));
 		if (unfinishedRequest == null) {
 			tempBooking = new Booking[5];
 			app = new Applicant(appName, new Group(appGroup));
@@ -41,23 +42,57 @@ public class Request {
 			tempBooking = unfinishedRequest.getBookings();
 			app = unfinishedRequest.getApplicant();
 		}
+		for (Room r : School.getRoomList()) {
+			if (r.getName() == room) {
+				rRoom = r;
+			}
+		}
 		Semester semester = Semester.toSem(sem);
 		LocalTime strt = LocalTime.parse(startTime);
 		LocalTime end = LocalTime.parse(endTime);
 		DayOfWeek d = null;
 		switch (day) {
-			case "Monday" : d = DayOfWeek.MONDAY;
-			case "Tuesday" : d = DayOfWeek.TUESDAY;
-			case "Wednesday" : d = DayOfWeek.WEDNESDAY;
-			case "Thursday" : d = DayOfWeek.THURSDAY;
-			case "Friday" : d = DayOfWeek.FRIDAY;
-			case "Saturday" : d = DayOfWeek.SATURDAY;
-			case "Sunday" : d = DayOfWeek.SUNDAY;
+			case "Monday" : d = DayOfWeek.MONDAY; {
+				d = DayOfWeek.MONDAY;
+				break;
+			}
+			case "Tuesday" : d = DayOfWeek.TUESDAY; {
+				d = DayOfWeek.TUESDAY;
+				break;
+			}
+			case "Wednesday" : d = DayOfWeek.WEDNESDAY;{
+				d = DayOfWeek.WEDNESDAY;
+				break;
+			}
+			case "Thursday" : d = DayOfWeek.THURSDAY;{
+				d = DayOfWeek.THURSDAY;
+				break;
+			}
+			case "Friday" : d = DayOfWeek.FRIDAY;{
+				d = DayOfWeek.FRIDAY;
+				break;
+			}
+			case "Saturday" : d = DayOfWeek.SATURDAY;{
+				d = DayOfWeek.SATURDAY;
+				break;
+			}
+			case "Sunday" : d = DayOfWeek.SUNDAY;{
+				d = DayOfWeek.SUNDAY;
+				break;
+			}
 		}
 		int pri = Integer.parseInt(priority);
 		Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
 		tempBooking[pri-1] = b;
-		unfinishedRequest = new Request(false, app, slots, room, tempBooking, message);
+		unfinishedRequest = new Request(false, app, slots, rRoom, tempBooking, message);
+	}
+	
+	public static Request getUnfinished() {
+		return unfinishedRequest;
+	}
+	
+	public static void submitUnfinished() {
+		School.AddPendingRequest(unfinishedRequest);
 	}
 	
 	public Applicant getApplicant() {
