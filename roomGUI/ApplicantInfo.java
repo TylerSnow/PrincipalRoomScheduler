@@ -139,10 +139,7 @@ public class ApplicantInfo extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				//Writes text area to text file.
 				message=textArea.getText();
-				//Creates a new applicant.
-				//school.Group grp=new school.Group(groupName);
-				//school.Applicant app=new school.Applicant(appName, grp);
-				//Go to RequestPanel.java Page
+				//call methodtotakeobjects(addName,groupName,message);
 				frame.reqShow();
 			}
 		});

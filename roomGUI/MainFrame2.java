@@ -75,7 +75,6 @@ public class MainFrame2 extends JFrame {
 		mainCardPanel.add(homePanel,"HomePanel");
 		mainCardPanel.add(princCardPanel,"Principal Card");
 		mainCardPanel.add(appCardPanel,"Applicant Card");
-		
 		princCards.show(princCardPanel, "Login Panel");
 		//princCardPanel.add(new RequestPanel(this), "Test page");
 		//princCards.show(princCardPanel, "Test page");
