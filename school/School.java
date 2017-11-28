@@ -1,22 +1,19 @@
 package school;
+import java.util.ArrayList;
 import java.util.List;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class School {
-	private List<Room> roomList;
+	private List<Room> roomList = new ArrayList<Room>();
 	private String id;
-	private static List<Request> pendingRequests;
-	private static List<Account> authorizedAccounts;
-	private List<Group> groupList;
+	private static List<Request> pendingRequests = new ArrayList<Request>();
+	private static List<Account> authorizedAccounts = new ArrayList<Account>();
+	private List<Group> groupList = new ArrayList<Group>();
 	
-	public School(List<Room> nRoomList, String nId, List<Request> nPendingRequests, List<Account> nAuthorizedAccounts, List<Group> nGroupList) {
-		roomList = nRoomList;
+	public School(String nId) {
 		id = nId;
-		pendingRequests = nPendingRequests;
-		authorizedAccounts = nAuthorizedAccounts;
-		groupList = nGroupList;
 		authorizedAccounts.add(makeAdmin());
 		createSampleRequests();
 	}
