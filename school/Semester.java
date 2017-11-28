@@ -3,7 +3,7 @@ package school;
 public enum Semester {
 	FALL, WINTER, SPRING;
 	
-	public Semester toSem(String s) {
+	public static Semester toSem(String s) {
 		switch(s) {
 			case "Fall" : return FALL;
 			case "Winter" : return WINTER;
