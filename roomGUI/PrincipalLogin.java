@@ -37,9 +37,9 @@ public class PrincipalLogin extends JPanel {
 		mainPanel = new JPanel();
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		mainPanel.setLayout(gridBagLayout);
 		
@@ -48,7 +48,7 @@ public class PrincipalLogin extends JPanel {
 		GridBagConstraints gbc_lblWelcome = new GridBagConstraints();
 		gbc_lblWelcome.gridwidth = 2;
 		gbc_lblWelcome.insets = new Insets(0, 0, 5, 5);
-		gbc_lblWelcome.gridx = 2;
+		gbc_lblWelcome.gridx = 3;
 		gbc_lblWelcome.gridy = 2;
 		mainPanel.add(lblWelcome, gbc_lblWelcome);
 		
@@ -62,7 +62,7 @@ public class PrincipalLogin extends JPanel {
 		
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 3;
+		gbc_textField.gridwidth = 4;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 2;
@@ -80,7 +80,7 @@ public class PrincipalLogin extends JPanel {
 		
 		passwordField = new JPasswordField();
 		GridBagConstraints gbc_passwordField = new GridBagConstraints();
-		gbc_passwordField.gridwidth = 3;
+		gbc_passwordField.gridwidth = 4;
 		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
 		gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_passwordField.gridx = 2;
@@ -97,14 +97,15 @@ public class PrincipalLogin extends JPanel {
 		invalidLabel = new JLabel("Invalid Information");
 		invalidLabel.setVisible(false);
 		GridBagConstraints gbc_lblInvalidInformation = new GridBagConstraints();
+		gbc_lblInvalidInformation.gridwidth = 2;
 		gbc_lblInvalidInformation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblInvalidInformation.gridx = 4;
+		gbc_lblInvalidInformation.gridx = 3;
 		gbc_lblInvalidInformation.gridy = 7;
 		mainPanel.add(invalidLabel, gbc_lblInvalidInformation);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridx = 4;
 		gbc_btnNewButton.gridy = 8;
 		mainPanel.add(backButton, gbc_btnNewButton);
 		
@@ -129,7 +130,7 @@ public class PrincipalLogin extends JPanel {
 		GridBagConstraints gbc_btnEnter = new GridBagConstraints();
 		gbc_btnEnter.anchor = GridBagConstraints.EAST;
 		gbc_btnEnter.insets = new Insets(0, 0, 0, 5);
-		gbc_btnEnter.gridx = 4;
+		gbc_btnEnter.gridx = 5;
 		gbc_btnEnter.gridy = 8;
 		mainPanel.add(btnEnter, gbc_btnEnter);
 		

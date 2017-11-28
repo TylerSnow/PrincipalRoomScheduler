@@ -10,6 +10,7 @@ import school.Group;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +34,7 @@ public class MainFrame2 extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame2() {
-		School school = new School(new ArrayList<Room>(), "bish", new ArrayList<Request>(),
-				new ArrayList<Account>(), new ArrayList<Group>());
+		School school = new School("bish");
 		
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -122,6 +122,8 @@ public class MainFrame2 extends JFrame {
 			System.out.print(day + ", ");
 		}
 		System.out.println("");
+		
+		//School.addRoomAvailability(room, LocalTime.parse(start), LocalTime.parse(end), DayOfWeek.);
 		
 		princConfirmPanel = new ConfirmEnterAvail(this);
 		princCardPanel.add(princConfirmPanel, "Principal Confirm Panel");

@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -54,21 +55,15 @@ public class PrincipalRequests extends JPanel {
 		gbc_lblPrincipalRequests.gridy = 0;
 		add(lblPrincipalRequests, gbc_lblPrincipalRequests);
 		
+		ArrayList<Request> allPending = (ArrayList<Request>) School.getPendingRequests();
 		
-		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridheight = 6;
-		gbc_scrollPane.gridwidth = 12;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 1;
-		add(scrollPane, gbc_scrollPane);
-		
-		//School.createSampleRequests();
-		//allPending = School.getPendingRequests();
-		//table = new JTable(data, weekDays);
-		scrollPane.setViewportView(table);
+		java.awt.List list = new java.awt.List();
+		GridBagConstraints gbc_list = new GridBagConstraints();
+		gbc_list.gridwidth = 6;
+		gbc_list.insets = new Insets(0, 0, 5, 5);
+		gbc_list.gridx = 3;
+		gbc_list.gridy = 3;
+		add(list, gbc_list);
 		
 		JButton btnDeny = new JButton("Deny");
 		GridBagConstraints gbc_btnDeny = new GridBagConstraints();
