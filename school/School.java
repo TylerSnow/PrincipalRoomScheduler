@@ -2,7 +2,6 @@ package school;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class School {
@@ -109,7 +108,7 @@ public class School {
 				new Booking(LocalTime.parse("05:00"),LocalTime.parse("06:00"),Semester.FALL, DayOfWeek.TUESDAY, HockeyTeam),
 				};
 		Request samReq1 = new Request(new Applicant("Jen", MathClub), 1, new Room("ChemLab", 1), mb1, "Math Club Tournament");
-		Request samReq2 = new Request(new Applicant("Bob", MathClub), 2, new Room("Library", 2), cb1, "Chess Meeting");
-		Request samReq3 = new Request(new Applicant("Steve", MathClub), 1, new Room("Gym", 3), hb1, "Hockey Practice");
+		Request samReq2 = new Request(new Applicant("Bob", ChessClub), 2, new Room("Library", 2), cb1, "Chess Meeting");
+		Request samReq3 = new Request(new Applicant("Steve", HockeyTeam), 1, new Room("Gym", 3), hb1, "Hockey Practice");
 	}
 }
