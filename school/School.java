@@ -51,8 +51,36 @@ public class School {
 		School.pendingRequests.add(r);
 	}
 	
-	public static void addRoomAvailability(String roomName, LocalTime startTime, LocalTime endTime, List<String> dayOfWeek, Semester s) {
-		
+	public static void addRoomAvailability(String roomName, LocalTime startTime, LocalTime endTime, List<String> dayOfWeek, String s) {
+		Semester sem = Semester.toSem(s);
+		int[] timeArray = new int[endTime.getHour()-startTime.getHour()];
+		for (int a = 0 ; a < timeArray.length ; a++) {
+			timeArray[a] = a + startTime.getHour();
+		}
+		for (String day : dayOfWeek) {
+			DayOfWeek d = null;
+			switch (day) {
+				case "Monday" : day = "Monday" ;
+					d = DayOfWeek.MONDAY;
+				case "Tuesday" : day = "Tuesday" ;
+					d = DayOfWeek.TUESDAY;
+				case "Wednesday" : day = "Wednesday" ;
+					d = DayOfWeek.WEDNESDAY;
+				case "Thursday" : day = "Thursday" ;
+					d = DayOfWeek.THURSDAY;
+				case "Friday" : day = "Friday" ; 
+					d = DayOfWeek.FRIDAY;
+				case "Saturday" : day = "Saturday" ;
+					d = DayOfWeek.SATURDAY;
+				case "Sunday" : day = "Sunday" ;
+					d = DayOfWeek.SUNDAY;
+			}
+			for (Room r : School.getRoomList()) {
+				if (r.getName() == roomName) {
+					r.addAvailability(d, timeArray, sem);
+				}
+			}
+		}
 	}
 	
 	public static void createSampleRequests() {
