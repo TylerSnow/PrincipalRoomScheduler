@@ -6,11 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class School {
-	private List<Room> roomList = new ArrayList<Room>();
-	private String id;
+	private static List<Room> roomList = new ArrayList<Room>();
+	private static String id;
 	private static List<Request> pendingRequests = new ArrayList<Request>();
 	private static List<Account> authorizedAccounts = new ArrayList<Account>();
-	private List<Group> groupList = new ArrayList<Group>();
+	private static List<Group> groupList = new ArrayList<Group>();
 	
 	public School(String nId) {
 		id = nId;
@@ -18,11 +18,11 @@ public class School {
 		createSampleRequests();
 	}
 	
-	public String getId() {
+	public static String getId() {
 		return id;
 	}
 	
-	public List<Room> getRoomList(){
+	public static List<Room> getRoomList(){
 		return roomList;
 	}
 	
@@ -34,7 +34,7 @@ public class School {
 		return authorizedAccounts;
 	}
 	
-	public List<Group> getGroupList(){
+	public static List<Group> getGroupList(){
 		return groupList;
 	}
 	
@@ -42,13 +42,17 @@ public class School {
 		roomList.add(newRoom);
 	}
 	
-	public Account makeAdmin() {
+	public static Account makeAdmin() {
 		Account admin = new Account("admin", "admin");
 		return admin;
 	}
 	
 	public static void AddPendingRequest(Request r) {
 		School.pendingRequests.add(r);
+	}
+	
+	public static void addRoomAvailability(String roomName, LocalTime startTime, LocalTime endTime, List<String> dayOfWeek, Semester s) {
+		
 	}
 	
 	public static void createSampleRequests() {
