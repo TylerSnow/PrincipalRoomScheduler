@@ -1,10 +1,12 @@
 package school;
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Room {
-	//availableTimes[0][0] is Sunday at 8am, availableTimes[0][1] is 9am, etc
-	//availableTimes[1][0] is Monday at 8am.
-	private timeSlot[][] availableTimes = new timeSlot[7][16];
+	//availableTimes[0][0] is Monday at 00:00, availableTimes[0][1] is 01:00, etc
+	//availableTimes[1][0] is Tuesday at 00:00.
+	private timeSlot[][] availableTimes = new timeSlot[7][24];
 	private List<Booking> reservations;
 	private List<Booking> approvedRequests;
 	private String name;
@@ -12,6 +14,8 @@ public class Room {
 	
 	public Room(String nName, int nIdno) {
 		availableTimes = initializeAvail();
+		approvedRequests = new ArrayList<Booking>();
+		reservations = new ArrayList<Booking>();
 		name = nName;
 		idno = nIdno;
 	}
@@ -26,14 +30,15 @@ public class Room {
 	
 	public timeSlot[][] initializeAvail() {
 		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 16; j++) {
+			for (int j = 0; j < 24; j++) {
 				availableTimes[i][j] = new timeSlot();
 			}
 		}
 		return availableTimes;
 	}
 	
-	public void addAvailability(int weekday, int[] time) {
+	public void addAvailability(DayOfWeek day, int[] time) {
+		int weekday = day.getValue()-1;
 		for(int t:time) {
 			availableTimes[weekday][t].makeAvailable();
 		}
@@ -48,10 +53,21 @@ public class Room {
 	}
 	
 	public void printAvailability() {
-		for (int c = 0 ; c <= 6 ; c++) {
+		for (int c = 0 ; c < 7 ; c++) {
 			System.out.println(c);
-			for (int u= 0 ; u <= 15 ; u++) {
-				System.out.print(availableTimes[c][u].isAvailable() + " ");
+			for (int u= 0 ; u < 24 ; u++) {
+				boolean ava = availableTimes[c][u].isAvailable();
+				boolean bvb = availableTimes[c][u].isBooked();
+				//System.out.print(ava + "&" + bvb + " ");
+				if (ava == false) {
+					System.out.print("NotAvail ");
+				} else {
+					if (bvb == true) {
+						System.out.print(availableTimes[c][u].getBooking().getGroup().getName() + " ");
+					} else {
+						System.out.print("NotBooked ");
+					}
+				}
 			}
 			System.out.println("");
 		}
@@ -59,6 +75,9 @@ public class Room {
 	
 	public void addBooking(Booking bookingByAGroup) {
 		approvedRequests.add(bookingByAGroup);
+		for(int t:bookingByAGroup.generateIntArray()) {
+			availableTimes[bookingByAGroup.getDay().getValue()-1][t].bookSlot(bookingByAGroup);
+		}
 	}
 	
 	public void reserveRoom(Booking reservation) {
