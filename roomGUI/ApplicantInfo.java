@@ -1,6 +1,7 @@
 package roomGUI;
 
 import java.awt.GridBagLayout;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -32,6 +33,7 @@ public class ApplicantInfo extends JPanel {
 	private String appName;
 	private String groupName;
 	private String message;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -54,16 +56,13 @@ public class ApplicantInfo extends JPanel {
 		gbc_lblRoomBookingApplication.gridy = 0;
 		mainPanel.add(lblRoomBookingApplication, gbc_lblRoomBookingApplication);
 		
-		txtName = new JTextField();
-		txtName.setEditable(false);
-		txtName.setText("Name");
+		JLabel txtName = new JLabel("Name");
 		GridBagConstraints gbc_txtName = new GridBagConstraints();
 		gbc_txtName.anchor = GridBagConstraints.WEST;
 		gbc_txtName.insets = new Insets(0, 0, 5, 5);
 		gbc_txtName.gridx = 3;
 		gbc_txtName.gridy = 2;
 		mainPanel.add(txtName, gbc_txtName);
-		txtName.setColumns(10);
 		
 		nameField = new JTextField();
 		nameField.addActionListener(new ActionListener() {
@@ -79,16 +78,13 @@ public class ApplicantInfo extends JPanel {
 		mainPanel.add(nameField, gbc_nameField);
 		nameField.setColumns(10);
 		
-		txtGroup = new JTextField();
-		txtGroup.setEditable(false);
-		txtGroup.setText("Group");
+		JLabel txtGroup = new JLabel("Group");
 		GridBagConstraints gbc_txtGroup = new GridBagConstraints();
 		gbc_txtGroup.anchor = GridBagConstraints.WEST;
 		gbc_txtGroup.insets = new Insets(0, 0, 5, 5);
 		gbc_txtGroup.gridx = 3;
 		gbc_txtGroup.gridy = 4;
 		mainPanel.add(txtGroup, gbc_txtGroup);
-		txtGroup.setColumns(10);
 		
 		groupField = new JTextField();
 		groupField.addActionListener(new ActionListener() {
@@ -107,7 +103,8 @@ public class ApplicantInfo extends JPanel {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Returns to homepanel.
+				frame.displayHome();
+				frame.hideApp();
 			}
 		});
 		
@@ -118,18 +115,16 @@ public class ApplicantInfo extends JPanel {
 		mainPanel.add(btnBack, gbc_btnBack);
 		
 		
-		txtWhyDoesYour = new JTextField();
-		txtWhyDoesYour.setEditable(false);
-		txtWhyDoesYour.setText("Why does your group require the room?");
+		JLabel txtWhyDoesYour = new JLabel("Why does your group require the room?");
 		GridBagConstraints gbc_txtWhyDoesYour = new GridBagConstraints();
 		gbc_txtWhyDoesYour.anchor = GridBagConstraints.WEST;
 		gbc_txtWhyDoesYour.insets = new Insets(0, 0, 5, 5);
 		gbc_txtWhyDoesYour.gridx = 3;
 		gbc_txtWhyDoesYour.gridy = 6;
 		mainPanel.add(txtWhyDoesYour, gbc_txtWhyDoesYour);
-		txtWhyDoesYour.setColumns(10);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setPreferredSize(new Dimension(150,150));
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.insets = new Insets(0, 0, 5, 5);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
@@ -145,10 +140,10 @@ public class ApplicantInfo extends JPanel {
 				//Writes text area to text file.
 				message=textArea.getText();
 				//Creates a new applicant.
-				school.Group grp=new school.Group(groupName);
-				school.Applicant app=new school.Applicant(appName, grp);
+				//school.Group grp=new school.Group(groupName);
+				//school.Applicant app=new school.Applicant(appName, grp);
 				//Go to RequestPanel.java Page
-				
+				frame.reqShow();
 			}
 		});
 		GridBagConstraints gbc_btnConfirm = new GridBagConstraints();

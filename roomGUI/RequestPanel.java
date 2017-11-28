@@ -108,6 +108,7 @@ public class RequestPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Go back to ApplicantInfo.java
+				frame.appShow();
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
@@ -121,6 +122,7 @@ public class RequestPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Go to RequestPageTSP.java
+				frame.reqTSPShow();
 			}
 		});
 		GridBagConstraints gbc_btnConfirm = new GridBagConstraints();

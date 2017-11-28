@@ -50,9 +50,9 @@ public class HomePanel extends JPanel {
 		JButton princButton = new JButton("Enter As Principal");
 		princButton.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				frame.hideHome();				
-				frame.displayPrinc();				
+			public void mouseClicked(MouseEvent e) {				
+				frame.displayPrinc();
+				frame.hideHome();
 			}
 		});
 
@@ -63,12 +63,20 @@ public class HomePanel extends JPanel {
 		gbc_btnEnterAsPrincipal.gridy = 0;
 		buttonPanel.add(princButton, gbc_btnEnterAsPrincipal);
 		
-		JButton btnNewButton = new JButton("Enter as Applicant");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 3;
-		gbc_btnNewButton.gridy = 1;
-		buttonPanel.add(btnNewButton, gbc_btnNewButton);
+		JButton appButton = new JButton("Enter as Applicant");
+		appButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {				
+				frame.displayApp();
+				frame.hideHome();
+			}
+		});
+
+		GridBagConstraints gbc_appButton = new GridBagConstraints();
+		gbc_appButton.insets = new Insets(0, 0, 0, 5);
+		gbc_appButton.gridx = 3;
+		gbc_appButton.gridy = 1;
+		buttonPanel.add(appButton, gbc_appButton);
 		holder.add(buttonPanel);
 		add(holder, BorderLayout.SOUTH);
 

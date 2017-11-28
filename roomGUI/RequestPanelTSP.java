@@ -49,16 +49,13 @@ public class RequestPanelTSP extends JPanel {
 		gbl_mainPanel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0};
 		mainPanel.setLayout(gbl_mainPanel);
 		
-		txtChooseATimeslot = new JTextField();
-		txtChooseATimeslot.setEditable(false);
-		txtChooseATimeslot.setText("Choose a timeslot.");
+		JLabel txtChooseATimeslot = new JLabel("Choose a start time.");
 		GridBagConstraints gbc_txtChooseATimeslot = new GridBagConstraints();
 		gbc_txtChooseATimeslot.insets = new Insets(0, 0, 5, 5);
 		gbc_txtChooseATimeslot.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtChooseATimeslot.gridx = 3;
 		gbc_txtChooseATimeslot.gridy = 0;
 		mainPanel.add(txtChooseATimeslot, gbc_txtChooseATimeslot);
-		txtChooseATimeslot.setColumns(10);
 		
 		JList timeList = new JList(timeSlots);
 		timeList.addListSelectionListener(new ListSelectionListener() {
@@ -67,7 +64,7 @@ public class RequestPanelTSP extends JPanel {
 			}
 		});
 	
-		timeList.setVisibleRowCount(5);
+		timeList.setVisibleRowCount(1);
 		//Can possibly be modified to have multiple selections at once.
 		timeList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -78,16 +75,14 @@ public class RequestPanelTSP extends JPanel {
 		gbc_timeList.gridy = 1;
 		mainPanel.add(timeList, gbc_timeList);
 		
-		txtChooseEndTimeslot = new JTextField();
-		txtChooseEndTimeslot.setEditable(false);
-		txtChooseEndTimeslot.setText("Choose a timeslot.");
+		JLabel txtChooseEndTimeslot = new JLabel("Choose an end time.");
 		GridBagConstraints gbc_txtChooseEndTimeslot = new GridBagConstraints();
 		gbc_txtChooseEndTimeslot.insets = new Insets(0, 0, 5, 5);
 		gbc_txtChooseEndTimeslot.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtChooseEndTimeslot.gridx = 3;
 		gbc_txtChooseEndTimeslot.gridy = 2;
 		mainPanel.add(txtChooseEndTimeslot, gbc_txtChooseATimeslot);
-		txtChooseEndTimeslot.setColumns(10);
+
 		
 		JList timeEndList = new JList(timeSlots);
 		timeEndList.addListSelectionListener(new ListSelectionListener() {
@@ -96,7 +91,7 @@ public class RequestPanelTSP extends JPanel {
 			}
 		});
 	
-		timeEndList.setVisibleRowCount(5);
+		timeEndList.setVisibleRowCount(1);
 		//Can possibly be modified to have multiple selections at once.
 		timeEndList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -162,7 +157,7 @@ public class RequestPanelTSP extends JPanel {
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Go to HomePanel.java
+				frame.reqShow();
 			}
 		});
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
@@ -177,6 +172,7 @@ public class RequestPanelTSP extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Go to RequestPanel.java to make another request
+				frame.reqShow();
 			}
 		});
 		GridBagConstraints gbc_btnNextRequest = new GridBagConstraints();
@@ -194,6 +190,8 @@ public class RequestPanelTSP extends JPanel {
 				//		newBooking(timeSlotStart,timeSlotEnd,test.school.Group.getName()),Integer.parseInt(priority),
 				//		readInFile,day);
 				//Return to HomePanel
+				frame.displayHome();
+				frame.hideApp();
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
