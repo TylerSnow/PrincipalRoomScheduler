@@ -60,9 +60,8 @@ public class PrincipalRequests extends JPanel {
 		for(int i = 0; i < data.length; i++) {
 			data[i] = allPending.get(i).toString();
 		}
-		JList list = new JList(data);
-
 		
+		JList list = new JList(data);
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridheight = 3;
 		gbc_list.gridwidth = 10;
@@ -81,6 +80,14 @@ public class PrincipalRequests extends JPanel {
 		add(btnBack, gbc_btnDeny);
 		
 		JButton btnView = new JButton("View");
+		btnView.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (list.getSelectedValue() != null) {
+					//frame.viewRequest(allPending.get(list.getSelectedIndex()));
+					
+				}
+			}
+		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
 		gbc_btnApprove.insets = new Insets(0, 0, 5, 5);
 		gbc_btnApprove.gridx = 8;
