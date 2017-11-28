@@ -41,6 +41,11 @@ public class Request {
 		return bookings;
 	}
 	
+	public String toString() {
+		return ("Group: " + applicant.getGroup().getName() + ", Slots: " + numSlots);
+				
+	}
+	
 	/*public int getPriority() {
 		return priority;
 	}*/

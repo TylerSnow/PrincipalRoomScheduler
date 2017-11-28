@@ -53,15 +53,21 @@ public class PrincipalRequests extends JPanel {
 		gbc_lblPrincipalRequests.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrincipalRequests.gridx = 4;
 		gbc_lblPrincipalRequests.gridy = 0;
-		add(lblPrincipalRequests, gbc_lblPrincipalRequests);
+		add(lblPrincipalRequests, gbc_lblPrincipalRequests);		
 		
+		JList list = new JList();
 		ArrayList<Request> allPending = (ArrayList<Request>) School.getPendingRequests();
+		Object[] data = new String[allPending.size()];
+		for(int i = 0; i < data.length; i++) {
+			
+		}
 		
-		java.awt.List list = new java.awt.List();
 		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.gridwidth = 6;
+		gbc_list.gridheight = 3;
+		gbc_list.gridwidth = 10;
 		gbc_list.insets = new Insets(0, 0, 5, 5);
-		gbc_list.gridx = 3;
+		gbc_list.fill = GridBagConstraints.BOTH;
+		gbc_list.gridx = 1;
 		gbc_list.gridy = 3;
 		add(list, gbc_list);
 		
