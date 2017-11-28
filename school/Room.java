@@ -22,6 +22,7 @@ public class Room {
 		reservations = new ArrayList<Booking>();
 		name = nName;
 		idno = nIdno;
+		School.addRoom(this);
 	}
 	
 	public String getName() {
