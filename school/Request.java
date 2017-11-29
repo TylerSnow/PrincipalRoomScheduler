@@ -88,6 +88,7 @@ public class Request {
 		Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
 		tempBooking[pri-1] = b;
 		unfinishedRequest = new Request(false, app, semester, slots, rRoom, tempBooking, message);
+		submitUnfinished();
 	}
 	
 	public static Request getUnfinished() {
