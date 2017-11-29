@@ -65,12 +65,7 @@ public class ApplicantInfo extends JPanel {
 		mainPanel.add(txtName, gbc_txtName);
 		
 		nameField = new JTextField();
-		nameField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				appName=nameField.getText();
-				
-			}
-		});
+
 		GridBagConstraints gbc_nameField = new GridBagConstraints();
 		gbc_nameField.insets = new Insets(0, 0, 5, 5);
 		gbc_nameField.fill = GridBagConstraints.HORIZONTAL;
@@ -88,11 +83,7 @@ public class ApplicantInfo extends JPanel {
 		mainPanel.add(txtGroup, gbc_txtGroup);
 		
 		groupField = new JTextField();
-		groupField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				groupName=groupField.getText();
-			}
-		});
+
 		GridBagConstraints gbc_groupField = new GridBagConstraints();
 		gbc_groupField.insets = new Insets(0, 0, 5, 5);
 		gbc_groupField.fill = GridBagConstraints.HORIZONTAL;
@@ -139,8 +130,10 @@ public class ApplicantInfo extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Writes text area to text file.
+				appName=nameField.getText();
+				groupName=groupField.getText();
 				message=textArea.getText();
-				//call methodtotakeobjects(addName,groupName,message);
+				frame.setAppInfoStored(appName,groupName,message);
 				frame.reqShow();
 			}
 		});

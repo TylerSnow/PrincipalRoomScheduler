@@ -185,9 +185,10 @@ public class MainFrame2 extends JFrame {
 		String day= n[7];
 		String priority= n[8];
 		String message=n[2];
-		String numSlots="0";
+		String numSlots="1";
 		
 		school.Request.generateRequest(appName, appGroup, room, sem, numSlots, startTime, endTime, day, priority, message);
+		System.out.println(school.School.getPendingRequests());
 	}
 	
 	public void showAvailabilityPanel(String semester, String room) {
