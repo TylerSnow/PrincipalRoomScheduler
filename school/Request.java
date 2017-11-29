@@ -9,11 +9,13 @@ public class Request {
 	private Room room;
 	private Booking[] bookings;
 	private String message;
+	private Semester semester;
 	private static Request unfinishedRequest;
 	
-	public Request(Applicant nApplicant, int nNumSlots, Room r, Booking[] b, String nMessage) {
+	public Request(Applicant nApplicant, int nNumSlots, Semester sem, Room r, Booking[] b, String nMessage) {
 		applicant = nApplicant;
 		numSlots = nNumSlots;
+		semester = sem;
 		room = r;
 		bookings = b;
 		message = nMessage;
@@ -21,9 +23,10 @@ public class Request {
 	}
 	
 	//DONT use this. It is only for being called from the generateRequest method//
-	public Request(boolean DONTUSETHISMETHOD, Applicant nApplicant, int nNumSlots, Room r, Booking[] b, String nMessage) {
+	public Request(boolean DONTUSETHISMETHOD, Applicant nApplicant, Semester sem, int nNumSlots, Room r, Booking[] b, String nMessage) {
 		applicant = nApplicant;
 		numSlots = nNumSlots;
+		semester = sem;
 		room = r;
 		bookings = b;
 		message = nMessage;
@@ -84,7 +87,7 @@ public class Request {
 		int pri = Integer.parseInt(priority);
 		Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
 		tempBooking[pri-1] = b;
-		unfinishedRequest = new Request(false, app, slots, rRoom, tempBooking, message);
+		unfinishedRequest = new Request(false, app, semester, slots, rRoom, tempBooking, message);
 	}
 	
 	public static Request getUnfinished() {
@@ -105,6 +108,10 @@ public class Request {
 	
 	public String getMessage() {
 		return message;
+	}
+	
+	public Semester getSemester() {
+		return semester;
 	}
 	
 	public Room getRoom() {
