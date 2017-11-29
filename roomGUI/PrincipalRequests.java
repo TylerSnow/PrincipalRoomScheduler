@@ -59,11 +59,12 @@ public class PrincipalRequests extends JPanel {
 		ArrayList<Request> allPending = (ArrayList<Request>) School.getPendingRequests();
 		ArrayList<Request> pendingInSemester = new ArrayList<>();
 		for(int i = 0; i < allPending.size(); i++) {
-			if (allPending.get(i).getSemester() == Semester.toSem(semester)) {
-				
+			if (allPending.get(i).getSemester() == Semester.toSem(semester)
+					&& allPending.get(i).getRoom().getName().equals(room)) {
+				pendingInSemester.add(allPending.get(i));
 			}
 		}
-		Object[] data = new String[allPending.size()];
+		Object[] data = new String[pendingInSemester.size()];
 		for(int i = 0; i < data.length; i++) {
 			data[i] = allPending.get(i).toString();
 		}
@@ -90,7 +91,7 @@ public class PrincipalRequests extends JPanel {
 		btnView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (list.getSelectedValue() != null) {
-					//frame.viewRequest(allPending.get(list.getSelectedIndex()));
+					frame.viewRequest(allPending.get(list.getSelectedIndex()));
 					
 				}
 			}
