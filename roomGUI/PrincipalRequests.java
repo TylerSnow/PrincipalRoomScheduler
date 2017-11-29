@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
 
 import school.School;
+import school.Semester;
 import school.Request;
 
 import java.awt.Color;
@@ -56,6 +57,12 @@ public class PrincipalRequests extends JPanel {
 		add(lblPrincipalRequests, gbc_lblPrincipalRequests);		
 		
 		ArrayList<Request> allPending = (ArrayList<Request>) School.getPendingRequests();
+		ArrayList<Request> pendingInSemester = new ArrayList<>();
+		for(int i = 0; i < allPending.size(); i++) {
+			if (allPending.get(i).getSemester() == Semester.toSem(semester)) {
+				
+			}
+		}
 		Object[] data = new String[allPending.size()];
 		for(int i = 0; i < data.length; i++) {
 			data[i] = allPending.get(i).toString();
