@@ -125,9 +125,7 @@ public class RequestPanel extends JPanel {
 		gbc_btnConfirm.insets = new Insets(0, 0, 5, 5);
 		gbc_btnConfirm.gridx = 3;
 		gbc_btnConfirm.gridy = 6;
-		mainPanel.add(btnConfirm, gbc_btnConfirm);
-	
-		
+		mainPanel.add(btnConfirm, gbc_btnConfirm);		
 	}
 
 

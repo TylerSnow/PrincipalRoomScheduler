@@ -156,7 +156,6 @@ public class MainFrame2 extends JFrame {
 	public void reqTSPShow(){
 		appCards.show(appCardPanel,"Request Panel Timeslot");
 	}
-
 	public void setAppInfoStored(String n, String g, String m){
 		reqStored.setAppName(n);
 		reqStored.setAppGroup(g);

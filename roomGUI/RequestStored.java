@@ -10,7 +10,6 @@ public class RequestStored{
 	private String endTime;
 	private String day;
 	private String priority;
-
 	public void setAppName(String n){
 		appName=n;
 	}

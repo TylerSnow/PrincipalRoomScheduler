@@ -185,8 +185,7 @@ public class RequestPanelTSP extends JPanel {
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
 		gbc_btnSubmit.gridx = 2;
 		gbc_btnSubmit.gridy = 4;
-		mainPanel.add(btnSubmit, gbc_btnSubmit);
-		
+		mainPanel.add(btnSubmit, gbc_btnSubmit);	
 	}
 
 }
