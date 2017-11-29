@@ -41,6 +41,11 @@ public class Booking {
 		return group;
 	}
 	
+	public String toString() {
+		String str = "Day: " + this.getDay() + " Start Time: " + this.getStartTime() + " End Time: " + this.getEndTime();
+		return str;
+	}
+	
 	public int[] generateIntArray() {
 		int[] timeArray = new int[this.getEndTime().getHour()-this.getStartTime().getHour()];
 		for (int s = 0 ; s < timeArray.length ; s++) {
