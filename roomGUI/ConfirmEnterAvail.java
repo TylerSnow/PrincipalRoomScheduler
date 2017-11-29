@@ -47,6 +47,7 @@ public class ConfirmEnterAvail extends JPanel {
 		
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				frame.displayHome();
 				frame.hidePrinc();
 			}

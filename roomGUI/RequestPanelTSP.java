@@ -158,7 +158,7 @@ public class RequestPanelTSP extends JPanel {
 				if (priInc.getInc()>=0) {
 					priInc.removePri();
 					frame.reqTSPShow();
-					
+					System.out.println(priInc.getInc());
 				}
 				else {
 					System.out.println("Cannot make more requests.");

@@ -20,7 +20,7 @@ public class PriorityIncrementer {
 			i--;
 		}
 		else {
-			i=0;
+			i=-1;
 		}
 	}
 }
