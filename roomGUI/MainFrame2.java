@@ -38,6 +38,7 @@ public class MainFrame2 extends JFrame {
 	private ApplicantInfo appPanel;	
 	private RequestPanel reqPanel;
 	private RequestPanelTSP reqPanelTSP;
+	private RequestStored reqStored;
 	
 	/**
 	 * Create the frame.
@@ -53,7 +54,7 @@ public class MainFrame2 extends JFrame {
 		//princAvailCardPanel = new JPanel(princAvailCards);
 		//princRequestCardPanel = new JPanel(princRequestCards);
 		
-		
+		reqStored= new RequestStored();
 		
 		homePanel = new HomePanel(this);
 		
@@ -154,6 +155,26 @@ public class MainFrame2 extends JFrame {
 	}
 	public void reqTSPShow(){
 		appCards.show(appCardPanel,"Request Panel Timeslot");
+	}
+
+	public void setAppInfoStored(String n, String g, String m){
+		reqStored.setAppName(n);
+		reqStored.setAppGroup(g);
+		reqStored.setMessage(m);
+	}
+	public void setReqPanelStored(String r, String s){
+		reqStored.setRoom(r);
+		reqStored.setSem(s);
+	}
+	public void setReqPanelTSPStored(String st, String et, String d, String p){	
+		reqStored.setStartTime(st);
+		reqStored.setEndTime(et);
+		reqStored.setDay(d);
+		reqStored.setPriority(p);
+	}
+	public String[] getStoredInfo(){
+		String[] arr= { reqStored.getAppName(),reqStored.getAppGroup(),reqStored.getMessage(),reqStored.getRoom(),reqStored.getSem(),reqStored.getStartTime(),reqStored.getEndTime(),reqStored.getDay(),reqStored.getPriority() };
+		return arr;
 	}
 	
 	public void showAvailabilityPanel(String semester, String room) {

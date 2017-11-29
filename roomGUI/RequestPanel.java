@@ -116,6 +116,7 @@ public class RequestPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Go to RequestPageTSP.java
+				frame.setReqPanelStored(room,semester);
 				frame.reqTSPShow();
 			}
 		});

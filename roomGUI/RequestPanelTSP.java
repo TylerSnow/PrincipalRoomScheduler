@@ -35,8 +35,8 @@ public class RequestPanelTSP extends JPanel {
 	public RequestPanelTSP(MainFrame2 f) {
 		frame=f;
 		mainPanel = new JPanel();
-		add(mainPanel);
-		
+		add(mainPanel);	
+
 		priInc= new PriorityIncrementer();
 		
 		String[] timeSlots = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
@@ -176,9 +176,7 @@ public class RequestPanelTSP extends JPanel {
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Request req=new Request(new Applicant(test.school.Applicant.getID(),test.school.Applicant.getID()),
-				//		newBooking(timeSlotStart,timeSlotEnd,test.school.Group.getName()),Integer.parseInt(priority),
-				//		readInFile,day);
+				frame.setReqPanelTSPStored(timeSlotStart,timeSlotEnd,day,priority.toString());
 				//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();

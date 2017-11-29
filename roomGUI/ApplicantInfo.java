@@ -40,8 +40,8 @@ public class ApplicantInfo extends JPanel {
 	public ApplicantInfo(MainFrame2 f) {
 		frame=f;
 		mainPanel = new JPanel();
-		add(mainPanel);
-		
+		add(mainPanel);			
+	
 		GridBagLayout gbl_mainPanel = new GridBagLayout();
 		gbl_mainPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_mainPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -68,6 +68,7 @@ public class ApplicantInfo extends JPanel {
 		nameField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				appName=nameField.getText();
+				
 			}
 		});
 		GridBagConstraints gbc_nameField = new GridBagConstraints();
