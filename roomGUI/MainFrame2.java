@@ -175,6 +175,20 @@ public class MainFrame2 extends JFrame {
 		String[] arr= { reqStored.getAppName(),reqStored.getAppGroup(),reqStored.getMessage(),reqStored.getRoom(),reqStored.getSem(),reqStored.getStartTime(),reqStored.getEndTime(),reqStored.getDay(),reqStored.getPriority() };
 		return arr;
 	}
+	public void generateRequest(String [] n) {
+		String appName=n[0];
+		String appGroup=n[1];
+		String room=n[3];
+		String sem=n[4];
+		String startTime=n[5];
+		String endTime =n[6];
+		String day= n[7];
+		String priority= n[8];
+		String message=n[2];
+		String numSlots="0";
+		
+		school.Request.generateRequest(appName, appGroup, room, sem, numSlots, startTime, endTime, day, priority, message);
+	}
 	
 	public void showAvailabilityPanel(String semester, String room) {
 		princAvailPanel = new EnterAvailability(this, semester, room);

@@ -176,10 +176,11 @@ public class RequestPanelTSP extends JPanel {
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.setReqPanelTSPStored(timeSlotStart,timeSlotEnd,day,priority.toString());
+				frame.setReqPanelTSPStored(timeSlotStart,timeSlotEnd,day,Integer.toString(priInc.getInc()));
 				//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();
+				frame.generateRequest(frame.getStoredInfo());
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
