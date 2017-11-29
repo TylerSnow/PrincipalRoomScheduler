@@ -157,7 +157,7 @@ public class RequestPanelTSP extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (priInc.getInc()>=0) {
 					priInc.removePri();
-					frame.reqShow();
+					frame.reqTSPShow();
 					
 				}
 				else {
