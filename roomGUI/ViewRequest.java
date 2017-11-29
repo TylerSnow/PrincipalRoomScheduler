@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextArea;
 import javax.swing.JList;
 import javax.swing.JButton;
@@ -25,6 +28,7 @@ public class ViewRequest extends JPanel {
 	private JTextField groupField;
 	private JTextField desiredField;
 	private JTextField messageField;
+	private JList list;
 	/**
 	 * Create the panel.
 	 */
@@ -156,7 +160,7 @@ public class ViewRequest extends JPanel {
 		for(int i = 0; i < data.length; i++) {
 			data[i] = bookings[i].toString();
 		}
-		JList list = new JList(data);
+		list = new JList(data);
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridwidth = 4;
 		gbc_list.gridheight = 2;
@@ -181,6 +185,16 @@ public class ViewRequest extends JPanel {
 		add(btnDeny, gbc_btnDeny);
 		
 		JButton btnApprove = new JButton("Approve");
+		btnApprove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				r.approveRequest(list.getSelectedIndex());
+				/*
+				data[list.getSelectedIndex()] = data[list.getSelectedIndex()] + " Approved";
+				list = new JList(data);
+				add(list, gbc_list);
+				*/
+			}
+		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
 		gbc_btnApprove.insets = new Insets(0, 0, 0, 5);
 		gbc_btnApprove.gridx = 4;
