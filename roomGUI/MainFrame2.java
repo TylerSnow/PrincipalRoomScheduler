@@ -26,6 +26,7 @@ public class MainFrame2 extends JFrame {
 	private RoomAndSemester princRoomPanel;
 	private EnterAvailability princAvailPanel;
 	private PrincipalRequests princReqPanel;
+	private ViewRequest princViewReqPanel;
 	private ConfirmEnterAvail princConfirmPanel;
 	private CardLayout princCards = new CardLayout();
 	private CardLayout princAvailCards = new CardLayout();
@@ -184,6 +185,12 @@ public class MainFrame2 extends JFrame {
 		princConfirmPanel = new ConfirmEnterAvail(this);
 		princCardPanel.add(princConfirmPanel, "Principal Confirm Panel");
 		princCards.show(princCardPanel, "Principal Confirm Panel");
+	}
+	
+	public void viewRequest(Request r) {
+		princViewReqPanel = new ViewRequest(this, r);
+		princCardPanel.add(princViewReqPanel, "Principal View Request Panel");
+		princCards.show(princCardPanel, "Principal View Request Panel");
 	}
 	
 	public static void main(String[] args) {

@@ -77,7 +77,7 @@ public class ViewRequest extends JPanel {
 		
 		semesterField = new JTextField();
 		semesterField.setEditable(false);
-		semesterField.setText(Semester.FALL.toString());
+		semesterField.setText(r.getSemester().toString());
 		GridBagConstraints gbc_semesterField = new GridBagConstraints();
 		gbc_semesterField.insets = new Insets(0, 0, 5, 5);
 		gbc_semesterField.fill = GridBagConstraints.HORIZONTAL;
@@ -156,7 +156,7 @@ public class ViewRequest extends JPanel {
 		for(int i = 0; i < data.length; i++) {
 			data[i] = bookings[i].toString();
 		}
-		JList list = new JList();
+		JList list = new JList(data);
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridwidth = 4;
 		gbc_list.gridheight = 2;
