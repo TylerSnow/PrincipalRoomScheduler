@@ -180,7 +180,7 @@ public class MainFrame2 extends JFrame {
 		}
 		System.out.println("");
 		
-		//School.addRoomAvailability(room, LocalTime.parse(start), LocalTime.parse(end), days, semester);
+		School.addRoomAvailability(room, LocalTime.parse(start), LocalTime.parse(end), days, semester);
 		
 		princConfirmPanel = new ConfirmEnterAvail(this);
 		princCardPanel.add(princConfirmPanel, "Principal Confirm Panel");
