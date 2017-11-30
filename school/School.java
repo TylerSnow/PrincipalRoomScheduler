@@ -15,6 +15,7 @@ public class School {
 		id = nId;
 		authorizedAccounts.add(makeAdmin());
 		createSampleRequests();
+		createRooms();
 	}
 	
 	public static String getId() {
@@ -56,6 +57,15 @@ public class School {
 	
 	public static void AddGroup(Group g) {
 		School.groupList.add(g);
+	}
+	
+	public void createRooms() {
+		roomList.add(new Room("Gymnasium", 1));
+		roomList.add(new Room("Chemistry Lab", 2));
+		roomList.add(new Room("Physics Lab", 3));
+		roomList.add(new Room("Auditorium", 4));
+		roomList.add(new Room("Cafeteria", 5));
+
 	}
 	
 	public static void addRoomAvailability(String roomName, LocalTime startTime, LocalTime endTime, List<String> dayOfWeek, String s) {

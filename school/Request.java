@@ -38,15 +38,22 @@ public class Request {
 		Room rRoom = null;
 		Applicant app = new Applicant(appName, new Group(appGroup));
 		if (unfinishedRequest == null) {
+			System.out.println("DOING 1");
 			tempBooking = new Booking[5];
+			for(int i = 0; i < 5; i++) {
+				Booking b = new Booking(LocalTime.parse("00:00"), LocalTime.parse("00:00"), Semester.FALL, DayOfWeek.MONDAY, new Group(appGroup));
+				tempBooking[i] = b;
+			}
 			app = new Applicant(appName, new Group(appGroup));
 			slots = Integer.parseInt(numSlots);
 		} else {
+			System.out.println("DOING 2");
 			tempBooking = unfinishedRequest.getBookings();
 			app = unfinishedRequest.getApplicant();
 		}
 		for (Room r : School.getRoomList()) {
 			if (r.getName() == room) {
+				System.out.println(r.getName());
 				rRoom = r;
 			}
 		}
@@ -86,18 +93,29 @@ public class Request {
 			default : d = DayOfWeek.MONDAY;
 		}
 		int pri = Integer.parseInt(priority);
-		Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
-		tempBooking[pri] = b;
-		unfinishedRequest = new Request(false, app, semester, slots, rRoom, tempBooking, message);
-	}
-	
-	public static Booking[] reverseArray(Booking[] b) {
-		for (int i = 0; i < b.length / 2; i++) {
-			  Booking temp = b[i];
-			  b[i] = b[b.length - 1 - i];
-			  b[b.length - 1 - i] = temp;
+		for (int i = 0; i < 5; i++) {
+			if (tempBooking[i].getStartTime() == tempBooking[i].getEndTime()) {
+				Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
+				tempBooking[i] = b;
 			}
-		return b;
+		}
+		//Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
+		/*
+		tempBooking[pri-1] = b;
+		System.out.println("STARTING");
+		System.out.println(app);
+		System.out.println(semester);
+		System.out.println(slots);
+		System.out.println(rRoom.getName());
+		for (int i = 0; i < tempBooking.length; i++) {
+			System.out.println(tempBooking[i].getGroup());
+		}
+		System.out.println(message);
+		System.out.println("ENDING");
+		*/
+
+		unfinishedRequest = new Request(false, app, semester, slots, rRoom, tempBooking, message);
+		submitUnfinished();
 	}
 	
 	public static Request getUnfinished() {
@@ -105,7 +123,6 @@ public class Request {
 	}
 	
 	public static void submitUnfinished() {
-		Request.getUnfinished().setBookings(reverseArray(Request.getUnfinished().getBookings()));
 		School.AddPendingRequest(unfinishedRequest);
 	}
 	
@@ -131,10 +148,6 @@ public class Request {
 	
 	public Booking[] getBookings() {
 		return bookings;
-	}
-	
-	public void setBookings(Booking[] b) {
-		this.bookings = b;
 	}
 	
 	public String toString() {
