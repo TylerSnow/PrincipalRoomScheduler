@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+
 import javax.swing.JScrollPane;
 
 public class RequestPanelTSP extends JPanel {
@@ -30,6 +32,13 @@ public class RequestPanelTSP extends JPanel {
 	private JTextField txtPriority;
 	private PriorityIncrementer priInc;
 	private JButton btnSubmit;
+	private static String[] fromTimes = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
+			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+			"20:00", "21:00", "22:00"};
+	private static String[] toTimes = {"01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
+			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+			"20:00", "21:00", "22:00", "23:00"};
+	
 	/**
 	 * Create the panel.
 	 */
@@ -43,6 +52,7 @@ public class RequestPanelTSP extends JPanel {
 		String[] timeSlots = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
 				"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
 				"20:00", "21:00", "22:00", "23:00"};
+		
 		
 		String[] days = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 		String[] priorities= {"1","2","3","4","5"};
@@ -70,13 +80,9 @@ public class RequestPanelTSP extends JPanel {
 		gbc_sTimePane.gridy = 1;
 		mainPanel.add(sTimePane, gbc_sTimePane);
 		
-		JList timeList = new JList(timeSlots);
+		JList timeList = new JList(fromTimes);
 		sTimePane.setViewportView(timeList);
-		timeList.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				timeSlotStart=timeSlots[timeList.getSelectedIndex()];
-			}
-		});
+		
 	
 		timeList.setVisibleRowCount(5);
 		//Can possibly be modified to have multiple selections at once.
@@ -99,17 +105,43 @@ public class RequestPanelTSP extends JPanel {
 		mainPanel.add(sEndTimePane, gbc_sEndTimePane);
 		
 				
-				JList timeEndList = new JList(timeSlots);
+				JList timeEndList = new JList(toTimes);
 				sEndTimePane.setViewportView(timeEndList);
 				timeEndList.addListSelectionListener(new ListSelectionListener() {
 					public void valueChanged(ListSelectionEvent e) {
 						timeSlotEnd=timeSlots[timeEndList.getSelectedIndex()];
+						if (timeList.getSelectedValue() != null) {
+				    		String fromChoice = timeList.getSelectedValue().toString();
+				    		String toChoice = timeEndList.getSelectedValue().toString();
+				    		int currFrom = (Arrays.asList(timeSlots).indexOf(fromChoice));
+				    		int newTo = (Arrays.asList(timeSlots).indexOf(toChoice));
+				    		if (newTo <= currFrom) {
+				    			System.out.println("Caught2");
+				    			timeList.setSelectedIndex(newTo-1);
+				    		}
+				    	}
 					}
 				});
 	
 		timeEndList.setVisibleRowCount(5);
 		//Can possibly be modified to have multiple selections at once.
 		timeEndList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		timeList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				timeSlotStart=timeSlots[timeList.getSelectedIndex()];
+				if (timeEndList.getSelectedValue() != null) {
+		    		String fromChoice = timeList.getSelectedValue().toString();
+		    		String toChoice = timeEndList.getSelectedValue().toString();
+		    		int newFrom = (Arrays.asList(timeSlots).indexOf(fromChoice));
+		    		int currTo = (Arrays.asList(timeSlots).indexOf(toChoice));
+		    		if (newFrom >= currTo) {
+		    			System.out.println("Caught1");
+		    			timeEndList.setSelectedIndex(newFrom);
+		    		}
+		    	}
+			}
+		});
 		
 		JLabel txtChooseADay = new JLabel("Choose a Day");
 		GridBagConstraints gbc_txtChooseADay = new GridBagConstraints();
