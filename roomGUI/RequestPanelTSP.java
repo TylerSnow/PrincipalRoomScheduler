@@ -158,7 +158,7 @@ public class RequestPanelTSP extends JPanel {
 		btnNextRequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (priInc.getInc()>=0) {
+				if (priInc.getInc()>0) {
 					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
@@ -182,12 +182,11 @@ public class RequestPanelTSP extends JPanel {
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.setReqPanelTSPStored(timeSlotStart,timeSlotEnd,day,Integer.toString(priInc.getInc()));
 				//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();
 				frame.appShow();
-				frame.generateRequest(frame.getStoredInfo());
+
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
