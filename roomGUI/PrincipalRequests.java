@@ -59,9 +59,10 @@ public class PrincipalRequests extends JPanel {
 		ArrayList<Request> allPending = (ArrayList<Request>) School.getPendingRequests();
 		ArrayList<Request> pendingInSemester = new ArrayList<>();
 		for(int i = 0; i < allPending.size(); i++) {
+			System.out.println("Hey: " + allPending.get(i).getRoom().getName().equals(room));
 			if (allPending.get(i).getSemester() == Semester.toSem(semester)
 					&& allPending.get(i).getRoom().getName().equals(room)) {
-				System.out.println(allPending.get(i).getApplicant().getGroup().getName());
+				//System.out.println(allPending.get(i).getApplicant().getGroup().getName());
 				pendingInSemester.add(allPending.get(i));
 			}
 		}
