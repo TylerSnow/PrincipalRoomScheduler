@@ -182,6 +182,7 @@ public class RequestPanelTSP extends JPanel {
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				school.Request.submitUnfinished();
 				//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();

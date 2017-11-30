@@ -33,7 +33,7 @@ public class Request {
 	}
 	
 	public static void generateRequest(String appName, String appGroup, String room, String sem, String numSlots, String startTime, String endTime, String day, String priority, String message) {
-		Booking[] tempBooking = null;
+		Booking[] tempBooking;
 		int slots  = Integer.parseInt(numSlots);
 		Room rRoom = null;
 		Applicant app = new Applicant(appName, new Group(appGroup));
@@ -96,10 +96,9 @@ public class Request {
 		for (int i = 0; i < 5; i++) {
 			if (tempBooking[i].getStartTime() == tempBooking[i].getEndTime()) {
 				Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
-				tempBooking[i] = b;
+				tempBooking[pri-1] = b;
 			}
 		}
-		unfinishedRequest.setBookings(tempBooking);
 		//Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
 		/*
 		tempBooking[pri-1] = b;
@@ -116,11 +115,20 @@ public class Request {
 		*/
 
 		unfinishedRequest = new Request(false, app, semester, slots, rRoom, tempBooking, message);
-		submitUnfinished();
+		unfinishedRequest.setBookings(tempBooking);
 	}
 	
 	public void setBookings(Booking[] b) {
 		bookings = b;
+	}
+	
+	public static Booking[] reverseArray(Booking[] b) {
+		 for (int i = 0; i < b.length / 2; i++) {
+		 	  Booking temp = b[i];
+		 	  b[i] = b[b.length - 1 - i];
+		 	  b[b.length - 1 - i] = temp;
+		 }
+		 return b;
 	}
 	
 	public static Request getUnfinished() {
@@ -128,6 +136,7 @@ public class Request {
 	}
 	
 	public static void submitUnfinished() {
+		Request.getUnfinished().setBookings(reverseArray(Request.getUnfinished().getBookings()));
 		School.AddPendingRequest(unfinishedRequest);
 	}
 	
