@@ -193,7 +193,7 @@ public class MainFrame2 extends JFrame {
 		String endTime =n[6];
 		String day= n[7];
 		String priority= n[8];
-		String numSlots="1";	
+		String numSlots="5";	
 		school.Request.generateRequest(appName, appGroup, room, sem, numSlots, startTime, endTime, day, priority, message);
 		System.out.println(school.School.getPendingRequests());
 

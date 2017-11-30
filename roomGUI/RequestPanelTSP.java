@@ -29,6 +29,7 @@ public class RequestPanelTSP extends JPanel {
 	private JTextField txtChooseADay;
 	private JTextField txtPriority;
 	private PriorityIncrementer priInc;
+	private JButton btnSubmit;
 	/**
 	 * Create the panel.
 	 */
@@ -152,16 +153,21 @@ public class RequestPanelTSP extends JPanel {
 		mainPanel.add(btnBack, gbc_btnBack);
 		
 		JButton btnNextRequest = new JButton("Next Request");
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.setVisible(false);
 		btnNextRequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (priInc.getInc()>=0) {
+					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
+					frame.generateRequest(frame.getStoredInfo());
 					System.out.println(priInc.getInc());
 				}
 				else {
-					System.out.println("Cannot make more requests.");
+					btnSubmit.setVisible(true);
+					btnNextRequest.setVisible(false);
 				}
 			}
 		});
@@ -172,7 +178,7 @@ public class RequestPanelTSP extends JPanel {
 		gbc_btnNextRequest.gridy = 4;
 		mainPanel.add(btnNextRequest, gbc_btnNextRequest);
 		
-		JButton btnSubmit = new JButton("Submit");
+
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
