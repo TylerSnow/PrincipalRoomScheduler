@@ -99,6 +99,7 @@ public class Request {
 				tempBooking[i] = b;
 			}
 		}
+		unfinishedRequest.setBookings(tempBooking);
 		//Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
 		/*
 		tempBooking[pri-1] = b;
@@ -116,6 +117,10 @@ public class Request {
 
 		unfinishedRequest = new Request(false, app, semester, slots, rRoom, tempBooking, message);
 		submitUnfinished();
+	}
+	
+	public void setBookings(Booking[] b) {
+		bookings = b;
 	}
 	
 	public static Request getUnfinished() {
