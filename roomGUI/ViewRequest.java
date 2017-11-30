@@ -48,6 +48,7 @@ public class ViewRequest extends JPanel {
 		frame = f;
 		request = r;
 		toApprove = new ArrayList<>();
+		toDeny = new ArrayList<>();
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
@@ -168,13 +169,7 @@ public class ViewRequest extends JPanel {
 		add(lblSelectedSlots, gbc_lblSelectedSlots);
 		
 		
-		Booking[] bookings = r.getBookings();
-		System.out.println("Printing " + bookings.length + " bookings");
-		for(int i = 0; i < bookings.length; i++) {
-			System.out.println(bookings[i]);
-		}
-		System.out.println("Done printing bookings");
-		
+		Booking[] bookings = r.getBookings();		
 		model = new DefaultListModel();
 		for(int i = 0; i < bookings.length; i++) {
 			model.addElement(bookings[i].toString());
@@ -199,6 +194,16 @@ public class ViewRequest extends JPanel {
 		add(btnBack, gbc_btnBack);
 		
 		JButton btnDeny = new JButton("Deny");
+		btnDeny.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//r.approveRequest(list.getSelectedIndex());
+				toDeny.add(list.getSelectedIndex());
+				String newElement = bookings[list.getSelectedIndex()] + " (Denied)";
+				int pos = list.getSelectedIndex();
+				model.remove(list.getSelectedIndex());
+				model.insertElementAt(newElement, pos);
+			}
+		});
 		GridBagConstraints gbc_btnDeny = new GridBagConstraints();
 		gbc_btnDeny.insets = new Insets(0, 0, 0, 5);
 		gbc_btnDeny.gridx = 2;
@@ -210,7 +215,7 @@ public class ViewRequest extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//r.approveRequest(list.getSelectedIndex());
 				toApprove.add(list.getSelectedIndex());
-				String newElement = list.getSelectedValue().toString() + " (Approved)";
+				String newElement = bookings[list.getSelectedIndex()] + " (Approved)";
 				int pos = list.getSelectedIndex();
 				model.remove(list.getSelectedIndex());
 				model.insertElementAt(newElement, pos);
