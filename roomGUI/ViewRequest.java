@@ -233,11 +233,8 @@ public class ViewRequest extends JPanel {
 				for(int i = 0; i < toApprove.size(); i++) {
 					r.approveRequest(toApprove.get(i));
 				}
-				/*
-				for(int i = 0; i < toDeny.size(); i++) {
-					r.denyRequest(toDeny.get(i));
-				}
-				*/
+				frame.home();
+				frame.hidePrinc();
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
