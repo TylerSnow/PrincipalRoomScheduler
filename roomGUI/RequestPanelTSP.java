@@ -148,7 +148,7 @@ public class RequestPanelTSP extends JPanel {
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.anchor = GridBagConstraints.EAST;
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
-		gbc_btnBack.gridx = 0;
+		gbc_btnBack.gridx = 1;
 		gbc_btnBack.gridy = 4;
 		mainPanel.add(btnBack, gbc_btnBack);
 		
@@ -158,14 +158,22 @@ public class RequestPanelTSP extends JPanel {
 		btnNextRequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (priInc.getInc()>0) {
+				if (priInc.getInc()>2) {
 					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
 					frame.generateRequest(frame.getStoredInfo());
 					System.out.println(priInc.getInc());
 				}
-				else {
+				else if(priInc.getInc()==2) {
+					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
+					priInc.removePri();
+					frame.reqTSPShow();
+					frame.generateRequest(frame.getStoredInfo());
+					btnSubmit.setVisible(true);
+					btnNextRequest.setVisible(false);
+				}
+				else{
 					btnSubmit.setVisible(true);
 					btnNextRequest.setVisible(false);
 				}
@@ -174,7 +182,7 @@ public class RequestPanelTSP extends JPanel {
 		GridBagConstraints gbc_btnNextRequest = new GridBagConstraints();
 		gbc_btnNextRequest.anchor = GridBagConstraints.EAST;
 		gbc_btnNextRequest.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNextRequest.gridx = 1;
+		gbc_btnNextRequest.gridx = 2;
 		gbc_btnNextRequest.gridy = 4;
 		mainPanel.add(btnNextRequest, gbc_btnNextRequest);
 		
@@ -182,12 +190,13 @@ public class RequestPanelTSP extends JPanel {
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
+				frame.generateRequest(frame.getStoredInfo());
 				school.Request.submitUnfinished();
 				//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();
 				frame.appShow();
-
 			}
 		});
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
