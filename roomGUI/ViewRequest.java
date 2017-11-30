@@ -169,7 +169,7 @@ public class ViewRequest extends JPanel {
 		add(lblSelectedSlots, gbc_lblSelectedSlots);
 		
 		
-		Booking[] bookings = r.getBookings();		
+		Booking[] bookings = r.getBookings();
 		model = new DefaultListModel();
 		for(int i = 0; i < bookings.length; i++) {
 			model.addElement(bookings[i].toString());

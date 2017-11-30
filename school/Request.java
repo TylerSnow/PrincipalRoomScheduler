@@ -83,6 +83,7 @@ public class Request {
 				d = DayOfWeek.SUNDAY;
 				break;
 			}
+			default : d = DayOfWeek.MONDAY;
 		}
 		int pri = Integer.parseInt(priority);
 		Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
