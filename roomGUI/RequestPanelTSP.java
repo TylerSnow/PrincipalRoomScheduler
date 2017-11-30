@@ -152,20 +152,20 @@ public class RequestPanelTSP extends JPanel {
 		gbc_btnBack.gridy = 4;
 		mainPanel.add(btnBack, gbc_btnBack);
 		
-		JButton btnNextRequest = new JButton("Next Request");
+		JButton btnNextRequest = new JButton("Add Booking");
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setVisible(false);
 		btnNextRequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (priInc.getInc()>2) {
+				if (priInc.getInc()>1) {
 					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
 					frame.generateRequest(frame.getStoredInfo());
 					System.out.println(priInc.getInc());
 				}
-				else if(priInc.getInc()==2) {
+				else if(priInc.getInc()==1) {
 					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
