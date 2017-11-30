@@ -13,11 +13,18 @@ import javax.swing.JTextField;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 import javax.swing.JList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.UIManager;
+import javax.swing.JCheckBox;
+import java.awt.Canvas;
+import java.awt.List;
+import java.awt.Color;
 
 public class ViewRequest extends JPanel {
 
@@ -29,17 +36,23 @@ public class ViewRequest extends JPanel {
 	private JTextField desiredField;
 	private JTextField messageField;
 	private JList list;
+	private DefaultListModel model;
+	private ArrayList<Integer> toApprove;
+	private ArrayList<Integer> toDeny;
+
+	
 	/**
 	 * Create the panel.
 	 */
 	public ViewRequest(MainFrame2 f, Request r) {
 		frame = f;
 		request = r;
+		toApprove = new ArrayList<>();
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -156,11 +169,18 @@ public class ViewRequest extends JPanel {
 		
 		
 		Booking[] bookings = r.getBookings();
-		Object[] data = new String[bookings.length];
-		for(int i = 0; i < data.length; i++) {
-			data[i] = bookings[i].toString();
+		System.out.println("Printing " + bookings.length + " bookings");
+		for(int i = 0; i < bookings.length; i++) {
+			System.out.println(bookings[i]);
 		}
-		list = new JList(data);
+		System.out.println("Done printing bookings");
+		
+		model = new DefaultListModel();
+		for(int i = 0; i < bookings.length; i++) {
+			model.addElement(bookings[i].toString());
+		}
+		list = new JList(model);
+		list.setForeground(Color.BLACK);
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.gridwidth = 4;
 		gbc_list.gridheight = 2;
@@ -171,6 +191,7 @@ public class ViewRequest extends JPanel {
 		add(list, gbc_list);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new BackButtonListener(frame));
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBack.gridx = 1;
@@ -187,19 +208,38 @@ public class ViewRequest extends JPanel {
 		JButton btnApprove = new JButton("Approve");
 		btnApprove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				r.approveRequest(list.getSelectedIndex());
-				/*
-				data[list.getSelectedIndex()] = data[list.getSelectedIndex()] + " Approved";
-				list = new JList(data);
-				add(list, gbc_list);
-				*/
+				//r.approveRequest(list.getSelectedIndex());
+				toApprove.add(list.getSelectedIndex());
+				String newElement = list.getSelectedValue().toString() + " (Approved)";
+				int pos = list.getSelectedIndex();
+				model.remove(list.getSelectedIndex());
+				model.insertElementAt(newElement, pos);
 			}
 		});
 		GridBagConstraints gbc_btnApprove = new GridBagConstraints();
 		gbc_btnApprove.insets = new Insets(0, 0, 0, 5);
-		gbc_btnApprove.gridx = 4;
+		gbc_btnApprove.gridx = 3;
 		gbc_btnApprove.gridy = 7;
 		add(btnApprove, gbc_btnApprove);
+		
+		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i < toApprove.size(); i++) {
+					r.approveRequest(toApprove.get(i));
+				}
+				/*
+				for(int i = 0; i < toDeny.size(); i++) {
+					r.denyRequest(toDeny.get(i));
+				}
+				*/
+			}
+		});
+		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
+		gbc_btnSubmit.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSubmit.gridx = 4;
+		gbc_btnSubmit.gridy = 7;
+		add(btnSubmit, gbc_btnSubmit);
 
 	}
 
