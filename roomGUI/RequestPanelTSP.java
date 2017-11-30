@@ -191,14 +191,14 @@ public class RequestPanelTSP extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (priInc.getInc()>1) {
-					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
+					frame.setReqPanelTSPStored(fromTimes[timeList.getSelectedIndex()],toTimes[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
 					frame.generateRequest(frame.getStoredInfo());
 					System.out.println(priInc.getInc());
 				}
 				else if(priInc.getInc()==1) {
-					frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
+					frame.setReqPanelTSPStored(fromTimes[timeList.getSelectedIndex()],toTimes[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
 					priInc.removePri();
 					frame.reqTSPShow();
 					frame.generateRequest(frame.getStoredInfo());
