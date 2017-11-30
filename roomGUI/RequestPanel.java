@@ -31,7 +31,7 @@ public class RequestPanel extends JPanel {
 		
 		//Room[] rooms={101,102,103,104,105};
 		//Semester[] semesters={fall,winter,spring};
-		String[] rooms = {"Gymnasium", "Chemistry", "Physics", "Auditorium", "Cafeteria"};
+		String[] rooms = {"Gymnasium", "Chemistry Lab", "Physics Lab", "Auditorium", "Cafeteria"};
 		String[] semesters = {"Fall", "Winter", "Spring"};
 		
 		

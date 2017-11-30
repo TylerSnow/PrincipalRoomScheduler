@@ -94,6 +94,13 @@ public class MainFrame2 extends JFrame {
 		princCardPanel.setVisible(true);
 	}
 	public void displayApp(){
+		appCardPanel= new JPanel(appCards);
+		appCardPanel.add(appPanel,"Applicant Panel");
+		appCardPanel.add(reqPanel,"Request Panel Name");
+		appCardPanel.add(reqPanelTSP,"Request Panel Timeslot");
+		mainCardPanel.add(appCardPanel,"Applicant Card");
+		repaint();
+		revalidate();
 		appCardPanel.setVisible(true);
 	}
 	public void displayHome(){
@@ -156,6 +163,7 @@ public class MainFrame2 extends JFrame {
 	public void reqTSPShow(){
 		appCards.show(appCardPanel,"Request Panel Timeslot");
 	}
+
 	public void setAppInfoStored(String n, String g, String m){
 		reqStored.setAppName(n);
 		reqStored.setAppGroup(g);
@@ -178,17 +186,27 @@ public class MainFrame2 extends JFrame {
 	public void generateRequest(String [] n) {
 		String appName=n[0];
 		String appGroup=n[1];
+		String message=n[2];
 		String room=n[3];
 		String sem=n[4];
 		String startTime=n[5];
 		String endTime =n[6];
 		String day= n[7];
 		String priority= n[8];
-		String message=n[2];
-		String numSlots="1";
-		
+		String numSlots="1";	
 		school.Request.generateRequest(appName, appGroup, room, sem, numSlots, startTime, endTime, day, priority, message);
 		System.out.println(school.School.getPendingRequests());
+
+		System.out.println(appName);
+		System.out.println(appGroup);
+		System.out.println(room);
+		System.out.println(sem);
+		System.out.println(numSlots);
+		System.out.println(startTime);
+		System.out.println(endTime);
+		System.out.println(day);
+		System.out.println(priority);
+		System.out.println(message);
 	}
 	
 	public void showAvailabilityPanel(String semester, String room) {

@@ -180,6 +180,7 @@ public class RequestPanelTSP extends JPanel {
 				//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();
+				frame.appShow();
 				frame.generateRequest(frame.getStoredInfo());
 			}
 		});
