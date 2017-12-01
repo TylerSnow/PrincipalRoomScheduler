@@ -13,6 +13,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
@@ -38,6 +40,7 @@ public class RequestPanelTSP extends JPanel {
 	private static String[] toTimes = {"01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
 			"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
 			"20:00", "21:00", "22:00", "23:00"};
+
 	
 	/**
 	 * Create the panel.
@@ -46,8 +49,6 @@ public class RequestPanelTSP extends JPanel {
 		frame=f;
 		mainPanel = new JPanel();
 		add(mainPanel);	
-
-		priInc= new PriorityIncrementer();
 		
 		String[] timeSlots = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
 				"09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
@@ -183,23 +184,22 @@ public class RequestPanelTSP extends JPanel {
 		gbc_btnBack.gridx = 1;
 		gbc_btnBack.gridy = 4;
 		mainPanel.add(btnBack, gbc_btnBack);
-		
+		System.out.println(frame.getPriInc());
 		JButton btnNextRequest = new JButton("Add Booking");
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setVisible(false);
 		btnNextRequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (priInc.getInc()>1) {
-					frame.setReqPanelTSPStored(fromTimes[timeList.getSelectedIndex()],toTimes[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
-					priInc.removePri();
+				if (frame.getPriInc()>1) {
+					frame.setReqPanelTSPStored(fromTimes[timeList.getSelectedIndex()],toTimes[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(frame.getPriInc()));
+					frame.priMinus();
 					frame.reqTSPShow();
 					frame.generateRequest(frame.getStoredInfo());
-					System.out.println(priInc.getInc());
 				}
-				else if(priInc.getInc()==1) {
-					frame.setReqPanelTSPStored(fromTimes[timeList.getSelectedIndex()],toTimes[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
-					priInc.removePri();
+				else if(frame.getPriInc()==1) {
+					frame.setReqPanelTSPStored(fromTimes[timeList.getSelectedIndex()],toTimes[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(frame.getPriInc()));
+					frame.priMinus();
 					frame.reqTSPShow();
 					frame.generateRequest(frame.getStoredInfo());
 					btnSubmit.setVisible(true);
@@ -222,10 +222,10 @@ public class RequestPanelTSP extends JPanel {
 		btnSubmit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(priInc.getInc()));
-				frame.generateRequest(frame.getStoredInfo());
+				/*frame.setReqPanelTSPStored(timeSlots[timeList.getSelectedIndex()],timeSlots[timeEndList.getSelectedIndex()],days[dayList.getSelectedIndex()],Integer.toString(frame.getPriInc()));
+				frame.generateRequest(frame.getStoredInfo());*/
 				school.Request.submitUnfinished();
-				//Return to HomePanel
+					//Return to HomePanel
 				frame.displayHome();
 				frame.hideApp();
 				frame.appShow();

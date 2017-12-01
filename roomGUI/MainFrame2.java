@@ -39,6 +39,7 @@ public class MainFrame2 extends JFrame {
 	private RequestPanel reqPanel;
 	private RequestPanelTSP reqPanelTSP;
 	private RequestStored reqStored;
+	private PriorityIncrementer priInc;
 	
 	/**
 	 * Create the frame.
@@ -55,7 +56,7 @@ public class MainFrame2 extends JFrame {
 		//princRequestCardPanel = new JPanel(princRequestCards);
 		
 		reqStored= new RequestStored();
-		
+		priInc= new PriorityIncrementer();
 		homePanel = new HomePanel(this);
 		
 		loginPanel = new PrincipalLogin(this);
@@ -163,15 +164,16 @@ public class MainFrame2 extends JFrame {
 	public void reqTSPShow(){
 		appCards.show(appCardPanel,"Request Panel Timeslot");
 	}
-
+	
 	public void setAppInfoStored(String n, String g, String m){
 		reqStored.setAppName(n);
 		reqStored.setAppGroup(g);
 		reqStored.setMessage(m);
 	}
-	public void setReqPanelStored(String r, String s){
+	public void setReqPanelStored(String r, String s, String n){
 		reqStored.setRoom(r);
 		reqStored.setSem(s);
+		reqStored.setNumReq(n);
 	}
 	public void setReqPanelTSPStored(String st, String et, String d, String p){	
 		reqStored.setStartTime(st);
@@ -179,9 +181,21 @@ public class MainFrame2 extends JFrame {
 		reqStored.setDay(d);
 		reqStored.setPriority(p);
 	}
+	public String getNumReq(){
+		return reqStored.getNumReq();
+	}
+	public void updatePriInc(){
+		priInc.setInc(Integer.parseInt(getNumReq()));
+	}
+	public int getPriInc(){
+		return priInc.getInc();
+	}
 	public String[] getStoredInfo(){
-		String[] arr= { reqStored.getAppName(),reqStored.getAppGroup(),reqStored.getMessage(),reqStored.getRoom(),reqStored.getSem(),reqStored.getStartTime(),reqStored.getEndTime(),reqStored.getDay(),reqStored.getPriority() };
+		String[] arr= { reqStored.getAppName(),reqStored.getAppGroup(),reqStored.getMessage(),reqStored.getRoom(),reqStored.getSem(),reqStored.getStartTime(),reqStored.getEndTime(),reqStored.getDay(),reqStored.getPriority(),reqStored.getNumReq() };
 		return arr;
+	}
+	public void priMinus(){
+		priInc.removePri();
 	}
 	public void generateRequest(String [] n) {
 		String appName=n[0];
@@ -193,7 +207,7 @@ public class MainFrame2 extends JFrame {
 		String endTime =n[6];
 		String day= n[7];
 		String priority= n[8];
-		String numSlots="5";	
+		String numSlots=n[9];	
 		school.Request.generateRequest(appName, appGroup, room, sem, numSlots, startTime, endTime, day, priority, message);
 		System.out.println(school.School.getPendingRequests());
 

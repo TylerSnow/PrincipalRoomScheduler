@@ -5,12 +5,13 @@ public class PriorityIncrementer {
 	public PriorityIncrementer(){
 		i=5;
 	}
+
 	
 	public int getInc(){
 		return i;
 	}
 	public void setInc(int n) {
-		i=i+n;
+		i=n;
 	}
 	public void incPri() {
 		i++;

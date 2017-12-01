@@ -10,6 +10,7 @@ public class RequestStored{
 	private String endTime;
 	private String day;
 	private String priority;
+	private String numReq;
 	public void setAppName(String n){
 		appName=n;
 	}
@@ -37,6 +38,9 @@ public class RequestStored{
 	public void setDay(String d){
 		day=d;
 	}
+	public void setNumReq(String req){
+		numReq=req;
+	}
 	public String getAppName(){
 		return appName;
 	}
@@ -63,6 +67,9 @@ public class RequestStored{
 	}
 	public String getPriority(){
 		return priority;
+	}
+	public String getNumReq(){
+		return numReq;
 	}
 
 }

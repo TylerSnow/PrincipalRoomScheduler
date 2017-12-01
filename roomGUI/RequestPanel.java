@@ -21,6 +21,8 @@ public class RequestPanel extends JPanel {
 	private JTextField txtSelectASemester;
 	private String room;
 	private String semester;
+	private String numReq;
+
 	/**
 	 * Create the panel.
 	 */
@@ -33,7 +35,7 @@ public class RequestPanel extends JPanel {
 		//Semester[] semesters={fall,winter,spring};
 		String[] rooms = {"Gymnasium", "Chemistry Lab", "Physics Lab", "Auditorium", "Cafeteria"};
 		String[] semesters = {"Fall", "Winter", "Spring"};
-		
+		String[] numReqs={"5","4","3","2","1"};
 		
 		GridBagLayout gbl_mainPanel = new GridBagLayout();
 		gbl_mainPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
@@ -89,6 +91,35 @@ public class RequestPanel extends JPanel {
 		});
 		semesterList.setVisibleRowCount(5);
 		semesterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+
+		JLabel txtnumReq = new JLabel("How many requests?");
+		GridBagConstraints gbc_txtnumReq = new GridBagConstraints();
+		gbc_txtnumReq.insets = new Insets(0, 0, 5, 5);
+		gbc_txtnumReq.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtnumReq.gridx = 2;
+		gbc_txtnumReq.gridy = 4;
+		mainPanel.add(txtnumReq, gbc_txtnumReq);
+		
+		JScrollPane numReqPane = new JScrollPane();
+		GridBagConstraints gbc_numReqPane = new GridBagConstraints();
+		gbc_numReqPane.fill = GridBagConstraints.BOTH;
+		gbc_numReqPane.insets = new Insets(0, 0, 5, 5);
+		gbc_numReqPane.gridx = 2;
+		gbc_numReqPane.gridy = 5;
+		mainPanel.add(numReqPane, gbc_numReqPane);
+		
+				JList numReqList = new JList(numReqs);
+				numReqPane.setViewportView(numReqList);
+				numReqList.addListSelectionListener(new ListSelectionListener() {
+					public void valueChanged(ListSelectionEvent e) {
+						numReq=numReqs[numReqList.getSelectedIndex()];
+					}
+				});
+	
+		numReqList.setVisibleRowCount(1);
+		numReqList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
 		
 		GridBagConstraints gbc_semesterList = new GridBagConstraints();
 		gbc_semesterList.insets = new Insets(0, 0, 5, 5);
@@ -116,8 +147,10 @@ public class RequestPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Go to RequestPageTSP.java
-				frame.setReqPanelStored(room,semester);
+				frame.setReqPanelStored(room,semester,numReq);
 				frame.reqTSPShow();
+				frame.updatePriInc();
+				System.out.println(numReq);
 			}
 		});
 		GridBagConstraints gbc_btnConfirm = new GridBagConstraints();
