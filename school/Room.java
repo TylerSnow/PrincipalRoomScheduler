@@ -58,6 +58,7 @@ public class Room {
 		for(int t:time) {
 			this.getSemesterTimeslots(s)[weekday][t].makeAvailable();
 		}
+		this.printAvailability(s);
 	}
 	
 	public timeSlot[][] getAvailableTimes(Semester s) {
@@ -70,13 +71,21 @@ public class Room {
 	
 	public void printAvailability(Semester s) {
 		for (int c = 0 ; c < 7 ; c++) {
-			System.out.println(c);
+			switch (c) {
+				case 0 : System.out.println("Monday:"); break;
+				case 1 : System.out.println("Tuesday:"); break;
+				case 2 : System.out.println("Wednesday:"); break;
+				case 3 : System.out.println("Thursday:"); break;
+				case 4 : System.out.println("Friday:"); break;
+				case 5 : System.out.println("Saturday:"); break;
+				case 6 : System.out.println("Sunday"); break;
+			}
 			for (int u= 0 ; u < 24 ; u++) {
+				System.out.print("0"+u+":00 ");
 				boolean ava = this.getSemesterTimeslots(s)[c][u].isAvailable();
 				boolean bvb = this.getSemesterTimeslots(s)[c][u].isBooked();
-				//System.out.print(ava + "&" + bvb + " ");
 				if (ava == false) {
-					System.out.print("NotAvail ");
+					System.out.print( "NotAvailable ");
 				} else {
 					if (bvb == true) {
 						System.out.print(this.getSemesterTimeslots(s)[c][u].getBooking().getGroup().getName() + " ");
