@@ -27,8 +27,10 @@ public class School {
 		}
 	}
 	
-	public void approveRequest(Request r) {
-		
+	public static void approveRequest(Request r) {
+		System.out.println("In school");
+		WriteRequest.removeRequest(pendingRequests.indexOf(r));
+		pendingRequests.remove(r);
 	}
 	
 	public static String getId() {

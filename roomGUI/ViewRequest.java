@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import school.Booking;
 import school.Request;
+import school.School;
 import school.Semester;
 
 import java.awt.GridBagLayout;
@@ -230,6 +231,7 @@ public class ViewRequest extends JPanel {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				School.approveRequest(r);
 				System.out.println("Requests Approved:");
 				for(int i = 0; i < toApprove.size(); i++) {
 					r.approveRequest(toApprove.get(i));
