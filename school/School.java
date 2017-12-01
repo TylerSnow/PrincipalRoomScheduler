@@ -27,6 +27,10 @@ public class School {
 		}
 	}
 	
+	public void approveRequest(Request r) {
+		
+	}
+	
 	public static String getId() {
 		return id;
 	}

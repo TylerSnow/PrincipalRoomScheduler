@@ -96,7 +96,7 @@ public class Request implements Serializable {
 			default : d = DayOfWeek.MONDAY;
 		}
 		int pri = Integer.parseInt(priority);
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < Integer.parseInt(numSlots); i++) {
 			if (tempBooking[i].getStartTime() == tempBooking[i].getEndTime()) {
 				Booking b = new Booking(strt, end, semester, d, new Group(appGroup));
 				tempBooking[pri-1] = b;
