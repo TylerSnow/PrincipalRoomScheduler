@@ -1,8 +1,9 @@
 package school;
 import java.time.LocalTime;
+import java.io.Serializable;
 import java.time.DayOfWeek;
 
-public class Booking {
+public class Booking implements Serializable {
 	private LocalTime startTime;
 	private LocalTime endTime;
 	private DayOfWeek day;

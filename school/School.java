@@ -14,8 +14,17 @@ public class School {
 	public School(String nId) {
 		id = nId;
 		authorizedAccounts.add(makeAdmin());
-		createSampleRequests();
+		//createSampleRequests();
 		createRooms();
+		readRequests();
+	}
+	
+	public void readRequests() {
+		pendingRequests = ReadRequest.readRequests();
+		System.out.println(pendingRequests.size());
+		for(int i = 0; i < pendingRequests.size(); i++) {
+			System.out.println(pendingRequests.get(i).getApplicant().getGroup().getName());
+		}
 	}
 	
 	public static String getId() {
@@ -49,6 +58,8 @@ public class School {
 	
 	public static void AddPendingRequest(Request r) {
 		School.pendingRequests.add(r);
+		WriteRequest obj = new WriteRequest();
+		obj.serializeAddress(r);
 	}
 	
 	public static void AddAuthorizedUser(Account a) {
