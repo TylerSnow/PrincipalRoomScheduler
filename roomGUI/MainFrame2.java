@@ -222,7 +222,8 @@ public class MainFrame2 extends JFrame {
 	}
 	
 	public void enterAvailability(String semester, String room, String start, String end, ArrayList<String> days) {
-		System.out.print("Reservation made for:\n"
+		/*
+		System.out.print("Availability Entered For:\n"
 				+ "Room: " + room + "\n"
 				+ "Semester: " + semester + "\n"
 				+ "From: " + start + "\n"
@@ -232,6 +233,7 @@ public class MainFrame2 extends JFrame {
 			System.out.print(day + ", ");
 		}
 		System.out.println("");
+		*/
 		
 		School.addRoomAvailability(room, LocalTime.parse(start), LocalTime.parse(end), days, semester);
 		

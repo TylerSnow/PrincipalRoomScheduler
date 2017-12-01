@@ -230,8 +230,10 @@ public class ViewRequest extends JPanel {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Requests Approved:");
 				for(int i = 0; i < toApprove.size(); i++) {
 					r.approveRequest(toApprove.get(i));
+					System.out.println(toApprove.get(i).toString());
 				}
 				frame.home();
 				frame.hidePrinc();
