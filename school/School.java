@@ -20,7 +20,6 @@ public class School {
 	
 	public static void approveRequest(Request r) {
 		System.out.println("In school");
-		WriteRequest.removeRequest(pendingRequests.indexOf(r));
 		pendingRequests.remove(r);
 	}
 	
