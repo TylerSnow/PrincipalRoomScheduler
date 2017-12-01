@@ -94,22 +94,20 @@ public class School {
 		for (String day : dayOfWeek) {
 			DayOfWeek d = null;
 			switch (day) {
-				case "Monday" : d = DayOfWeek.MONDAY; break;
-				case "Tuesday" : d = DayOfWeek.TUESDAY; break;
-				case "Wednesday" : d = DayOfWeek.WEDNESDAY; break;
-				case "Thursday" : d = DayOfWeek.THURSDAY; break;
-				case "Friday" : d = DayOfWeek.FRIDAY; break;
-				case "Saturday" : d = DayOfWeek.SATURDAY; break;
-				case "Sunday" : d = DayOfWeek.SUNDAY; break;
+				case "Monday" : d = DayOfWeek.MONDAY;
+				case "Tuesday" : d = DayOfWeek.TUESDAY;
+				case "Wednesday" : d = DayOfWeek.WEDNESDAY;
+				case "Thursday" : d = DayOfWeek.THURSDAY;
+				case "Friday" : d = DayOfWeek.FRIDAY;
+				case "Saturday" : d = DayOfWeek.SATURDAY;
+				case "Sunday" : d = DayOfWeek.SUNDAY;
 			}
 			for (Room r : School.getRoomList()) {
-				if (r.getName().contentEquals(roomName)) {
+				if (r.getName() == roomName) {
 					r.addAvailability(d, timeArray, sem);
-					r.printAvailability(sem);
 				}
 			}
 		}
-		
 	}
 	
 	@SuppressWarnings("unused")

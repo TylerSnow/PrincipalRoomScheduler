@@ -59,6 +59,7 @@ public class Room implements Serializable {
 		for(int t:time) {
 			this.getSemesterTimeslots(s)[weekday][t].makeAvailable();
 		}
+		this.printAvailability(s);
 	}
 	
 	public timeSlot[][] getAvailableTimes(Semester s) {
