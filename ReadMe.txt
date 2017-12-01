@@ -36,7 +36,7 @@ Instructions:
 		The Add Booking button is now replaced by Submit. Press Submit to enter request (with 5 bookings) into system
 		
 Persistence:
-	In order to have the school's pending requests be persistent, the objects/requests folder must be on the local machine, in the same hierarchy as in this repository.
+	Persistence for requests is functional on our machines but we cannot guarantee it for yours. So, we put it in a separate branch. The main branch does not feature persistence.
 		
 Point Distribution:
 	John Healey - 10 points
