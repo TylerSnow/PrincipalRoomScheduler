@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
@@ -28,8 +33,26 @@ public class WriteRequest {
 
 	}
 	
-	public void removeRequest(Request r) {
-		
+	public static void removeRequest(int n) {
+		String filePath = new File("").getAbsolutePath();
+		filePath += "\\src\\objects\\requests";
+		System.out.println("Trying to delete" + filePath + "\\request" + n);
+		try
+        {
+            Files.deleteIfExists(Paths.get(filePath + "\\request" + n));
+        }
+        catch(NoSuchFileException e)
+        {
+            System.out.println("No such file/directory exists");
+        }
+        catch(DirectoryNotEmptyException e)
+        {
+            System.out.println("Directory is not empty.");
+        }
+        catch(IOException e)
+        {
+            System.out.println("Invalid permissions.");
+        }
 	}
 
 	public void serializeAddress(Request r) {
