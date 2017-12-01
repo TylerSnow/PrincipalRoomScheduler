@@ -27,6 +27,10 @@ public class WriteRequest {
 		obj.serializeAddress(req);
 
 	}
+	
+	public void removeRequest(Request r) {
+		
+	}
 
 	public void serializeAddress(Request r) {
 
