@@ -58,7 +58,6 @@ public class Room {
 		for(int t:time) {
 			this.getSemesterTimeslots(s)[weekday][t].makeAvailable();
 		}
-		this.printAvailability(s);
 	}
 	
 	public timeSlot[][] getAvailableTimes(Semester s) {
