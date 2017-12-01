@@ -233,7 +233,6 @@ public class ViewRequest extends JPanel {
 				System.out.println("Requests Approved:");
 				for(int i = 0; i < toApprove.size(); i++) {
 					r.approveRequest(toApprove.get(i));
-					System.out.println(toApprove.get(i).toString());
 				}
 				frame.home();
 				frame.hidePrinc();

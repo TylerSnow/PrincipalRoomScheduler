@@ -1,9 +1,10 @@
 package school;
 
 import java.time.DayOfWeek;
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class Request {
+public class Request implements Serializable {
 	private Applicant applicant;
 	private int numSlots;
 	private Room room;
@@ -11,6 +12,8 @@ public class Request {
 	private String message;
 	private Semester semester;
 	private static Request unfinishedRequest;
+	
+	private static final long serialVersionUID = 1L;
 	
 	public Request(Applicant nApplicant, int nNumSlots, Semester sem, Room r, Booking[] b, String nMessage) {
 		applicant = nApplicant;
