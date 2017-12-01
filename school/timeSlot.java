@@ -1,8 +1,5 @@
 package school;
-
-import java.io.Serializable;
-
-public class timeSlot implements Serializable {
+public class timeSlot {
 	private boolean isAvailable = false;
 	private boolean isBooked = false;
 	private Booking booked;

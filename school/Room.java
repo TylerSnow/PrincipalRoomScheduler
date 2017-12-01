@@ -1,10 +1,9 @@
 package school;
-import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room implements Serializable {
+public class Room {
 	//availableTimes[0][0] is Monday at 00:00, availableTimes[0][1] is 01:00, etc
 	//availableTimes[1][0] is Tuesday at 00:00.
 	private timeSlot[][] fallAvailTimes = new timeSlot[7][24];

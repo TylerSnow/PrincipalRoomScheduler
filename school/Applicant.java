@@ -1,8 +1,6 @@
 package school;
 
-import java.io.Serializable;
-
-public class Applicant implements Serializable {
+public class Applicant {
 	private String id;
 	private Group group;
 	
