@@ -35,6 +35,9 @@ Instructions:
 			Press Add Booking to add the booking to the list of 5
 		The Add Booking button is now replaced by Submit. Press Submit to enter request (with 5 bookings) into system
 		
+Persistence:
+	In order to have the school's pending requests be persistent, the objects/requests folder must be on the local machine, in the same hierarchy as in this repository.
+		
 Point Distribution:
 	John Healey - 10 points
 	Josh Clarke - 10 points
