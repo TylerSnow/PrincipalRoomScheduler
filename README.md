@@ -2,9 +2,7 @@
 CS 3716 Group #16 Final Project
 <br/>Group Members: John Healey, Josh Clarke, Tyler Snow
 <br/>GitHub Repository: https://github.com/JohnPHealey/room-reservation.git
-
 <br/>A system that aids school principals in room scheduling matters that is written in Java.
-
 <br/>Instructions:
 	<br/>Upon starting application, press a button on the bottom of the screen to proceed as a principal or as an applicant, as desired.
 	<br/>Principal:
