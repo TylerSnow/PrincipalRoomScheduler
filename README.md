@@ -1,4 +1,4 @@
-# room-reservation
+# Principal Room Scheduler Group Project
 CS 3716 Group #16 Final Project
 Group Members: John Healey, Josh Clarke, Tyler Snow
 GitHub Repository: https://github.com/JohnPHealey/room-reservation.git
